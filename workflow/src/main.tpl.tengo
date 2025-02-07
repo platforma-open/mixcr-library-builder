@@ -1,0 +1,114 @@
+// "hello world"
+wf := import("@platforma-sdk/workflow-tengo:workflow")
+exec := import("@platforma-sdk/workflow-tengo:exec")
+ll := import("@platforma-sdk/workflow-tengo:ll")
+assets := import("@platforma-sdk/workflow-tengo:assets")
+file := import("@platforma-sdk/workflow-tengo:file")
+
+mixcrSw := assets.importSoftware("@platforma-open/milaboratories.software-mixcr:main")
+
+wf.body(func(args) {
+
+	if is_undefined(args.vFastaFile) && is_undefined(args.vSpecies) {
+		
+		ll.panic("expected to have either `fastaFile` or `built in`; provided no any")
+	}
+
+	if is_undefined(args.jFastaFile) && is_undefined(args.jSpecies) {
+		
+	 	ll.panic("expected to have either `fastaFile` or `built in`; provided no any")
+	}
+
+	outputs := {}
+	exports := {}
+
+	species := args.species
+	taxonId := args.taxonId
+	chain := args.chain
+
+	ll.print("__THE_LOG__ " + species)
+	ll.print("__THE_LOG__ " + taxonId)
+	ll.print("__THE_LOG__ " + chain)
+
+	libraryBuilderCmdBuilder := undefined
+
+    
+	libraryBuilderCmdBuilder = exec.builder().
+		software(mixcrSw).
+	 	arg("buildLibrary").
+	 	arg("--debug").
+	 	arg("--species").arg(species).
+	 	arg("--chain").arg(chain).
+	 	arg("--taxon-id").arg(taxonId)
+	if !is_undefined(args.vFastaFile) {
+	 	fImport := file.importFile(args.vFastaFile)
+	 	vFastaOutput := fImport.file
+	 	libraryBuilderCmdBuilder.arg("--v-gene-feature").arg("VRegion")
+	 	libraryBuilderCmdBuilder.arg("--v-genes-from-fasta").arg("v.fasta").
+	 	addFile("v.fasta", vFastaOutput)
+	} else {
+	 	libraryBuilderCmdBuilder.arg("--v-genes-from-species").arg(args.vSpecies)
+	}
+
+	if !is_undefined(args.jFastaFile) {
+	 	fImport := file.importFile(args.jFastaFile)
+	 	jFastaOutput := fImport.file
+	 	libraryBuilderCmdBuilder.arg("--j-genes-from-fasta").arg("j.fasta").
+	 		addFile("j.fasta", jFastaOutput)
+	} else {
+	 	libraryBuilderCmdBuilder.arg("--j-genes-from-species").arg(args.jSpecies)
+	}
+
+	if !is_undefined(args.dFastaFile) {
+	 	fImport := file.importFile(args.dFastaFile)
+	 	dFastaOutput := fImport.file
+	 	libraryBuilderCmdBuilder.arg("--d-genes-from-fasta").arg("d.fasta").
+	 	addFile("d.fasta", dFastaOutput)
+	} else if !is_undefined(args.dSpecies) {
+	 	libraryBuilderCmdBuilder.arg("--d-genes-from-species").arg(args.dSpecies)
+	}
+
+	if !is_undefined(args.cFastaFile) {
+		fImport := file.importFile(args.cFastaFile)
+	 	cFastaOutput := fImport.file
+	 	libraryBuilderCmdBuilder.arg("--c-genes-from-fasta").arg("c.fasta").
+	 	addFile("c.fasta", cFastaOutput)
+	} else if !is_undefined(args.cSpecies) {
+	 	libraryBuilderCmdBuilder.arg("--c-genes-from-species").arg(args.cSpecies)
+	}
+
+	libraryBuilderCmdBuilder.arg("library.json").
+		saveFile("library.json").
+		stdoutFileName("stdout.txt").
+		saveStdoutContent().
+		printErrStreamToStdout()
+	libraryBuilderCmd := libraryBuilderCmdBuilder.run()
+	
+	debugOutput := file.exportFile(libraryBuilderCmd.getFile("stdout.txt"))
+	library := libraryBuilderCmd.getFile("library.json")
+
+	outputs.debugOutput = debugOutput
+
+	libraryAnnotations := {
+		"pl7.app/kind": "file",
+		"pl7.app/type": "json",
+		"pl7.app/species": species,
+		"pl7.app/taxonId": taxonId,
+		"pl7.app/vdj/chain": chain,
+		"pl7.app/label": species + "_" + chain + "_library"
+	}
+
+	exports.referenceLibrary = {
+		data: library,
+		spec: {
+			annotations: libraryAnnotations
+		}
+	}
+	
+	return {
+		outputs: outputs,
+
+		exports: exports
+	}
+})
+
