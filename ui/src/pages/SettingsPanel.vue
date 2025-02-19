@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { getFilePathFromHandle, ImportFileHandle, PlRef } from '@platforma-sdk/model';
 import { 
     ListOption, 
     PlBtnGroup, 
     PlDropdown,
-    PlDropdownRef,
     PlFileInput,
     PlTextField,
     PlAccordionSection,
-    ReactiveFileContent,
-    PlContainer,
 } from '@platforma-sdk/ui-vue';
 import { reactive, watch, computed } from 'vue';
 import { useApp } from '../app';
@@ -17,22 +13,22 @@ import { useApp } from '../app';
 const app = useApp();
 
 type LocalState = {
-  vTab: "fromFile" | "fromBuiltIn" | undefined;
-  jTab: "fromFile" | "fromBuiltIn" | undefined;
-  dTab: "fromFile" | "fromBuiltIn" | undefined;
-  cTab: "fromFile" | "fromBuiltIn" | undefined;
+  vTab: "fromFile" | "fromBuiltIn";
+  jTab: "fromFile" | "fromBuiltIn";
+  dTab: "fromFile" | "fromBuiltIn";
+  cTab: "fromFile" | "fromBuiltIn";
 };
 
 const state = reactive<LocalState>({
-  vTab: undefined,
-  jTab: undefined,
-  dTab: undefined,
-  cTab: undefined,
+  vTab: "fromBuiltIn",
+  jTab: "fromBuiltIn",
+  dTab: "fromBuiltIn",
+  cTab: "fromBuiltIn",
 })
 
 const vComputedTab = computed({
   get() {
-    return state.vTab ?? (app.model.args.vFastaFile ? "fromFile" : undefined);
+    return state.vTab ?? (app.model.args.vFastaFile ? "fromFile" : "fromBuiltIn");
   },
   set(tab) {
     state.vTab = tab;
@@ -41,7 +37,7 @@ const vComputedTab = computed({
 
 const jComputedTab = computed({
   get() {
-    return state.jTab ?? (app.model.args.jFastaFile ? "fromFile" : undefined);
+    return state.jTab ?? (app.model.args.jFastaFile ? "fromFile" : "fromBuiltIn");
   },
   set(tab) {
     state.jTab = tab;
@@ -50,7 +46,7 @@ const jComputedTab = computed({
 
 const dComputedTab = computed({
   get() {
-    return state.dTab ?? (app.model.args.dFastaFile ? "fromFile" : undefined);
+    return state.dTab ?? (app.model.args.dFastaFile ? "fromFile" : "fromBuiltIn");
   },
   set(tab) {
     state.dTab = tab;
@@ -59,7 +55,7 @@ const dComputedTab = computed({
 
 const cComputedTab = computed({
   get() {
-    return state.cTab ?? (app.model.args.cFastaFile ? "fromFile" : undefined);
+    return state.cTab ?? (app.model.args.cFastaFile ? "fromFile" : "fromBuiltIn");
   },
   set(tab) {
     state.cTab = tab;
@@ -135,7 +131,6 @@ const vGeneFeatureOptions = [
 
 <template>
   <PlTextField v-model="app.model.args.species" clearable label="Species" />
-  <PlTextField v-model="app.model.args.taxonId" clearable label="Taxon id" />
   <PlDropdown :options="chainOptions" v-model="app.model.args.chain" label="Select chain" />
 
   <PlBtnGroup :options="genesSourceOptions" v-model="vComputedTab" label="V segments source" />
@@ -143,6 +138,7 @@ const vGeneFeatureOptions = [
     v-if="vComputedTab === 'fromBuiltIn'"
     v-model="app.model.args.vSpecies"
     :options="speciesOptions"
+    placeholder="Select species"
   />
   <PlFileInput
     v-if="vComputedTab === 'fromFile'"
@@ -154,9 +150,9 @@ const vGeneFeatureOptions = [
   <PlBtnGroup :options="genesSourceOptions" v-model="jComputedTab" label="J segments source" />
   <PlDropdown
     v-if="jComputedTab === 'fromBuiltIn'" 
-    label="J gene" 
     :options="speciesOptions"
     v-model="app.model.args.jSpecies"
+    placeholder="Select species"
   />
   
   <PlFileInput
@@ -167,13 +163,13 @@ const vGeneFeatureOptions = [
   />
 
 
-  <PlAccordionSection label="D segments source (optional)">
-    <PlBtnGroup :options="genesSourceOptions" v-model="dComputedTab" />
+  <PlAccordionSection label="D and C segments source (optional)">
+    <PlBtnGroup :options="genesSourceOptions" v-model="dComputedTab" label="D segments source" />
     <PlDropdown
       v-if="dComputedTab === 'fromBuiltIn'" 
-      label="G gene" 
       :options="speciesOptions"
       v-model="app.model.args.dSpecies"
+      placeholder="Select species"
     />
     <PlFileInput
       v-if="dComputedTab === 'fromFile'"
@@ -181,14 +177,12 @@ const vGeneFeatureOptions = [
       file-dialog-title="Upload fasta"
       clearable="true"
     />
-  </PlAccordionSection>
-  <PlAccordionSection label="C segments source (optional)">
-    <PlBtnGroup :options="genesSourceOptions" v-model="cComputedTab" />
+    <PlBtnGroup :options="genesSourceOptions" v-model="cComputedTab" label="C segments source" />
     <PlDropdown
       v-if="cComputedTab === 'fromBuiltIn'" 
-      label="C gene" 
       :options="speciesOptions"
       v-model="app.model.args.cSpecies"
+      placeholder="Select species"
     />
     <PlFileInput
       v-if="cComputedTab === 'fromFile'"

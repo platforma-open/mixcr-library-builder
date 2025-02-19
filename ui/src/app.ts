@@ -7,7 +7,7 @@ import { ref } from "vue"
 export const sdkPlugin = defineApp(model, () => {
   const settingsOpen = ref(true)
   function openSettings () {
-    settingsOpen.value = false
+    settingsOpen.value = true
   }
   return {
     settingsOpen,

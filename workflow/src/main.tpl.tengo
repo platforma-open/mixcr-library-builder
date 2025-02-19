@@ -4,6 +4,9 @@ exec := import("@platforma-sdk/workflow-tengo:exec")
 ll := import("@platforma-sdk/workflow-tengo:ll")
 assets := import("@platforma-sdk/workflow-tengo:assets")
 file := import("@platforma-sdk/workflow-tengo:file")
+times := import("times")
+json := import("json")
+rand := import("rand")
 
 mixcrSw := assets.importSoftware("@platforma-open/milaboratories.software-mixcr:main")
 
@@ -20,21 +23,21 @@ wf.body(func(args) {
 	}
 
 	outputs := {}
-	exports := {}
 
+	blockId := wf.blockId().getDataAsJson()
 	species := args.species
-	taxonId := args.taxonId
 	chain := args.chain
 
 	ll.print("__THE_LOG__ " + species)
-	ll.print("__THE_LOG__ " + taxonId)
 	ll.print("__THE_LOG__ " + chain)
 
 	libraryBuilderCmdBuilder := undefined
 
-    
+	taxonId := string(rand.intn(9000) + 1000)
+	ll.print("__THE_LOG__ " + taxonId)
 	libraryBuilderCmdBuilder = exec.builder().
 		software(mixcrSw).
+		secret("MI_LICENSE", "MI_LICENSE").
 	 	arg("buildLibrary").
 	 	arg("--debug").
 	 	arg("--species").arg(species).
@@ -48,6 +51,7 @@ wf.body(func(args) {
 	 	addFile("v.fasta", vFastaOutput)
 	} else {
 	 	libraryBuilderCmdBuilder.arg("--v-genes-from-species").arg(args.vSpecies)
+		ll.print("__THE_LOG__ " + args.vSpecies)
 	}
 
 	if !is_undefined(args.jFastaFile) {
@@ -57,6 +61,7 @@ wf.body(func(args) {
 	 		addFile("j.fasta", jFastaOutput)
 	} else {
 	 	libraryBuilderCmdBuilder.arg("--j-genes-from-species").arg(args.jSpecies)
+		ll.print("__THE_LOG__ " + args.jSpecies)
 	}
 
 	if !is_undefined(args.dFastaFile) {
@@ -79,35 +84,31 @@ wf.body(func(args) {
 
 	libraryBuilderCmdBuilder.arg("library.json").
 		saveFile("library.json").
-		stdoutFileName("stdout.txt").
-		saveStdoutContent().
 		printErrStreamToStdout()
 	libraryBuilderCmd := libraryBuilderCmdBuilder.run()
 	
-	debugOutput := file.exportFile(libraryBuilderCmd.getFile("stdout.txt"))
+	debugOutput := libraryBuilderCmd.getStdoutStream()
 	library := libraryBuilderCmd.getFile("library.json")
 
 	outputs.debugOutput = debugOutput
 
-	libraryAnnotations := {
-		"pl7.app/kind": "file",
-		"pl7.app/type": "json",
-		"pl7.app/species": species,
-		"pl7.app/taxonId": taxonId,
-		"pl7.app/vdj/chain": chain,
-		"pl7.app/label": species + "_" + chain + "_library"
+	exports := {
+		library : {
+			data: library,
+			spec: {
+				kind: "File",
+				annotations: {
+					"pl7.app/species": species,
+					"pl7.app/vdj/chain": chain,
+					"pl7.app/vdj/isLibrary": "true",
+					"pl7.app/label": species + "_" + chain + "_library"
+				}
+			}		
+	 	}
 	}
-
-	exports.referenceLibrary = {
-		data: library,
-		spec: {
-			annotations: libraryAnnotations
-		}
-	}
-	
+		
 	return {
 		outputs: outputs,
-
 		exports: exports
 	}
 })

@@ -1,4 +1,4 @@
-import { BlockModel, InferOutputsType, ImportFileHandle } from '@platforma-sdk/model';
+import { BlockModel, InferOutputsType, ImportFileHandle, parseResourceMap } from '@platforma-sdk/model';
 
 export type BlockArgs = {
   species: string;
@@ -22,7 +22,14 @@ export const model = BlockModel.create()
     chain: "TRB",
   })
 
-  .output('debugOutput', (ctx) => ctx.outputs?.resolve('debugOutput')?.getRemoteFileHandle())
+  .argsValid(
+    (ctx) =>
+      ctx.args.species !== undefined &&
+      (ctx.args.vSpecies !== undefined || ctx.args.vFastaFile !== undefined) &&
+      (ctx.args.jSpecies !== undefined || ctx.args.jFastaFile !== undefined) 
+)
+
+  .output('debugOutput', (ctx) => ctx.outputs?.resolve('debugOutput')?.getLogHandle())
 
   .sections([{ type: 'link', href: '/', label: 'Main' }])
 
