@@ -1,5 +1,5 @@
 {
-  "name": "@milaboratories/milaboratories.mixcr-library-builder",
+  "name": "@platforma-open/milaboratories.mixcr-library-builder",
   "version": "1.0.0",
   "scripts": {
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,vue}\"",

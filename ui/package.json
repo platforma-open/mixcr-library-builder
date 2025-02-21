@@ -1,5 +1,5 @@
 {
-  "name": "@milaboratories/milaboratories.mixcr-library-builder.ui",
+  "name": "@platforma-open/milaboratories.mixcr-library-builder.ui",
   "version": "1.0.1",
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@milaboratories/milaboratories.mixcr-library-builder.model": "workspace:*",
+    "@platforma-open/milaboratories.mixcr-library-builder.model": "workspace:*",
     "@platforma-sdk/ui-vue": "catalog:",
     "@platforma-sdk/model": "catalog:",
     "@milaboratories/graph-maker": "catalog:",

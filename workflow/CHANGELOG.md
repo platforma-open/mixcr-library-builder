@@ -1,4 +1,4 @@
-# @milaboratories/milaboratories.mixcr-library-builder.workflow
+# @platforma-open/milaboratories.mixcr-library-builder.workflow
 
 ## 1.0.1
 
