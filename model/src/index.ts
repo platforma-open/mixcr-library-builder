@@ -27,9 +27,9 @@ export const model = BlockModel.create()
       (ctx.args.jSpecies !== undefined || ctx.args.jFastaFile !== undefined) 
   )
 
-  .output('vUploadProgress', (ctx) => ctx.outputs?.resolve('vImportHandle')?.getImportProgress())
+  .output('vUploadProgress', (ctx) => ctx.args.vFastaFile ? ctx.outputs?.resolve('vImportHandle')?.getImportProgress() : undefined)
 
-  .output('jUploadProgress', (ctx) => ctx.outputs?.resolve('jImportHandle')?.getImportProgress())
+  .output('jUploadProgress', (ctx) => ctx.args.jFastaFile ? ctx.outputs?.resolve('jImportHandle')?.getImportProgress() : undefined)
 
   .output('dUploadProgress', (ctx) => ctx.args.dFastaFile ? ctx.outputs?.resolve('dImportHandle')?.getImportProgress() : undefined)
 
