@@ -1,7 +1,7 @@
 {
   "name": "@milaboratories/milaboratories.mixcr-library-builder.test",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Block tests",
   "type": "module",
   "scripts": {
