@@ -1,5 +1,5 @@
 {
-  "name": "@Milaboratories/Milaboratories.mixcr-library-builder",
+  "name": "@milaboratories/milaboratories.mixcr-library-builder",
   "version": "1.0.0",
   "scripts": {
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,vue}\"",

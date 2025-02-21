@@ -1,4 +1,4 @@
-import { model } from "@Milaboratories/Milaboratories.mixcr-library-builder.model";
+import { model } from "@milaboratories/milaboratories.mixcr-library-builder.model";
 import { defineApp } from "@platforma-sdk/ui-vue";
 import MainPage from "./pages/MainPage.vue";
 import { ref } from "vue"

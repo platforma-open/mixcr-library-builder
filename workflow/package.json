@@ -1,5 +1,5 @@
 {
-  "name": "@Milaboratories/Milaboratories.mixcr-library-builder.workflow",
+  "name": "@milaboratories/milaboratories.mixcr-library-builder.workflow",
   "version": "1.0.0",
   "type": "module",
   "description": "Block Workflow",

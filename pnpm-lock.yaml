@@ -74,13 +74,13 @@ importers:
 
   block:
     dependencies:
-      '@Milaboratories/Milaboratories.mixcr-library-builder.model':
+      '@milaboratories/milaboratories.mixcr-library-builder.model':
         specifier: workspace:*
         version: link:../model
-      '@Milaboratories/Milaboratories.mixcr-library-builder.ui':
+      '@milaboratories/milaboratories.mixcr-library-builder.ui':
         specifier: workspace:*
         version: link:../ui
-      '@Milaboratories/Milaboratories.mixcr-library-builder.workflow':
+      '@milaboratories/milaboratories.mixcr-library-builder.workflow':
         specifier: workspace:*
         version: link:../workflow
     devDependencies:
@@ -113,7 +113,7 @@ importers:
   test:
     dependencies:
       this-block:
-        specifier: workspace:@Milaboratories/Milaboratories.mixcr-library-builder@*
+        specifier: workspace:@milaboratories/milaboratories.mixcr-library-builder@*
         version: link:../block
     devDependencies:
       '@platforma-sdk/test':
@@ -128,12 +128,12 @@ importers:
 
   ui:
     dependencies:
-      '@Milaboratories/Milaboratories.mixcr-library-builder.model':
-        specifier: workspace:*
-        version: link:../model
       '@milaboratories/graph-maker':
         specifier: 'catalog:'
         version: 1.1.45(d3-dispatch@3.0.1)(d3-path@3.1.0)(d3-scale-chromatic@3.1.0)(typescript@5.7.3)
+      '@milaboratories/milaboratories.mixcr-library-builder.model':
+        specifier: workspace:*
+        version: link:../model
       '@platforma-sdk/model':
         specifier: 'catalog:'
         version: 1.22.18

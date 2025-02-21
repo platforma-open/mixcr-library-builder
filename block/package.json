@@ -1,5 +1,5 @@
 {
-  "name": "@Milaboratories/Milaboratories.mixcr-library-builder",
+  "name": "@milaboratories/milaboratories.mixcr-library-builder",
   "version": "1.0.0",
   "scripts": {
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,vue}\"",
@@ -12,15 +12,15 @@
     "index.js"
   ],
   "dependencies": {
-    "@Milaboratories/Milaboratories.mixcr-library-builder.workflow": "workspace:*",
-    "@Milaboratories/Milaboratories.mixcr-library-builder.model": "workspace:*",
-    "@Milaboratories/Milaboratories.mixcr-library-builder.ui": "workspace:*"
+    "@milaboratories/milaboratories.mixcr-library-builder.workflow": "workspace:*",
+    "@milaboratories/milaboratories.mixcr-library-builder.model": "workspace:*",
+    "@milaboratories/milaboratories.mixcr-library-builder.ui": "workspace:*"
   },
   "block": {
     "components": {
-      "workflow": "@Milaboratories/Milaboratories.mixcr-library-builder.workflow/dist/tengo/tpl/main.plj.gz",
-      "model": "@Milaboratories/Milaboratories.mixcr-library-builder.model/dist/model.json",
-      "ui": "@Milaboratories/Milaboratories.mixcr-library-builder.ui/dist"
+      "workflow": "@milaboratories/milaboratories.mixcr-library-builder.workflow/dist/tengo/tpl/main.plj.gz",
+      "model": "@milaboratories/milaboratories.mixcr-library-builder.model/dist/model.json",
+      "ui": "@milaboratories/milaboratories.mixcr-library-builder.ui/dist"
     },
     "meta": {
       "title": "MiXCR library builder",

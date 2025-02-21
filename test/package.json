@@ -1,5 +1,5 @@
 {
-  "name": "@Milaboratories/Milaboratories.mixcr-library-builder.test",
+  "name": "@milaboratories/milaboratories.mixcr-library-builder.test",
   "private": true,
   "version": "1.0.0",
   "description": "Block tests",
@@ -10,7 +10,7 @@
   "files": [],
   "keywords": [],
   "dependencies": {
-    "this-block": "workspace:@Milaboratories/Milaboratories.mixcr-library-builder@*"
+    "this-block": "workspace:@milaboratories/milaboratories.mixcr-library-builder@*"
   },
   "devDependencies": {
     "@platforma-sdk/test": "catalog:",
