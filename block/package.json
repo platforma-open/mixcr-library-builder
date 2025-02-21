@@ -1,0 +1,46 @@
+{
+  "name": "@milaboratories/milaboratories.mixcr-library-builder",
+  "version": "1.0.0",
+  "scripts": {
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,vue}\"",
+    "build": "rm -rf block-pack && block-tools pack",
+    "mark-stable": "block-tools mark-stable -r 's3://milab-euce1-prod-pkgs-s3-block-registry/pub/releases/?region=eu-central-1'",
+    "prepublishOnly": "block-tools pack && block-tools publish -r 's3://milab-euce1-prod-pkgs-s3-block-registry/pub/releases/?region=eu-central-1'"
+  },
+  "files": [
+    "index.d.ts",
+    "index.js"
+  ],
+  "dependencies": {
+    "@milaboratories/milaboratories.mixcr-library-builder.workflow": "workspace:*",
+    "@milaboratories/milaboratories.mixcr-library-builder.model": "workspace:*",
+    "@milaboratories/milaboratories.mixcr-library-builder.ui": "workspace:*"
+  },
+  "block": {
+    "components": {
+      "workflow": "@milaboratories/milaboratories.mixcr-library-builder.workflow/dist/tengo/tpl/main.plj.gz",
+      "model": "@milaboratories/milaboratories.mixcr-library-builder.model/dist/model.json",
+      "ui": "@milaboratories/milaboratories.mixcr-library-builder.ui/dist"
+    },
+    "meta": {
+      "title": "MiXCR library builder",
+      "logo": "file:../logos/block-logo.png",
+      "url": "https://github.com/milaboratory/platforma-mixcr-library-builder",
+      "docs": "https://github.com/milaboratory/platforma-mixcr-library-builder/docs",
+      "support": "mailto:support@milaboratories.com",
+      "description": "Block to create a custom MiXCR reference library",
+      "longDescription": "file:../docs/description.md",
+      "changelog": "file:../CHANGELOG.md",
+      "tags": ["tutorial"],
+      "organization": {
+        "name": "MiLaboratories Inc",
+        "url": "https://milaboratories.com/",
+        "logo": "file:../logos/milaboratories.png"
+      }
+    }
+  },
+  "devDependencies": {
+    "@platforma-sdk/block-tools": "catalog:"
+  },
+  "packageManager": "pnpm@9.12.0"
+}
