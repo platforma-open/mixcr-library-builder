@@ -1,8 +1,7 @@
-import { BlockModel, InferOutputsType, ImportFileHandle, parseResourceMap } from '@platforma-sdk/model';
+import { BlockModel, InferOutputsType, ImportFileHandle } from '@platforma-sdk/model';
 
 export type BlockArgs = {
   species: string;
-  taxonId: string;
   chain: "TRB" | "TRA" | "TRD" | "TRG" | "IGH" | "IGK" | "IGL";
   vFastaFile?: ImportFileHandle;
   jFastaFile?: ImportFileHandle;
@@ -18,7 +17,6 @@ export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
     species: "",
-    taxonId: "",
     chain: "TRB",
   })
 
@@ -27,7 +25,15 @@ export const model = BlockModel.create()
       ctx.args.species !== undefined &&
       (ctx.args.vSpecies !== undefined || ctx.args.vFastaFile !== undefined) &&
       (ctx.args.jSpecies !== undefined || ctx.args.jFastaFile !== undefined) 
-)
+  )
+
+  .output('vUploadProgress', (ctx) => ctx.outputs?.resolve('vImportHandle')?.getImportProgress())
+
+  .output('jUploadProgress', (ctx) => ctx.outputs?.resolve('jImportHandle')?.getImportProgress())
+
+  .output('dUploadProgress', (ctx) => ctx.args.dFastaFile ? ctx.outputs?.resolve('dImportHandle')?.getImportProgress() : undefined)
+
+  .output('cUploadProgress', (ctx) => ctx.args.cFastaFile ? ctx.outputs?.resolve('cImportHandle')?.getImportProgress() : undefined)
 
   .output('debugOutput', (ctx) => ctx.outputs?.resolve('debugOutput')?.getLogHandle())
 

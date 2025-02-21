@@ -13,10 +13,10 @@ import { useApp } from '../app';
 const app = useApp();
 
 type LocalState = {
-  vTab: "fromFile" | "fromBuiltIn";
-  jTab: "fromFile" | "fromBuiltIn";
-  dTab: "fromFile" | "fromBuiltIn";
-  cTab: "fromFile" | "fromBuiltIn";
+  vTab: "fromFile" | "fromBuiltIn" | undefined;
+  jTab: "fromFile" | "fromBuiltIn" | undefined;
+  dTab: "fromFile" | "fromBuiltIn" | undefined;
+  cTab: "fromFile" | "fromBuiltIn" | undefined;
 };
 
 const state = reactive<LocalState>({
@@ -143,6 +143,7 @@ const vGeneFeatureOptions = [
   <PlFileInput
     v-if="vComputedTab === 'fromFile'"
     v-model="app.model.args.vFastaFile"
+    :progress="vComputedTab === 'fromFile' ? app.model.outputs.vUploadProgress : undefined"
     file-dialog-title="Select fasta file"
     clearable="true"
   />
@@ -158,6 +159,7 @@ const vGeneFeatureOptions = [
   <PlFileInput
     v-if="jComputedTab === 'fromFile'"
     v-model="app.model.args.jFastaFile"
+    :progress="jComputedTab === 'fromFile' ? app.model.outputs.jUploadProgress : undefined"
     file-dialog-title="Upload fasta"
     clearable="true"
   />
@@ -174,6 +176,7 @@ const vGeneFeatureOptions = [
     <PlFileInput
       v-if="dComputedTab === 'fromFile'"
       v-model="app.model.args.dFastaFile"
+      :progress="dComputedTab === 'fromFile' ? app.model.outputs.dUploadProgress : undefined"
       file-dialog-title="Upload fasta"
       clearable="true"
     />
@@ -187,6 +190,7 @@ const vGeneFeatureOptions = [
     <PlFileInput
       v-if="cComputedTab === 'fromFile'"
       v-model="app.model.args.cFastaFile"
+      :progress="cComputedTab === 'fromFile' ? app.model.outputs.cUploadProgress : undefined"
       file-dialog-title="Upload fasta"
       clearable="true"
     />

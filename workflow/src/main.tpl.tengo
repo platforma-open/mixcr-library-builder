@@ -24,17 +24,12 @@ wf.body(func(args) {
 
 	outputs := {}
 
-	blockId := wf.blockId().getDataAsJson()
 	species := args.species
 	chain := args.chain
-
-	ll.print("__THE_LOG__ " + species)
-	ll.print("__THE_LOG__ " + chain)
 
 	libraryBuilderCmdBuilder := undefined
 
 	taxonId := string(rand.intn(9000) + 1000)
-	ll.print("__THE_LOG__ " + taxonId)
 	libraryBuilderCmdBuilder = exec.builder().
 		software(mixcrSw).
 		secret("MI_LICENSE", "MI_LICENSE").
@@ -44,40 +39,38 @@ wf.body(func(args) {
 	 	arg("--chain").arg(chain).
 	 	arg("--taxon-id").arg(taxonId)
 	if !is_undefined(args.vFastaFile) {
-	 	fImport := file.importFile(args.vFastaFile)
-	 	vFastaOutput := fImport.file
-	 	libraryBuilderCmdBuilder.arg("--v-gene-feature").arg("VRegion")
-	 	libraryBuilderCmdBuilder.arg("--v-genes-from-fasta").arg("v.fasta").
-	 	addFile("v.fasta", vFastaOutput)
+	 	vImport := file.importFile(args.vFastaFile)
+		outputs.vImportHandle = vImport.handle
+	 	libraryBuilderCmdBuilder.arg("--v-gene-feature").arg("VRegion").
+	 	arg("--v-genes-from-fasta").arg("v.fasta").
+	 	addFile("v.fasta", vImport.file)
 	} else {
 	 	libraryBuilderCmdBuilder.arg("--v-genes-from-species").arg(args.vSpecies)
-		ll.print("__THE_LOG__ " + args.vSpecies)
 	}
 
 	if !is_undefined(args.jFastaFile) {
-	 	fImport := file.importFile(args.jFastaFile)
-	 	jFastaOutput := fImport.file
+	 	jImport := file.importFile(args.jFastaFile)
+		outputs.jImportHandle = jImport.handle
 	 	libraryBuilderCmdBuilder.arg("--j-genes-from-fasta").arg("j.fasta").
-	 		addFile("j.fasta", jFastaOutput)
+	 		addFile("j.fasta", jImport.file)
 	} else {
 	 	libraryBuilderCmdBuilder.arg("--j-genes-from-species").arg(args.jSpecies)
-		ll.print("__THE_LOG__ " + args.jSpecies)
 	}
 
 	if !is_undefined(args.dFastaFile) {
-	 	fImport := file.importFile(args.dFastaFile)
-	 	dFastaOutput := fImport.file
+	 	dImport := file.importFile(args.dFastaFile)
+		outputs.dImportHandle = dImport.handle
 	 	libraryBuilderCmdBuilder.arg("--d-genes-from-fasta").arg("d.fasta").
-	 	addFile("d.fasta", dFastaOutput)
+	 	addFile("d.fasta", dImport.file)
 	} else if !is_undefined(args.dSpecies) {
 	 	libraryBuilderCmdBuilder.arg("--d-genes-from-species").arg(args.dSpecies)
 	}
 
 	if !is_undefined(args.cFastaFile) {
-		fImport := file.importFile(args.cFastaFile)
-	 	cFastaOutput := fImport.file
+		cImport := file.importFile(args.cFastaFile)
+		outputs.cImportHandle = cImport.handle
 	 	libraryBuilderCmdBuilder.arg("--c-genes-from-fasta").arg("c.fasta").
-	 	addFile("c.fasta", cFastaOutput)
+	 	addFile("c.fasta", cImport.file)
 	} else if !is_undefined(args.cSpecies) {
 	 	libraryBuilderCmdBuilder.arg("--c-genes-from-species").arg(args.cSpecies)
 	}
