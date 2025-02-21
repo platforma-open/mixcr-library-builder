@@ -1,4 +1,4 @@
-# @milaboratories/milaboratories.mixcr-library-builder.model
+# @platforma-open/milaboratories.mixcr-library-builder.model
 
 ## 1.0.1
 
