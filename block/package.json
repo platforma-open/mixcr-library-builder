@@ -24,20 +24,20 @@
     },
     "meta": {
       "title": "MiXCR library builder",
-      "logo": "file:../logos/block-logo.png",
-      "url": "https://github.com/milaboratory/platforma-mixcr-library-builder",
-      "docs": "https://github.com/milaboratory/platforma-mixcr-library-builder/docs",
+      "logo": "file:../logos/organization-logo.png",
+      "url": "https://github.com/platforma-open/mixcr-library-builder",
+      "docs": "https://github.com/platforma-open/mixcr-library-builder/docs",
       "support": "mailto:support@milaboratories.com",
       "description": "Block to create a custom MiXCR reference library",
       "longDescription": "file:../docs/description.md",
       "changelog": "file:../CHANGELOG.md",
       "tags": [
-        "tutorial"
+        "vdj"
       ],
       "organization": {
         "name": "MiLaboratories Inc",
         "url": "https://milaboratories.com/",
-        "logo": "file:../logos/milaboratories.png"
+        "logo": "file:../logos/organization-logo.png"
       }
     }
   },

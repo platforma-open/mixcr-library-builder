@@ -20,10 +20,10 @@ type LocalState = {
 };
 
 const state = reactive<LocalState>({
-  vTab: "fromBuiltIn",
-  jTab: "fromBuiltIn",
-  dTab: "fromBuiltIn",
-  cTab: "fromBuiltIn",
+  vTab: undefined,
+  jTab: undefined,
+  dTab: undefined,
+  cTab: undefined,
 })
 
 const vComputedTab = computed({
@@ -130,7 +130,11 @@ const vGeneFeatureOptions = [
 </script>
 
 <template>
-  <PlTextField v-model="app.model.args.species" clearable label="Species" />
+  <PlTextField 
+    v-model="app.model.args.species" 
+    clearable label="Species"
+    placeholder="Type species name"
+  />
   <PlDropdown :options="chainOptions" v-model="app.model.args.chain" label="Select chain" />
 
   <PlBtnGroup :options="genesSourceOptions" v-model="vComputedTab" label="V segments source" />
@@ -145,6 +149,8 @@ const vGeneFeatureOptions = [
     v-model="app.model.args.vFastaFile"
     :progress="vComputedTab === 'fromFile' ? app.model.outputs.vUploadProgress : undefined"
     file-dialog-title="Select fasta file"
+    :extensions="['fasta', 'fa']"
+    helper="The file should contain sequences that span the VRegion"
     clearable="true"
   />
   
