@@ -17,7 +17,7 @@ export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
     species: "",
-    chain: "TRA",
+    chain: "IGH",
   })
 
   .argsValid(
