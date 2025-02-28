@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.workflow
 
+## 1.1.0
+
+### Minor Changes
+
+- 84adbca: Corrections and improvements
+
 ## 1.0.2
 
 ### Patch Changes
