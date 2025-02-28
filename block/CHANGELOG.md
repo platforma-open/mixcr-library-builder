@@ -1,5 +1,18 @@
 # @platforma-open/milaboratories.mixcr-library-builder
 
+## 1.2.0
+
+### Minor Changes
+
+- 44a1d87: remove logo file
+
+### Patch Changes
+
+- Updated dependencies [44a1d87]
+  - @platforma-open/milaboratories.mixcr-library-builder.workflow@1.2.0
+  - @platforma-open/milaboratories.mixcr-library-builder.model@1.2.0
+  - @platforma-open/milaboratories.mixcr-library-builder.ui@1.2.0
+
 ## 1.1.0
 
 ### Minor Changes
