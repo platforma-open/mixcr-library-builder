@@ -1,0 +1,27 @@
+ll := import("@platforma-sdk/workflow-tengo:ll")
+
+text := import("text")
+
+toCamelCase := func(input) {
+    cleaned := text.re_replace(`[^a-zA-Z0-9]+`, input, " ")
+    words := text.split(cleaned, " ")
+
+    camelCase := ""
+    for i := 0; i < len(words); i++ {
+        word := words[i]
+        if word == "" {
+            continue
+        }
+        if i == 0 {
+            camelCase += text.to_lower(word)
+        } else {
+            camelCase += text.to_upper(text.substr(word, 0, 1)) + text.to_lower(text.substr(word, 1))
+        }
+    }
+
+    return camelCase
+}
+
+export ll.toStrict({
+	toCamelCase: toCamelCase
+})

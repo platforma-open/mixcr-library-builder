@@ -17,7 +17,7 @@ export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
     species: "",
-    chain: "TRB",
+    chain: "IGH",
   })
 
   .argsValid(
@@ -27,13 +27,17 @@ export const model = BlockModel.create()
       (ctx.args.jSpecies !== undefined || ctx.args.jFastaFile !== undefined) 
   )
 
-  .output('vUploadProgress', (ctx) => ctx.args.vFastaFile ? ctx.outputs?.resolve('vImportHandle')?.getImportProgress() : undefined)
+  .output('vUploadProgress', 
+    (ctx) => ctx.outputs?.resolve({field: 'vImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
 
-  .output('jUploadProgress', (ctx) => ctx.args.jFastaFile ? ctx.outputs?.resolve('jImportHandle')?.getImportProgress() : undefined)
+  .output('jUploadProgress', 
+    (ctx) => ctx.outputs?.resolve({field: 'jImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
 
-  .output('dUploadProgress', (ctx) => ctx.args.dFastaFile ? ctx.outputs?.resolve('dImportHandle')?.getImportProgress() : undefined)
+  .output('dUploadProgress', 
+    (ctx) => ctx.outputs?.resolve({field: 'dImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
 
-  .output('cUploadProgress', (ctx) => ctx.args.cFastaFile ? ctx.outputs?.resolve('cImportHandle')?.getImportProgress() : undefined)
+  .output('cUploadProgress', 
+    (ctx) => ctx.outputs?.resolve({field: 'cImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
 
   .output('debugOutput', (ctx) => ctx.outputs?.resolve('debugOutput')?.getLogHandle())
 
