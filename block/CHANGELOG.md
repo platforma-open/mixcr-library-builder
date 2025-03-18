@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder
 
+## 1.3.1
+
+### Patch Changes
+
+- 8f1fac6: Updated tags and ranking
+
 ## 1.3.0
 
 ### Minor Changes
