@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.ui
 
+## 1.2.1
+
+### Patch Changes
+
+- dac9963: typescript version to 5.5.4
+
 ## 1.2.0
 
 ### Minor Changes
