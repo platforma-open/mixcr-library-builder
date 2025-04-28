@@ -15,13 +15,13 @@ toCamelCase := import(":formatText")
 
 wf.body(func(args) {
 
+	blockId := wf.blockId().getDataAsJson()
+
 	if is_undefined(args.vFastaFile) && is_undefined(args.vSpecies) {
-		
 		ll.panic("expected to have either `fastaFile` or `built in`; provided no any")
 	}
 
 	if is_undefined(args.jFastaFile) && is_undefined(args.jSpecies) {
-		
 	 	ll.panic("expected to have either `fastaFile` or `built in`; provided no any")
 	}
 
@@ -82,7 +82,7 @@ wf.body(func(args) {
 		saveFile("library.json").
 		printErrStreamToStdout()
 	libraryBuilderCmd := libraryBuilderCmdBuilder.run()
-	
+
 	debugOutput := libraryBuilderCmd.getStdoutStream()
 	library := libraryBuilderCmd.getFile("library.json")
 
@@ -93,16 +93,21 @@ wf.body(func(args) {
 			data: library,
 			spec: {
 				kind: "File",
+				name: "pl7.app/vdj/library",
+				domain: {
+					"pl7.app/vdj/libraryId": blockId
+				},
 				annotations: {
 					"pl7.app/species": cmdSpecies,
 					"pl7.app/vdj/chain": chain,
 					"pl7.app/vdj/isLibrary": "true",
+					"pl7.app/vdj/libraryFormat": "repseqio.json",
 					"pl7.app/label": text.split(species, "_custom")[0] + " " + chain + " library"
 				}
-			}		
+			}
 	 	}
 	}
-		
+
 	return {
 		outputs: outputs,
 		exports: exports
