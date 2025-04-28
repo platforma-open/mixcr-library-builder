@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.mixcr-library-builder.ui",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

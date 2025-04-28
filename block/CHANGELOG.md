@@ -1,5 +1,19 @@
 # @platforma-open/milaboratories.mixcr-library-builder
 
+## 1.4.0
+
+### Minor Changes
+
+- 2f47cb1: SDK upgrade
+
+### Patch Changes
+
+- Updated dependencies [2f47cb1]
+- Updated dependencies [2f47cb1]
+  - @platforma-open/milaboratories.mixcr-library-builder.workflow@1.3.0
+  - @platforma-open/milaboratories.mixcr-library-builder.model@1.3.0
+  - @platforma-open/milaboratories.mixcr-library-builder.ui@1.3.0
+
 ## 1.3.2
 
 ### Patch Changes
