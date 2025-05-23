@@ -114,6 +114,10 @@ wf.body(func(args) {
 			data: finalLibrary,
 			spec: {
 				kind: "File",
+				name: "pl7.app/vdj/library",
+				domain: {
+					"pl7.app/vdj/libraryId": blockId
+				},
 				annotations: {
 					"pl7.app/species": cmdSpecies,
 					"pl7.app/vdj/chain": string(chains),
