@@ -1,108 +1,129 @@
-// "hello world"
 wf := import("@platforma-sdk/workflow-tengo:workflow")
+render := import("@platforma-sdk/workflow-tengo:render")
 exec := import("@platforma-sdk/workflow-tengo:exec")
 ll := import("@platforma-sdk/workflow-tengo:ll")
 assets := import("@platforma-sdk/workflow-tengo:assets")
 file := import("@platforma-sdk/workflow-tengo:file")
+maps := import("@platforma-sdk/workflow-tengo:maps")
+smart := import("@platforma-sdk/workflow-tengo:smart")
 times := import("times")
 json := import("json")
 rand := import("rand")
 text := import("text")
 
 mixcrSw := assets.importSoftware("@platforma-open/milaboratories.software-mixcr:main")
-
+jsonMergingTpl := assets.importTemplate(":json-merging")
 toCamelCase := import(":formatText")
 
 wf.body(func(args) {
-
-	if is_undefined(args.vFastaFile) && is_undefined(args.vSpecies) {
-		
-		ll.panic("expected to have either `fastaFile` or `built in`; provided no any")
-	}
-
-	if is_undefined(args.jFastaFile) && is_undefined(args.jSpecies) {
-		
-	 	ll.panic("expected to have either `fastaFile` or `built in`; provided no any")
-	}
-
-	outputs := {}
-
+	chainConfigs := args.chainConfigs
 	species := args.species
 	cmdSpecies := toCamelCase.toCamelCase(species) + "_custom"
-	chain := args.chain
-
-	libraryBuilderCmdBuilder := undefined
-
 	taxonId := string(rand.intn(9000) + 1000)
-	libraryBuilderCmdBuilder = exec.builder().
-		software(mixcrSw).
-		secret("MI_LICENSE", "MI_LICENSE").
-	 	arg("buildLibrary").
-	 	arg("--species").arg(cmdSpecies).
-	 	arg("--chain").arg(chain).
-	 	arg("--taxon-id").arg(taxonId)
-	if !is_undefined(args.vFastaFile) {
-	 	vImport := file.importFile(args.vFastaFile)
-		outputs.vImportHandle = vImport.handle
-	 	libraryBuilderCmdBuilder.arg("--v-gene-feature").arg("VRegion").
-	 	arg("--v-genes-from-fasta").arg("v.fasta").
-	 	addFile("v.fasta", vImport.file)
-	} else {
-	 	libraryBuilderCmdBuilder.arg("--v-genes-from-species").arg(args.vSpecies)
+	outputs := {}
+	fileImports := {}
+	libraryMap := {}
+	debugOutputMap := {}
+	fileImportsProgress := {}
+	chains := []
+
+	for chain, chainConfig in chainConfigs {
+		libraryBuilderCmdBuilder := exec.builder().
+			software(mixcrSw).
+			secret("MI_LICENSE", "MI_LICENSE").
+			arg("buildLibrary").
+			arg("--species").arg(cmdSpecies).
+			arg("--chain").arg(chain).
+			arg("--taxon-id").arg(taxonId)
+
+		if chainConfig["V"].sourceType == "built-in" {
+			libraryBuilderCmdBuilder.arg("--v-genes-from-species").arg(chainConfig["V"].builtInSpecies)
+		} else if chainConfig["V"].sourceType == "fasta" {
+			vImport := file.importFile(chainConfig["V"].fastaFile)
+			fileImports[chainConfig["V"].fastaFile] = vImport
+			fileImportsProgress[chainConfig["V"].fastaFile] = vImport.handle
+			libraryBuilderCmdBuilder.arg("--v-gene-feature").arg("VRegion").
+				arg("--v-genes-from-fasta").arg("v.fasta").
+				addFile("v.fasta", vImport.file)
+		}
+
+		if chainConfig["J"].sourceType == "built-in" {
+			libraryBuilderCmdBuilder.arg("--j-genes-from-species").arg(chainConfig["J"].builtInSpecies)
+		} else if chainConfig["J"].sourceType == "fasta" {
+			jImport := file.importFile(chainConfig["J"].fastaFile)
+			fileImports[chainConfig["J"].fastaFile] = jImport
+			fileImportsProgress[chainConfig["J"].fastaFile] = jImport.handle
+			libraryBuilderCmdBuilder.arg("--j-genes-from-fasta").arg("j.fasta").
+				addFile("j.fasta", jImport.file)
+		}
+
+		if chainConfig["D"].builtInSpecies != undefined || chainConfig["D"].fastaFile != undefined {
+			if chainConfig["D"].sourceType == "built-in" {
+				libraryBuilderCmdBuilder.arg("--d-genes-from-species").arg(chainConfig["D"].builtInSpecies)
+			} else if chainConfig["D"].sourceType == "fasta" {
+				dImport := file.importFile(chainConfig["D"].fastaFile)
+				fileImports[chainConfig["D"].fastaFile] = dImport
+				fileImportsProgress[chainConfig["D"].fastaFile] = dImport.handle
+				libraryBuilderCmdBuilder.arg("--d-genes-from-fasta").arg("d.fasta").
+					addFile("d.fasta", dImport.file)
+			}
+		}
+
+		if chainConfig["C"].builtInSpecies != undefined || chainConfig["C"].fastaFile != undefined {
+			if chainConfig["C"].sourceType == "built-in" {
+				libraryBuilderCmdBuilder.arg("--c-genes-from-species").arg(chainConfig["C"].builtInSpecies)
+			} else if chainConfig["C"].sourceType == "fasta" {
+				cImport := file.importFile(chainConfig["C"].fastaFile)
+				fileImports[chainConfig["C"].fastaFile] = cImport
+				fileImportsProgress[chainConfig["C"].fastaFile] = cImport.handle
+				libraryBuilderCmdBuilder.arg("--c-genes-from-fasta").arg("c.fasta").
+					addFile("c.fasta", cImport.file)
+			}
+		}
+
+		libraryBuilderCmdBuilder.arg("library_" + chain + ".json").
+			saveFile("library_" + chain + ".json").
+			printErrStreamToStdout()
+		libraryBuilderCmd := libraryBuilderCmdBuilder.run()
+		
+		debugOutput := libraryBuilderCmd.getStdoutStream()
+		library := libraryBuilderCmd.getFile("library_" + chain + ".json")
+		libraryMap["library_" + chain + ".json"] = library
+		debugOutputMap[chain] = debugOutput
+		chains = append(chains, chain)
 	}
 
-	if !is_undefined(args.jFastaFile) {
-	 	jImport := file.importFile(args.jFastaFile)
-		outputs.jImportHandle = jImport.handle
-	 	libraryBuilderCmdBuilder.arg("--j-genes-from-fasta").arg("j.fasta").
-	 		addFile("j.fasta", jImport.file)
-	} else {
-	 	libraryBuilderCmdBuilder.arg("--j-genes-from-species").arg(args.jSpecies)
-	}
-
-	if !is_undefined(args.dFastaFile) {
-	 	dImport := file.importFile(args.dFastaFile)
-		outputs.dImportHandle = dImport.handle
-	 	libraryBuilderCmdBuilder.arg("--d-genes-from-fasta").arg("d.fasta").
-	 	addFile("d.fasta", dImport.file)
-	} else if !is_undefined(args.dSpecies) {
-	 	libraryBuilderCmdBuilder.arg("--d-genes-from-species").arg(args.dSpecies)
-	}
-
-	if !is_undefined(args.cFastaFile) {
-		cImport := file.importFile(args.cFastaFile)
-		outputs.cImportHandle = cImport.handle
-	 	libraryBuilderCmdBuilder.arg("--c-genes-from-fasta").arg("c.fasta").
-	 	addFile("c.fasta", cImport.file)
-	} else if !is_undefined(args.cSpecies) {
-	 	libraryBuilderCmdBuilder.arg("--c-genes-from-species").arg(args.cSpecies)
-	}
-
-	libraryBuilderCmdBuilder.arg("library.json").
-		saveFile("library.json").
-		printErrStreamToStdout()
-	libraryBuilderCmd := libraryBuilderCmdBuilder.run()
 	
-	debugOutput := libraryBuilderCmd.getStdoutStream()
-	library := libraryBuilderCmd.getFile("library.json")
 
-	outputs.debugOutput = debugOutput
+	outputs.debugOutput = smart.createMapResource(maps.mapValues(debugOutputMap, func(debugOutput) {
+		return debugOutput
+	}))
+
+	outputs.fileImports = smart.createMapResource(maps.mapValues(fileImportsProgress, func(handle) {
+		return handle
+	}))
+
+	mergeResults := render.create(jsonMergingTpl, {
+		libraryMap: libraryMap
+	})
+
+	finalLibrary := mergeResults.output("library", 24 * 60 * 60 * 1000)
 
 	exports := {
-		library : {
-			data: library,
+		library: {
+			data: finalLibrary,
 			spec: {
 				kind: "File",
 				annotations: {
 					"pl7.app/species": cmdSpecies,
-					"pl7.app/vdj/chain": chain,
+					"pl7.app/vdj/chain": string(chains),
 					"pl7.app/vdj/isLibrary": "true",
-					"pl7.app/label": text.split(species, "_custom")[0] + " " + chain + " library"
+					"pl7.app/label": text.split(species, "_custom")[0] + " library"
 				}
-			}		
-	 	}
+			}
+		}
 	}
-		
+	
 	return {
 		outputs: outputs,
 		exports: exports

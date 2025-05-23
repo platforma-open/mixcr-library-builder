@@ -1,43 +1,58 @@
-import { BlockModel, InferOutputsType, ImportFileHandle } from '@platforma-sdk/model';
+import { BlockModel, InferOutputsType } from '@platforma-sdk/model';
+import { ImportFileHandle } from '@platforma-sdk/model';
+
+type VRegionType = 'VTranscript' | 'VRegion';
+
+type BaseSegmentConfig = {
+  sourceType: 'built-in' | 'fasta'
+  builtInSpecies: string | undefined      // only if sourceType==='built-in'
+  fastaFile: ImportFileHandle | undefined     // only if sourceType==='fasta'
+}
+
+type VSegmentConfig = BaseSegmentConfig & {
+  vRegionType: VRegionType     // only used when sourceType==='fasta'
+}
+
+type SegmentConfig = BaseSegmentConfig | VSegmentConfig;
 
 export type BlockArgs = {
   species: string;
-  chain: "TRB" | "TRA" | "TRD" | "TRG" | "IGH" | "IGK" | "IGL";
-  vFastaFile?: ImportFileHandle;
-  jFastaFile?: ImportFileHandle;
-  dFastaFile?: ImportFileHandle;
-  cFastaFile?: ImportFileHandle;
-  vSpecies?: "hsa" | "mmu" | "alpaca" | "lama" | "mfas";
-  jSpecies?: "hsa" | "mmu" | "alpaca" | "lama" | "mfas";
-  dSpecies?: "hsa" | "mmu" | "alpaca" | "lama" | "mfas";
-  cSpecies?: "hsa" | "mmu" | "alpaca" | "lama" | "mfas";
+  chains: string[];
+  chainConfigs: Record<string, {
+    V: VSegmentConfig;
+    D?: BaseSegmentConfig;
+    J: BaseSegmentConfig;
+    C?: BaseSegmentConfig;
+  }>;
 };
 
 export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
     species: "",
-    chain: "IGH",
+    chains: ["IGH"],
+    chainConfigs: {},
   })
 
-  .argsValid(
+  // .argsValid(
+  //   (ctx) =>
+  //     ctx.args.species !== undefined &&
+  //     (ctx.args.vSpecies !== undefined || ctx.args.vFastaFile !== undefined) &&
+  //     (ctx.args.jSpecies !== undefined || ctx.args.jFastaFile !== undefined) 
+  // )
+
+  .output(
+    'fileImports',
     (ctx) =>
-      ctx.args.species !== undefined &&
-      (ctx.args.vSpecies !== undefined || ctx.args.vFastaFile !== undefined) &&
-      (ctx.args.jSpecies !== undefined || ctx.args.jFastaFile !== undefined) 
+      Object.fromEntries(
+        ctx.outputs
+          ?.resolve({ field: 'fileImports', assertFieldType: 'Input' , allowPermanentAbsence: true})
+          ?.mapFields((handle, acc) => [handle as ImportFileHandle, acc.getImportProgress()], {
+            skipUnresolved: true,
+          }) ?? []
+      ),
+    { isActive: true }
   )
-
-  .output('vUploadProgress', 
-    (ctx) => ctx.outputs?.resolve({field: 'vImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
-
-  .output('jUploadProgress', 
-    (ctx) => ctx.outputs?.resolve({field: 'jImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
-
-  .output('dUploadProgress', 
-    (ctx) => ctx.outputs?.resolve({field: 'dImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
-
-  .output('cUploadProgress', 
-    (ctx) => ctx.outputs?.resolve({field: 'cImportHandle', allowPermanentAbsence: true})?.getImportProgress(), {isActive: true})
 
   .output('debugOutput', (ctx) => ctx.outputs?.resolve('debugOutput')?.getLogHandle())
 

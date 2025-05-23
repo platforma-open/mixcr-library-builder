@@ -8,10 +8,12 @@
     "test": "vitest",
     "format": "/usr/bin/env emacs --script ./format.el"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@platforma-open/milaboratories.mixcr-library-builder.software": "workspace:*",
+    "@platforma-sdk/workflow-tengo": "catalog:"
+  },
   "devDependencies": {
     "@platforma-sdk/tengo-builder": "catalog:",
-    "@platforma-sdk/workflow-tengo": "catalog:",
     "@platforma-open/milaboratories.software-small-binaries": "catalog:",
     "@platforma-open/milaboratories.software-mixcr": "catalog:",
     "@platforma-sdk/test": "catalog:",
