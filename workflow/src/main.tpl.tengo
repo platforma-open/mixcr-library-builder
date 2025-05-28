@@ -15,7 +15,18 @@ mixcrSw := assets.importSoftware("@platforma-open/milaboratories.software-mixcr:
 jsonMergingTpl := assets.importTemplate(":json-merging")
 toCamelCase := import(":formatText")
 
+chainInfos := {
+	"IGH": "IGHeavy",
+	"IGL": "IGLight",
+	"IGK": "IGLight",
+	"TRB": "TCRBeta",
+	"TRA": "TCRAlpha",
+	"TRG": "TCRGamma",
+	"TRD": "TCRDelta"
+}
+
 wf.body(func(args) {
+	blockId := wf.blockId().getDataAsJson()
 	chainConfigs := args.chainConfigs
 	species := args.species
 	cmdSpecies := toCamelCase.toCamelCase(species) + "_custom"
@@ -90,7 +101,16 @@ wf.body(func(args) {
 		library := libraryBuilderCmd.getFile("library_" + chain + ".json")
 		libraryMap["library_" + chain + ".json"] = library
 		debugOutputMap[chain] = debugOutput
-		chains = append(chains, chain)
+		chains = append(chains, chainInfos[chain])
+	}
+
+	seen := {}
+	chains_unique := []
+	for chain in chains {
+		if !seen[chain] {
+			seen[chain] = true
+			chains_unique = append(chains_unique, chain)
+		}
 	}
 
 	
@@ -114,10 +134,15 @@ wf.body(func(args) {
 			data: finalLibrary,
 			spec: {
 				kind: "File",
+				name: "pl7.app/vdj/library",
+				domain: {
+					"pl7.app/vdj/libraryId": blockId
+				},
 				annotations: {
 					"pl7.app/species": cmdSpecies,
 					"pl7.app/vdj/chain": string(chains),
 					"pl7.app/vdj/isLibrary": "true",
+					"pl7.app/vdj/libraryFormat": "repseqio.json",
 					"pl7.app/label": text.split(species, "_custom")[0] + " library"
 				}
 			}
