@@ -34,12 +34,45 @@ export const model = BlockModel.create()
     chainConfigs: {},
   })
 
-  // .argsValid(
-  //   (ctx) =>
-  //     ctx.args.species !== undefined &&
-  //     (ctx.args.vSpecies !== undefined || ctx.args.vFastaFile !== undefined) &&
-  //     (ctx.args.jSpecies !== undefined || ctx.args.jFastaFile !== undefined) 
-  // )
+   .argsValid(
+     (ctx) => {
+       // Check that species is provided
+       if (!ctx.args.species || ctx.args.species.trim() === '') {
+         return false;
+       }
+       
+       // Check that at least one chain is selected
+       if (!ctx.args.chains || ctx.args.chains.length === 0) {
+         return false;
+       }
+       
+       // Check that each selected chain has valid V and J segment configurations
+       for (const chain of ctx.args.chains) {
+         const chainConfig = ctx.args.chainConfigs[chain];
+         if (!chainConfig) {
+           return false;
+         }
+         
+         // V segment is required - must have either built-in species or fasta file
+         const vConfig = chainConfig.V;
+         if (!vConfig || 
+             (vConfig.sourceType === 'built-in' && (!vConfig.builtInSpecies || vConfig.builtInSpecies.trim() === '')) ||
+             (vConfig.sourceType === 'fasta' && !vConfig.fastaFile)) {
+           return false;
+         }
+         
+         // J segment is required - must have either built-in species or fasta file
+         const jConfig = chainConfig.J;
+         if (!jConfig || 
+             (jConfig.sourceType === 'built-in' && (!jConfig.builtInSpecies || jConfig.builtInSpecies.trim() === '')) ||
+             (jConfig.sourceType === 'fasta' && !jConfig.fastaFile)) {
+           return false;
+         }
+       }
+       
+       return true;
+     }
+   )
 
   .output(
     'fileImports',

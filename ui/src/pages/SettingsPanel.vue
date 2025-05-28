@@ -29,11 +29,17 @@ const progresses = computed(() => {
 });
 
 const speciesOptions = [
-  { label: "Homo sapiens", value: "hsa" }, // Corrected spelling
+  { label: "Homo sapiens", value: "hsa" },
   { label: "Mus musculus", value: "mmu" },
   { label: "Lama glama", value: "lama" },
   { label: "Alpaca", value: "alpaca" },
   { label: "Macaca fascicularis", value: "mfas" },
+  { label: "Chicken", value: "gallus" },
+  { label: "Macaca mulatta", value: "mmul" },
+  { label: "Rabbit", value: "rabbit" },
+  { label: "Rat", value: "rat" },
+  { label: "Sheep", value: "sheep" },
+  { label: "Spalax", value: "spalax" },
 ] as const satisfies ListOption[];
 
 const chainOptions = computed(() => {
@@ -73,6 +79,21 @@ const chainSegments: Record<string, readonly (typeof segments[number])[]> = {
   IGH: ['V', 'D', 'J', 'C'],
   IGK: ['V', 'J', 'C'],
   IGL: ['V', 'J', 'C']
+} as const;
+
+// Map of species to their available chains
+const speciesHasChains: Record<string, string[]> = {
+  hsa: ['IGH', 'IGL', 'IGK', 'TRA', 'TRB', 'TRD', 'TRG'], // Human
+  mmu: ['IGH', 'IGL', 'IGK', 'TRA', 'TRB', 'TRD', 'TRG'], // Mouse
+  lama: ['IGH', 'IGK', 'IGL'], // Lama glama
+  alpaca: ['IGH'], // Alpaca
+  mfas: ['TRA', 'TRB', 'TRD'], // Macaca fascicularis
+  gallus: ['IGH'], // Chicken
+  mmul: ['IGH', 'TRA', 'TRB', 'TRD'], // Macaca mulatta
+  rabbit: ['IGH', 'IGK', 'IGL'], // Rabbit
+  rat: ['TRA', 'TRB', 'TRD'], // Rat
+  sheep: ['IGH', 'IGK', 'IGL'], // Sheep
+  spalax: ['IGH', 'TRA', 'TRB', 'TRD'], // Spalax
 } as const;
 
 type SourceType = 'built-in' | 'fasta';
@@ -180,7 +201,11 @@ const getSpeciesOptions = (chain: string, seg: typeof segments[number]) => {
   if (config[chain]?.[seg]?.fastaFile) {
     return []; // If a FASTA file is somehow set, offer no species options.
   }
-  return speciesOptions;
+  
+  // Filter species options to only include species that have the selected chain
+  return speciesOptions.filter(species => 
+    speciesHasChains[species.value]?.includes(chain)
+  );
 };
 
 </script>
