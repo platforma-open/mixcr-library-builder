@@ -1,5 +1,12 @@
 # @platforma-open/milaboratories.mixcr-library-builder.workflow
 
+## 1.3.0
+
+### Minor Changes
+
+- 2f47cb1: New detailed library specs
+- 2f47cb1: SDK upgrade
+
 ## 1.2.0
 
 ### Minor Changes

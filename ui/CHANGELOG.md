@@ -1,5 +1,22 @@
 # @platforma-open/milaboratories.mixcr-library-builder.ui
 
+## 1.3.0
+
+### Minor Changes
+
+- 2f47cb1: SDK upgrade
+
+### Patch Changes
+
+- Updated dependencies [2f47cb1]
+  - @platforma-open/milaboratories.mixcr-library-builder.model@1.3.0
+
+## 1.2.1
+
+### Patch Changes
+
+- dac9963: typescript version to 5.5.4
+
 ## 1.2.0
 
 ### Minor Changes

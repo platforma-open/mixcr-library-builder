@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.mixcr-library-builder.ui",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,6 @@
     "@platforma-open/milaboratories.mixcr-library-builder.model": "workspace:*",
     "@platforma-sdk/ui-vue": "catalog:",
     "@platforma-sdk/model": "catalog:",
-    "@milaboratories/graph-maker": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
