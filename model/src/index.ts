@@ -1,4 +1,4 @@
-import { BlockModel, InferOutputsType } from '@platforma-sdk/model';
+import { BlockModel, InferOutputsType, parseResourceMap } from '@platforma-sdk/model';
 import { ImportFileHandle } from '@platforma-sdk/model';
 
 type VRegionType = 'VTranscript' | 'VRegion';
@@ -87,7 +87,16 @@ export const model = BlockModel.create()
     { isActive: true }
   )
 
-  .output('debugOutput', (ctx) => ctx.outputs?.resolve('debugOutput')?.getLogHandle())
+  .output('debugOutput', (ctx) => {
+    return ctx.outputs !== undefined
+      ? parseResourceMap(ctx.outputs?.resolve('debugOutput'), (acc) => acc.getLogHandle(), false)
+      : undefined;
+  })
+
+  .title((ctx) => {
+    const libraryName = ctx.args.species;
+    return libraryName ? `MiXCR Library Builder - ${libraryName} library` : 'MiXCR Library Builder';
+  })
 
   .sections([{ type: 'link', href: '/', label: 'Main' }])
 

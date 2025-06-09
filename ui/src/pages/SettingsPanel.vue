@@ -8,11 +8,15 @@ import {
     PlAccordionSection,
     PlDropdownMulti,
 } from '@platforma-sdk/ui-vue'; // Assuming this is the correct import path
-import { reactive, watch, computed } from 'vue';
+import { reactive, watch, computed, ref } from 'vue';
 import { useApp } from '../app'; // Assuming this path is correct
-import { ImportFileHandle } from '@platforma-sdk/model'; // Assuming this path is correct
+import { ImportFileHandle, getFileNameFromHandle } from '@platforma-sdk/model'; // Assuming this path is correct
+import { validateFastaFile, type FastaValidationResult } from '../utils/fastaValidator';
 
 const app = useApp();
+
+// Validation state management
+const validationState = ref<Record<string, FastaValidationResult>>({});
 
 const progresses = computed(() => {
   const fileImports = app.model.outputs.fileImports ?? {};
@@ -170,11 +174,47 @@ const handleSourceTypeUpdate = (chain: string, seg: typeof segments[number], new
 
 // Handler for when the FASTA file input (PlFileInput) changes
 // The v-model on PlFileInput already updates config[chain][seg].fastaFile
-const handleFastaFileUpdate = (chain: string, seg: typeof segments[number], newFile: ImportFileHandle | undefined) => {
+const handleFastaFileUpdate = async (chain: string, seg: typeof segments[number], newFile: ImportFileHandle | undefined) => {
   if (config[chain]?.[seg]) {
     if (newFile !== undefined) { // If a file is selected
       config[chain][seg].sourceType = 'fasta'; // Ensure sourceType is 'fasta'
       config[chain][seg].builtInSpecies = undefined; // Clear species
+      
+      // Validate the FASTA file using Platforma SDK
+      const validationKey = `${chain}-${seg}`;
+      
+      // Immediate basic validation (file extension, etc.) using Platforma SDK
+      const fileName = getFileNameFromHandle(newFile);
+      const hasValidExtension = fileName.toLowerCase().match(/\.(fasta|fa|fas)$/);
+      
+      if (!hasValidExtension) {
+        validationState.value[validationKey] = {
+          isValid: false,
+          error: `File must have .fasta, .fa, or .fas extension. Found: ${fileName}`
+        };
+        return;
+      }
+      
+      // Set initial pending state
+      validationState.value[validationKey] = {
+        isValid: false,
+        error: 'Validating file content...'
+      };
+      
+      try {
+        // Cast to LocalImportFileHandle like in immune-assay-data
+        const result = await validateFastaFile(newFile as any);
+        validationState.value[validationKey] = result;
+      } catch (error) {
+        validationState.value[validationKey] = {
+          isValid: false,
+          error: `Validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+        };
+      }
+    } else {
+      // File was cleared, remove validation state
+      const validationKey = `${chain}-${seg}`;
+      delete validationState.value[validationKey];
     }
     // If newFile is undefined (file cleared), sourceType remains 'fasta'.
     // The user must explicitly switch sourceType using the PlBtnGroup if they want to use built-in.
@@ -207,6 +247,46 @@ const getSpeciesOptions = (chain: string, seg: typeof segments[number]) => {
     speciesHasChains[species.value]?.includes(chain)
   );
 };
+
+// Helper function to get validation result for a specific chain/segment
+const getValidationResult = (chain: string, seg: string): FastaValidationResult | undefined => {
+  return validationState.value[`${chain}-${seg}`];
+};
+
+// Helper function to get error message for PlFileInput
+const getFileError = (chain: string, seg: string): string | undefined => {
+  const result = getValidationResult(chain, seg);
+  return result?.isValid === false ? result.error : undefined;
+};
+
+// Helper function to get warnings message
+const getWarningsMessage = (chain: string, seg: string): string | undefined => {
+  const result = getValidationResult(chain, seg);
+  if (result?.isValid && result.warnings?.length) {
+    return `Warnings: ${result.warnings.join('; ')}`;
+  }
+  return undefined;
+};
+
+// Watch for file upload completion and trigger validation
+watch(progresses, (newProgresses, oldProgresses) => {
+  for (const [fileHandle, progress] of Object.entries(newProgresses)) {
+    const oldProgress = oldProgresses?.[fileHandle];
+    
+    // Check if file just finished uploading
+    if (progress.done && (!oldProgress || !oldProgress.done)) {
+      // Find which chain/segment this file belongs to and re-validate
+      for (const [chain, chainConfig] of Object.entries(config)) {
+        for (const [seg, segConfig] of Object.entries(chainConfig)) {
+          if (segConfig.fastaFile === fileHandle) {
+            handleFastaFileUpdate(chain, seg as any, segConfig.fastaFile);
+            break;
+          }
+        }
+      }
+    }
+  }
+}, { deep: true });
 
 </script>
 
@@ -248,11 +328,23 @@ const getSpeciesOptions = (chain: string, seg: typeof segments[number]) => {
             v-model="config[chain][seg].fastaFile"
             :progress="progresses[config[chain]?.[seg]?.fastaFile ?? '']"
             file-dialog-title="Select FASTA file"
-            :extensions="['fasta','fa']"
+            :extensions="['fasta','fa','fas']"
             label="FASTA file for segment"
+            :error="getFileError(chain, seg)"
             clearable
             @update:model-value="(newFile) => handleFastaFileUpdate(chain, seg, newFile)"
           />
+          
+          <!-- Error message (shown in PlFileInput) -->
+          <div v-if="getFileError(chain, seg)" style="color: red; font-weight: bold; margin: 5px 0; padding: 5px; background: #fee; border: 1px solid #fcc;">
+            ❌ Error: {{ getFileError(chain, seg) }}
+          </div>
+          
+          <!-- Warnings message -->
+          <div v-if="getWarningsMessage(chain, seg)" style="color: orange; font-weight: bold; margin: 5px 0; padding: 5px; background: #fff3cd; border: 1px solid #ffecb5;">
+            ⚠️ {{ getWarningsMessage(chain, seg) }}
+          </div>
+          
           <PlDropdown
             v-if="seg === 'V'"
             v-model="config[chain][seg].vRegionType"
@@ -284,16 +376,28 @@ const getSpeciesOptions = (chain: string, seg: typeof segments[number]) => {
             clearable
             @update:model-value="(newSpecies) => handleSpeciesUpdate(chain, seg, newSpecies)"
           />
-          <PlFileInput
-            v-if="config[chain]?.[seg]?.sourceType === 'fasta'"
-            v-model="config[chain][seg].fastaFile"
-            :progress="progresses[config[chain]?.[seg]?.fastaFile ?? '']"
-            file-dialog-title="Select FASTA file"
-            :extensions="['fasta','fa']"
-            label="FASTA file for segment"
-            clearable
-            @update:model-value="(newFile) => handleFastaFileUpdate(chain, seg, newFile)"
-          />
+          <template v-if="config[chain]?.[seg]?.sourceType === 'fasta'">
+            <PlFileInput
+              v-model="config[chain][seg].fastaFile"
+              :progress="progresses[config[chain]?.[seg]?.fastaFile ?? '']"
+              file-dialog-title="Select FASTA file"
+              :extensions="['fasta','fa','fas']"
+              label="FASTA file for segment"
+              :error="getFileError(chain, seg)"
+              clearable
+              @update:model-value="(newFile) => handleFastaFileUpdate(chain, seg, newFile)"
+            />
+            
+            <!-- Error message (shown in PlFileInput) -->
+            <div v-if="getFileError(chain, seg)" style="color: red; font-weight: bold; margin: 5px 0; padding: 5px; background: #fee; border: 1px solid #fcc;">
+              ❌ Error: {{ getFileError(chain, seg) }}
+            </div>
+            
+            <!-- Warnings message -->
+            <div v-if="getWarningsMessage(chain, seg)" style="color: orange; font-weight: bold; margin: 5px 0; padding: 5px; background: #fff3cd; border: 1px solid #ffecb5;">
+              ⚠️ {{ getWarningsMessage(chain, seg) }}
+            </div>
+          </template>
         </template>
       </template>
     </PlAccordionSection>

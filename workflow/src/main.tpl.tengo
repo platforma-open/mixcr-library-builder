@@ -6,6 +6,8 @@ assets := import("@platforma-sdk/workflow-tengo:assets")
 file := import("@platforma-sdk/workflow-tengo:file")
 maps := import("@platforma-sdk/workflow-tengo:maps")
 smart := import("@platforma-sdk/workflow-tengo:smart")
+pframes := import("@platforma-sdk/workflow-tengo:pframes")
+pcolumn := import("@platforma-sdk/workflow-tengo:pframes.pcolumn")
 times := import("times")
 json := import("json")
 rand := import("rand")
@@ -45,7 +47,8 @@ wf.body(func(args) {
 			arg("buildLibrary").
 			arg("--species").arg(cmdSpecies).
 			arg("--chain").arg(chain).
-			arg("--taxon-id").arg(taxonId)
+			arg("--taxon-id").arg(taxonId).
+			arg("--debug")
 
 		if chainConfig["V"].sourceType == "built-in" {
 			libraryBuilderCmdBuilder.arg("--v-genes-from-species").arg(chainConfig["V"].builtInSpecies)
@@ -113,11 +116,13 @@ wf.body(func(args) {
 		}
 	}
 
-	
+	// Create logs map using pcolumn.resourceMapBuilder
+	debugOutputMapBuilder := pcolumn.resourceMapBuilder(/* keyLength */ 1)
+	for chain, debugOutput in debugOutputMap {
+		debugOutputMapBuilder.add([chain], debugOutput)
+	}
 
-	outputs.debugOutput = smart.createMapResource(maps.mapValues(debugOutputMap, func(debugOutput) {
-		return debugOutput
-	}))
+	outputs.debugOutput = debugOutputMapBuilder.build()
 
 	outputs.fileImports = smart.createMapResource(maps.mapValues(fileImportsProgress, func(handle) {
 		return handle
@@ -128,6 +133,8 @@ wf.body(func(args) {
 	})
 
 	finalLibrary := mergeResults.output("library", 24 * 60 * 60 * 1000)
+
+	ll.print("__THE_LOG__"+string(chains))
 
 	exports := {
 		library: {
