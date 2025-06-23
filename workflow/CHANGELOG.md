@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.workflow
 
+## 1.4.0
+
+### Minor Changes
+
+- fc66573: upport batch system
+
 ## 1.3.1
 
 ### Patch Changes
