@@ -36,6 +36,8 @@ wf.body(func(args) {
 	taxonId := string(rand.intn(9000) + 1000)
 	libraryBuilderCmdBuilder = exec.builder().
 		software(mixcrSw).
+		mem("8GiB").
+		cpu(1).
 		secret("MI_LICENSE", "MI_LICENSE").
 	 	arg("buildLibrary").
 	 	arg("--species").arg(cmdSpecies).
