@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder
 
+## 2.0.0
+
+### Major Changes
+
+- 934064f: allow prepare venv on Windows
+
 ## 1.4.2
 
 ### Patch Changes
