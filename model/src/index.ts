@@ -1,4 +1,4 @@
-import { BlockModel, InferOutputsType, parseResourceMap } from '@platforma-sdk/model';
+import { BlockModel, InferOutputsType, parseResourceMap, createPlDataTableV2, PlDataTableStateV2, createPlDataTableStateV2, createPlDataTableSheet, getUniquePartitionKeys } from '@platforma-sdk/model';
 import { ImportFileHandle } from '@platforma-sdk/model';
 
 type VRegionType = 'VTranscript' | 'VRegion';
@@ -18,6 +18,7 @@ type SegmentConfig = BaseSegmentConfig | VSegmentConfig;
 export type BlockArgs = {
   species: string;
   chains: string[];
+  fivePrimePrimer?: undefined;
   chainConfigs: Record<string, {
     V: VSegmentConfig;
     D?: BaseSegmentConfig;
@@ -26,12 +27,20 @@ export type BlockArgs = {
   }>;
 };
 
+export type UiState = {
+  tableState: PlDataTableStateV2;
+};
+
 export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
     species: "",
     chains: ["IGH"],
     chainConfigs: {},
+  })
+
+  .withUiState<UiState>({
+    tableState: createPlDataTableStateV2(),
   })
 
    .argsValid(
@@ -93,12 +102,76 @@ export const model = BlockModel.create()
       : undefined;
   })
 
+  .output('availableChains', (ctx) => {
+    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+    if (pCols === undefined || pCols.length === 0) {
+      return [];
+    }
+
+    // Get unique chain values from the first column's first axis (assuming chain is the first axis)
+    const firstColumn = pCols[0];
+    const chainValues = getUniquePartitionKeys(firstColumn.data)?.[0];
+    return chainValues || [];
+  })
+
+  .output('chainOptions', (ctx) => {
+    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+    if (pCols === undefined || pCols.length === 0) {
+      return [];
+    }
+
+    // Get unique chain values from the data
+    const firstColumn = pCols[0];
+    const chainValues = getUniquePartitionKeys(firstColumn.data)?.[0];
+    
+    if (!chainValues) {
+      return [];
+    }
+
+    return chainValues.map(chain => ({
+      value: chain,
+      label: chain
+    }));
+  })
+
+  .output('chainTableSheets', (ctx) => {
+    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+    if (pCols === undefined || pCols.length === 0) {
+      return undefined;
+    }
+
+    const firstColumn = pCols[0];
+    const chainValues = getUniquePartitionKeys(firstColumn.data)?.[0];
+    if (!chainValues) {
+      return undefined;
+    }
+
+    // Create table sheets for each chain (this helps with filtering)
+    return [createPlDataTableSheet(ctx, firstColumn.spec.axesSpec[0], chainValues)];
+  })
+
+  .output('fastaTable', (ctx) => {
+    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+    if (pCols === undefined) {
+      return undefined;
+    }
+
+    return createPlDataTableV2(ctx, pCols, ctx.uiState?.tableState || createPlDataTableStateV2());
+  })
+
+
+
+  .output('isRunning', (ctx) => ctx.outputs?.getIsReadyOrError() === false)
+
+  
   .title((ctx) => {
     const libraryName = ctx.args.species;
     return libraryName ? `MiXCR Library Builder - ${libraryName} library` : 'MiXCR Library Builder';
   })
 
-  .sections([{ type: 'link', href: '/', label: 'Main' }])
+  .sections([
+    { type: 'link', href: '/', label: 'Library Builder' }
+  ])
 
   .done();
 

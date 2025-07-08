@@ -6,8 +6,8 @@ assets := import("@platforma-sdk/workflow-tengo:assets")
 file := import("@platforma-sdk/workflow-tengo:file")
 maps := import("@platforma-sdk/workflow-tengo:maps")
 smart := import("@platforma-sdk/workflow-tengo:smart")
-pframes := import("@platforma-sdk/workflow-tengo:pframes")
 pcolumn := import("@platforma-sdk/workflow-tengo:pframes.pcolumn")
+pframes := import("@platforma-sdk/workflow-tengo:pframes")
 times := import("times")
 json := import("json")
 rand := import("rand")
@@ -15,6 +15,8 @@ text := import("text")
 
 mixcrSw := assets.importSoftware("@platforma-open/milaboratories.software-mixcr:main")
 jsonMergingTpl := assets.importTemplate(":json-merging")
+fastaGenerationTpl := assets.importTemplate(":fasta-generation")
+fatsaToTableTpl := assets.importTemplate(":fatsa-to-table")
 toCamelCase := import(":formatText")
 
 chainInfos := {
@@ -39,6 +41,7 @@ wf.body(func(args) {
 	debugOutputMap := {}
 	fileImportsProgress := {}
 	chains := []
+	fivePrimePrimer := args.fivePrimePrimer
 
 	for chain, chainConfig in chainConfigs {
 		libraryBuilderCmdBuilder := exec.builder().
@@ -128,13 +131,25 @@ wf.body(func(args) {
 		return handle
 	}))
 
-	mergeResults := render.create(jsonMergingTpl, {
-		libraryMap: libraryMap
+	fastaGeneration := render.create(fastaGenerationTpl, {
+		libraryMap: libraryMap,
+		config: chainConfigs	
+		})
+	fasta := fastaGeneration.output("fasta", 24 * 60 * 60 * 1000)
+
+	fastaToTable := render.create(fatsaToTableTpl, {
+		fasta: fasta
 	})
+	fastaTable := fastaToTable.output("fastaTable", 24 * 60 * 60 * 1000)
+
+	mergeResults := render.create(jsonMergingTpl, {
+		libraryMap: libraryMap,
+		fastaTable: fastaTable
+		})
 
 	finalLibrary := mergeResults.output("library", 24 * 60 * 60 * 1000)
 
-	ll.print("__THE_LOG__"+string(chains))
+	outputs.fastaTable = fastaTable
 
 	exports := {
 		library: {

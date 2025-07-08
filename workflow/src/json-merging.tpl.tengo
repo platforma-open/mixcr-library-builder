@@ -10,6 +10,7 @@ self.defineOutputs("library")
 
 self.body(func(args) {
     libraryMap := args.libraryMap
+	//fastaMap := args.fasta
 	
 	mergeCmdBuilder := exec.builder().
 		software(mergeSw).

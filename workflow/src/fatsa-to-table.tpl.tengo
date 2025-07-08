@@ -1,0 +1,95 @@
+exec := import("@platforma-sdk/workflow-tengo:exec")
+self := import("@platforma-sdk/workflow-tengo:tpl")
+assets := import("@platforma-sdk/workflow-tengo:assets")
+pframes := import("@platforma-sdk/workflow-tengo:pframes")
+ll := import("@platforma-sdk/workflow-tengo:ll")
+xsv := import("@platforma-sdk/workflow-tengo:pframes.xsv")
+
+
+
+fastaToTableSw := assets.importSoftware("@platforma-open/milaboratories.mixcr-library-builder.software:fasta_to_table")
+
+self.defineOutputs("fastaTable")
+
+self.body(func(args) {
+    fastaMap := args.fasta
+
+    cmdBuilder := exec.builder().
+        software(fastaToTableSw)
+
+    // The python script takes an input directory. We add all fasta files to the root of the exec env.
+    for name, fastaFile in fastaMap {
+        cmdBuilder.addFile(name, fastaFile)
+    }
+
+    // Pass the root directory "." as the input_dir argument.
+    cmd := cmdBuilder.arg(".").
+    saveFile("combined_table.tsv").
+    run()
+
+    fastaTable := cmd.getFile("combined_table.tsv")
+
+    // Create column specifications for the fastaTable
+    fastaTableSpec := {
+        axes: [{
+                column: "chain",
+                spec: {
+                    name: "pl7.app/vdj/chain",
+                    type: "String",
+                    annotations: {
+                        "pl7.app/label": "Chain"
+                    }
+                }
+            },
+            {
+                column: "segment",
+                spec: { 
+                    name: "pl7.app/vdj/segment",
+                    type: "String",
+                    annotations: {
+                        "pl7.app/label": "Segment"
+                    }
+                }
+            },
+            {
+                column: "gene_name",
+                spec: {
+                    name: "pl7.app/vdj/gene_name",
+                    type: "String",
+                    annotations: {
+                        "pl7.app/label": "Gene Name"
+                    }
+                }
+            }],
+            columns: [{
+                column: "sequence",
+                spec: {
+                    name: "pl7.app/vdj/sequence",
+                    valueType: "String",
+                    annotations: {
+                        "pl7.app/label": "AA Sequence"
+                    }
+                }
+            }
+        ],
+        storageFormat: "Binary",
+		partitionKeyLength: 2
+    }
+
+    result := xsv.importFile(
+		fastaTable,
+		"tsv",
+		fastaTableSpec,
+		{ splitDataAndSpec: true }
+	)
+
+    pf := pframes.pFrameBuilder()
+	for id, v in result {
+		pf.add(id, v.spec, v.data)
+	}
+	pf = pf.build()
+
+    return {
+        fastaTable: pframes.exportFrame(pf)
+    }
+}) 

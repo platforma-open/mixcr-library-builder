@@ -86,7 +86,7 @@ const chainSegments: Record<string, readonly (typeof segments[number])[]> = {
 } as const;
 
 // Map of species to their available chains
-const speciesHasChains: Record<string, string[]> = {
+const speciesInBuiltInHasChains: Record<string, string[]> = {
   hsa: ['IGH', 'IGL', 'IGK', 'TRA', 'TRB', 'TRD', 'TRG'], // Human
   mmu: ['IGH', 'IGL', 'IGK', 'TRA', 'TRB', 'TRD', 'TRG'], // Mouse
   lama: ['IGH', 'IGK', 'IGL'], // Lama glama
@@ -244,7 +244,7 @@ const getSpeciesOptions = (chain: string, seg: typeof segments[number]) => {
   
   // Filter species options to only include species that have the selected chain
   return speciesOptions.filter(species => 
-    speciesHasChains[species.value]?.includes(chain)
+    speciesInBuiltInHasChains[species.value]?.includes(chain)
   );
 };
 
@@ -334,17 +334,6 @@ watch(progresses, (newProgresses, oldProgresses) => {
             clearable
             @update:model-value="(newFile) => handleFastaFileUpdate(chain, seg, newFile)"
           />
-          
-          <!-- Error message (shown in PlFileInput) -->
-          <div v-if="getFileError(chain, seg)" style="color: red; font-weight: bold; margin: 5px 0; padding: 5px; background: #fee; border: 1px solid #fcc;">
-            ❌ Error: {{ getFileError(chain, seg) }}
-          </div>
-          
-          <!-- Warnings message -->
-          <div v-if="getWarningsMessage(chain, seg)" style="color: orange; font-weight: bold; margin: 5px 0; padding: 5px; background: #fff3cd; border: 1px solid #ffecb5;">
-            ⚠️ {{ getWarningsMessage(chain, seg) }}
-          </div>
-          
           <PlDropdown
             v-if="seg === 'V'"
             v-model="config[chain][seg].vRegionType"
@@ -387,16 +376,6 @@ watch(progresses, (newProgresses, oldProgresses) => {
               clearable
               @update:model-value="(newFile) => handleFastaFileUpdate(chain, seg, newFile)"
             />
-            
-            <!-- Error message (shown in PlFileInput) -->
-            <div v-if="getFileError(chain, seg)" style="color: red; font-weight: bold; margin: 5px 0; padding: 5px; background: #fee; border: 1px solid #fcc;">
-              ❌ Error: {{ getFileError(chain, seg) }}
-            </div>
-            
-            <!-- Warnings message -->
-            <div v-if="getWarningsMessage(chain, seg)" style="color: orange; font-weight: bold; margin: 5px 0; padding: 5px; background: #fff3cd; border: 1px solid #ffecb5;">
-              ⚠️ {{ getWarningsMessage(chain, seg) }}
-            </div>
           </template>
         </template>
       </template>

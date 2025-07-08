@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PlBlockPage, PlEditableTitle, PlBtnGhost, PlMaskIcon24, PlLogView, PlSlideModal, ReactiveFileContent } from '@platforma-sdk/ui-vue';
+import { PlBlockPage, PlEditableTitle, PlBtnGhost, PlMaskIcon24, PlLogView, PlSlideModal, ReactiveFileContent, PlAgDataTableV2, usePlDataTableSettingsV2 } from '@platforma-sdk/ui-vue';
 import SettingsPanel from './SettingsPanel.vue';
 import LogsPanel from './LogsPanel.vue';
 import { computed, ref, watch } from 'vue';
@@ -9,6 +9,18 @@ const app = useApp();
 const settingsIsShown = ref(app.model.outputs.debugOutput === undefined);
 const logsIsShown = ref(false);
 
+const tableSettings = usePlDataTableSettingsV2({
+  model: () => app.model.outputs.fastaTable,
+  sheets: () => app.model.outputs.chainTableSheets,
+});
+
+const tableLoadingText = computed(() => {
+  if (app.model.outputs.isRunning) {
+    return 'Running';
+  }
+  return 'Loading';
+});
+
 const showQuery = () => {
   settingsIsShown.value = true;
 };
@@ -16,6 +28,10 @@ const showQuery = () => {
 const showLogs = () => {
   logsIsShown.value = true;
 };
+
+const chainOptions = computed(() => {
+  return app.model.outputs.chainOptions || [];
+});
 
 // Watch for settings modal close
 watch(settingsIsShown, (newValue) => {
@@ -48,6 +64,14 @@ watch(settingsIsShown, (newValue) => {
         </template>
       </PlBtnGhost>
     </template>
+    <PlAgDataTableV2
+      v-model="app.model.ui.tableState"
+      :settings="tableSettings"
+      show-columns-panel
+      show-export-button
+      :loading-text="tableLoadingText"
+      not-ready-text="Data is not computed"
+    />
   </PlBlockPage>
   <PlSlideModal 
     v-model="logsIsShown" 
