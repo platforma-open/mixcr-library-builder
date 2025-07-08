@@ -213,8 +213,8 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-sdk/client-s3@3.775.0':
-    resolution: {integrity: sha512-Z/BeVmYc3nj4FNE46MtvBYeCVvBZwlujMEvr5UOChP14899QWkBfOvf74RwQY9qy5/DvhVFkHlA8en1L6+0NrA==}
+  '@aws-sdk/client-s3@3.826.0':
+    resolution: {integrity: sha512-odX3C3CEbcBoxB06vgBjJ9jQheFsIFwHmvCIMXn8duuVyIL/klgp14+ICzbEwIgPv7xVjSlycaiURcKS876QHA==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/client-s3@3.826.0':
@@ -439,8 +439,8 @@ packages:
     resolution: {integrity: sha512-Yf2CS10BqK688DRsrKI/EO6B8ff5J86NXe4C+VCysK7UOgN0l1zOTeTukZ3H8Q9tYYX3oaF1961o8vRkFm7Nmw==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/util-user-agent-browser@3.775.0':
-    resolution: {integrity: sha512-txw2wkiJmZKVdDbscK7VBK+u+TJnRtlUjRTLei+elZg2ADhpQxfVAQl436FUeIv6AhB/oRHW6/K/EAGXUSWi0A==}
+  '@aws-sdk/util-user-agent-browser@3.821.0':
+    resolution: {integrity: sha512-irWZHyM0Jr1xhC+38OuZ7JB6OXMLPZlj48thElpsO1ZSLRkLZx5+I7VV6k3sp2yZ7BYbKz/G2ojSv4wdm7XTLw==}
 
   '@aws-sdk/util-user-agent-browser@3.821.0':
     resolution: {integrity: sha512-irWZHyM0Jr1xhC+38OuZ7JB6OXMLPZlj48thElpsO1ZSLRkLZx5+I7VV6k3sp2yZ7BYbKz/G2ojSv4wdm7XTLw==}
@@ -491,6 +491,12 @@ packages:
   '@babel/types@7.26.8':
     resolution: {integrity: sha512-eUuWapzEGWFEpHFxgEaBG8e3n6S8L3MSu0oda755rOfabWPnh0Our1AozNFVUxGFIhbKgd1ksprsoDGMinTOTA==}
     engines: {node: '>=6.9.0'}
+
+  '@bufbuild/protobuf@2.5.2':
+    resolution: {integrity: sha512-foZ7qr0IsUBjzWIq+SuBLfdQCpJ1j8cTuNNT4owngTHoN5KsJb8L9t65fzz7SCeSWzescoOil/0ldqiL041ABg==}
+
+  '@bufbuild/protoplugin@2.5.2':
+    resolution: {integrity: sha512-7d/NUae/ugs/qgHEYOwkVWGDE3Bf/xjuGviVFs38+MLRdwiHNTiuvzPVwuIPo/1wuZCZn3Nax1cg1owLuY72xw==}
 
   '@changesets/apply-release-plan@7.0.12':
     resolution: {integrity: sha512-EaET7As5CeuhTzvXTQCRZeBUcisoYPDDcXvgTE/2jmmypKp0RC7LxKj/yzqeh/1qFTZI7oDGFcL1PHRuQuketQ==}
@@ -1042,8 +1048,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@grpc/grpc-js@1.13.3':
-    resolution: {integrity: sha512-FTXHdOoPbZrBjlVLHuKbDZnsTxXv2BlHF57xw6LuThXacXvtkahEPED0CKMk6obZDf65Hv4k3z62eyPNpvinIg==}
+  '@grpc/grpc-js@1.13.4':
+    resolution: {integrity: sha512-GsFaMXCkMqkKIvwCQjCrwH+GHbPKBjhwo/8ZuUkWHqbI73Kky9I+pQltrlT0+MWpedCoosda53lgjYfyEPgxBg==}
     engines: {node: '>=12.10.0'}
 
   '@grpc/grpc-js@1.13.4':
@@ -1137,8 +1143,8 @@ packages:
     resolution: {integrity: sha512-zR+wJ2X1Sy7hacik54q7E3kdF004tzEhw/m+xqDBrfjQ6XR2JQNapzBZKPDIpPTJrs3Yli4JaxyNO1/dk7T1PA==}
     engines: {node: '>=20.3.0'}
 
-  '@milaboratories/pl-config@1.4.9':
-    resolution: {integrity: sha512-01CA/R6Tfneuv9WA2RgPIfK7Hnqlbiws6c536Oc/J+zr/xgW/AtrnQlW/qMgUrmQonVX7oOz6lX32UKw+rLGtA==}
+  '@milaboratories/pl-config@1.4.14':
+    resolution: {integrity: sha512-FUs5WikmM6Fx8w94lBdlKHoCG8ULmxMD8AkLtCk6GEk6ZZZ/hPsFOnWEEQco1nTZmnnDmTdCEcqB2hjUJL/sVA==}
 
   '@milaboratories/pl-deployments@2.2.0':
     resolution: {integrity: sha512-eLgpLjS2sLgQCrJso/vfDaPV1cSJhGelXkQwQWK0Aa7DwHTHo8E3QDRPIi8P/UR5lFsdnMqRbjS0EWsjpUrEWw==}
@@ -1157,8 +1163,8 @@ packages:
   '@milaboratories/pl-errors@1.1.0':
     resolution: {integrity: sha512-ZqkBfh3aXaEcrliOCttylxzx0IWVIdJDV1jaE6EXQ6vR0YxNd0inD8F/p+3kJWQZuULDneUePj2XBSdzfCRrmQ==}
 
-  '@milaboratories/pl-http@1.1.2':
-    resolution: {integrity: sha512-PCo3So6+4BS1uPleT82EBBo83aQviGUBnUddyxcPd9d446L/SSM6eCSG5oAF4Z4NdVGJT343pb58nV1ejikVrQ==}
+  '@milaboratories/pl-http@1.1.3':
+    resolution: {integrity: sha512-Qo8QLa5DX4LgXeuI3oHzQSfr/cc3tJjBeewSbaN9j9LAdmUvP+fE8fhIr7+SvtXE6ai6RslEvHMuUVPyWZ/DtA==}
 
   '@milaboratories/pl-http@1.1.4':
     resolution: {integrity: sha512-u8V5ie9fcAtQ2OcADuI2vr22m0EJcynA9xpziOVMcu8CUK3gdUOt/Ec9kEHDilWKbHg+1SGKDEisuL4HFqsZLQ==}
@@ -1200,8 +1206,8 @@ packages:
     os: [darwin, linux, win32]
     hasBin: true
 
-  '@milaboratories/ts-helpers-oclif@1.1.17':
-    resolution: {integrity: sha512-1k+lIxyE/bbTGNbErIL77PYKa+kr/dvhH5Wq57iG5SijfpVwL45R/kchN8j+pEgauOFEQf3nRJ+iv1TlR0sttg==}
+  '@milaboratories/ts-helpers-oclif@1.1.22':
+    resolution: {integrity: sha512-F5cHaRLjYR+FjA06WZJVSZyNLBOXCIWk4NkHELdBbVnz9nmkl833NmBeX7IG+/JjC2KXzFtMGzoeMTMgrRQrRg==}
 
   '@milaboratories/ts-helpers-oclif@1.1.23':
     resolution: {integrity: sha512-rwTBI28T3M0PP/+SWw5Z3nucZk8/XL4NQuCD6vS4+WmTmioVbH9vzfcXtoErRBKuUm5+GKr1CT+eGgepmjWH/g==}
@@ -1331,8 +1337,8 @@ packages:
     peerDependencies:
       '@grpc/grpc-js': ^1.6.0
 
-  '@protobuf-ts/grpc-transport@2.9.6':
-    resolution: {integrity: sha512-MdL6aiIhlEdXn0ZVmMfFtXtNPze21vqUW3w+E3MDqv/hgyPf5jpvQeRz+9+lu2flPfXRf+2w2d+6nWpMv25o6Q==}
+  '@protobuf-ts/grpc-transport@2.11.0':
+    resolution: {integrity: sha512-D/VjzZCaYj1UD29eu+sNnnjZPw6DIIzEymV+dwAJ4kg8LeE5xos86OED2A8lL56wdWafWwufazTlv/M+/eVrOQ==}
     peerDependencies:
       '@grpc/grpc-js': ^1.6.0
 
@@ -4251,6 +4257,9 @@ packages:
     resolution: {integrity: sha512-3gKm/gCSUipeLsRYZbbdA1BD83lBoWUkZ7G9VFrhWPAU76KwYo5KR8V28bpoPm/ygy0x5/GCbpRQdY7VLYCoIg==}
     hasBin: true
 
+  humanize-duration@3.33.0:
+    resolution: {integrity: sha512-vYJX7BSzn7EQ4SaP2lPYVy+icHDppB6k7myNeI3wrSRfwMS5+BHyGgzpHR0ptqJ2AQ6UuIKrclSg5ve6Ci4IAQ==}
+
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -4405,8 +4414,12 @@ packages:
     resolution: {integrity: sha512-TFYA4jnP7PVbmlBIfhlSe+WKxs9dklXMTEGcBCIvLhE/Tn3H6Gk1norupVW7m5Cnd4bLcr08AytbyV/xj7f/kQ==}
     engines: {node: '>= 12.0.0'}
 
-  long@5.3.1:
-    resolution: {integrity: sha512-ka87Jz3gcx/I7Hal94xaN2tZEOPoUOEVftkQqZx2EeQRN7LGdfLlI3FvZ+7WDplm+vK2Urx9ULrvSowtdCieng==}
+  long@5.3.2:
+    resolution: {integrity: sha512-mNAgZ1GmyNhD7AuqnTG3/VQ26o760+ZYBPKjPvugO8+nLbYfX6TVpJPseBvopbdY+qpZ/lKUnmEc1LeZYS3QAA==}
+
+  loose-envify@1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
 
   long@5.3.2:
     resolution: {integrity: sha512-mNAgZ1GmyNhD7AuqnTG3/VQ26o760+ZYBPKjPvugO8+nLbYfX6TVpJPseBvopbdY+qpZ/lKUnmEc1LeZYS3QAA==}
@@ -5058,13 +5071,18 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
+  typescript@5.4.5:
+    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   typescript@5.5.4:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
     hasBin: true
 
-  ulid@3.0.0:
-    resolution: {integrity: sha512-yvZYdXInnJve6LdlPIuYmURdS2NP41ZoF4QW7SXwbUKYt53+0eDAySO+rGSvM2O/ciuB/G+8N7GQrZ1mCJpuqw==}
+  ulid@3.0.1:
+    resolution: {integrity: sha512-dPJyqPzx8preQhqq24bBG1YNkvigm87K8kVEHCD+ruZg24t6IFEFv00xMWfxcC4djmFtiTLdFuADn4+DOz6R7Q==}
     hasBin: true
 
   unbzip2-stream@1.4.3:
@@ -5311,20 +5329,20 @@ snapshots:
   '@aws-crypto/crc32@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.775.0
+      '@aws-sdk/types': 3.821.0
       tslib: 2.8.1
 
   '@aws-crypto/crc32c@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.775.0
+      '@aws-sdk/types': 3.821.0
       tslib: 2.8.1
 
   '@aws-crypto/sha1-browser@5.2.0':
     dependencies:
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.775.0
+      '@aws-sdk/types': 3.821.0
       '@aws-sdk/util-locate-window': 3.723.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5334,7 +5352,7 @@ snapshots:
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.775.0
+      '@aws-sdk/types': 3.821.0
       '@aws-sdk/util-locate-window': 3.723.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5342,7 +5360,7 @@ snapshots:
   '@aws-crypto/sha256-js@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.775.0
+      '@aws-sdk/types': 3.821.0
       tslib: 2.8.1
 
   '@aws-crypto/supports-web-crypto@5.2.0':
@@ -5351,11 +5369,11 @@ snapshots:
 
   '@aws-crypto/util@5.2.0':
     dependencies:
-      '@aws-sdk/types': 3.775.0
+      '@aws-sdk/types': 3.821.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.775.0':
+  '@aws-sdk/client-s3@3.826.0':
     dependencies:
       '@aws-crypto/sha1-browser': 5.2.0
       '@aws-crypto/sha256-browser': 5.2.0
@@ -5477,7 +5495,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/client-sso@3.775.0':
+  '@aws-sdk/client-sso@3.826.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -5595,7 +5613,7 @@ snapshots:
       fast-xml-parser: 4.4.1
       tslib: 2.8.1
 
-  '@aws-sdk/credential-provider-env@3.775.0':
+  '@aws-sdk/credential-provider-env@3.826.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
       '@aws-sdk/types': 3.775.0
@@ -5707,7 +5725,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/credential-provider-process@3.775.0':
+  '@aws-sdk/credential-provider-process@3.826.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
       '@aws-sdk/types': 3.775.0
@@ -5725,7 +5743,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/credential-provider-sso@3.775.0':
+  '@aws-sdk/credential-provider-sso@3.826.0':
     dependencies:
       '@aws-sdk/client-sso': 3.775.0
       '@aws-sdk/core': 3.775.0
@@ -5751,7 +5769,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/credential-provider-web-identity@3.775.0':
+  '@aws-sdk/credential-provider-web-identity@3.826.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
       '@aws-sdk/nested-clients': 3.775.0
@@ -5804,7 +5822,7 @@ snapshots:
       '@smithy/util-config-provider': 4.0.0
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-expect-continue@3.775.0':
+  '@aws-sdk/middleware-expect-continue@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/protocol-http': 5.1.1
@@ -5818,13 +5836,13 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-flexible-checksums@3.775.0':
+  '@aws-sdk/middleware-flexible-checksums@3.826.0':
     dependencies:
       '@aws-crypto/crc32': 5.2.0
       '@aws-crypto/crc32c': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/core': 3.775.0
-      '@aws-sdk/types': 3.775.0
+      '@aws-sdk/core': 3.826.0
+      '@aws-sdk/types': 3.821.0
       '@smithy/is-array-buffer': 4.0.0
       '@smithy/node-config-provider': 4.1.2
       '@smithy/protocol-http': 5.1.1
@@ -5850,7 +5868,7 @@ snapshots:
       '@smithy/util-utf8': 4.0.0
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-host-header@3.775.0':
+  '@aws-sdk/middleware-host-header@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/protocol-http': 5.1.1
@@ -5864,7 +5882,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-location-constraint@3.775.0':
+  '@aws-sdk/middleware-location-constraint@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/types': 4.3.0
@@ -5876,7 +5894,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-logger@3.775.0':
+  '@aws-sdk/middleware-logger@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/types': 4.3.0
@@ -5888,7 +5906,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-recursion-detection@3.775.0':
+  '@aws-sdk/middleware-recursion-detection@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/protocol-http': 5.1.1
@@ -5936,7 +5954,7 @@ snapshots:
       '@smithy/util-utf8': 4.0.0
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-ssec@3.775.0':
+  '@aws-sdk/middleware-ssec@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/types': 4.3.0
@@ -5948,7 +5966,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/middleware-user-agent@3.775.0':
+  '@aws-sdk/middleware-user-agent@3.826.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
       '@aws-sdk/types': 3.775.0
@@ -5968,7 +5986,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/nested-clients@3.775.0':
+  '@aws-sdk/nested-clients@3.826.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -6054,7 +6072,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/region-config-resolver@3.775.0':
+  '@aws-sdk/region-config-resolver@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/node-config-provider': 4.1.2
@@ -6072,7 +6090,7 @@ snapshots:
       '@smithy/util-middleware': 4.0.4
       tslib: 2.8.1
 
-  '@aws-sdk/signature-v4-multi-region@3.775.0':
+  '@aws-sdk/signature-v4-multi-region@3.826.0':
     dependencies:
       '@aws-sdk/middleware-sdk-s3': 3.775.0
       '@aws-sdk/types': 3.775.0
@@ -6090,7 +6108,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/token-providers@3.775.0':
+  '@aws-sdk/token-providers@3.826.0':
     dependencies:
       '@aws-sdk/nested-clients': 3.775.0
       '@aws-sdk/types': 3.775.0
@@ -6113,7 +6131,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/types@3.775.0':
+  '@aws-sdk/types@3.821.0':
     dependencies:
       '@smithy/types': 4.3.0
       tslib: 2.8.1
@@ -6123,7 +6141,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/util-arn-parser@3.723.0':
+  '@aws-sdk/util-arn-parser@3.804.0':
     dependencies:
       tslib: 2.8.1
 
@@ -6149,7 +6167,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@aws-sdk/util-user-agent-browser@3.775.0':
+  '@aws-sdk/util-user-agent-browser@3.821.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/types': 4.3.0
@@ -6163,7 +6181,7 @@ snapshots:
       bowser: 2.11.0
       tslib: 2.8.1
 
-  '@aws-sdk/util-user-agent-node@3.775.0':
+  '@aws-sdk/util-user-agent-node@3.826.0':
     dependencies:
       '@aws-sdk/middleware-user-agent': 3.775.0
       '@aws-sdk/types': 3.775.0
@@ -6179,7 +6197,7 @@ snapshots:
       '@smithy/types': 4.3.1
       tslib: 2.8.1
 
-  '@aws-sdk/xml-builder@3.775.0':
+  '@aws-sdk/xml-builder@3.821.0':
     dependencies:
       '@smithy/types': 4.3.0
       tslib: 2.8.1
@@ -6205,6 +6223,16 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@bufbuild/protobuf@2.5.2': {}
+
+  '@bufbuild/protoplugin@2.5.2':
+    dependencies:
+      '@bufbuild/protobuf': 2.5.2
+      '@typescript/vfs': 1.6.1(typescript@5.4.5)
+      typescript: 5.4.5
+    transitivePeerDependencies:
+      - supports-color
 
   '@changesets/apply-release-plan@7.0.12':
     dependencies:
@@ -6636,7 +6664,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.5':
     optional: true
 
-  '@grpc/grpc-js@1.13.3':
+  '@grpc/grpc-js@1.13.4':
     dependencies:
       '@grpc/proto-loader': 0.7.13
       '@js-sdsl/ordered-map': 4.4.2
@@ -6649,7 +6677,7 @@ snapshots:
   '@grpc/proto-loader@0.7.13':
     dependencies:
       lodash.camelcase: 4.3.0
-      long: 5.3.1
+      long: 5.3.2
       protobufjs: 7.4.0
       yargs: 17.7.2
 
@@ -6740,7 +6768,7 @@ snapshots:
   '@milaboratories/computable@2.4.7':
     dependencies:
       '@milaboratories/pl-error-like': 1.12.1
-      '@milaboratories/ts-helpers': 1.2.0
+      '@milaboratories/ts-helpers': 1.4.0
       '@types/node': 20.16.15
       utility-types: 3.11.0
       zod: 3.23.8
@@ -6812,39 +6840,39 @@ snapshots:
 
   '@milaboratories/pl-client@2.9.0':
     dependencies:
-      '@grpc/grpc-js': 1.13.3
-      '@milaboratories/pl-http': 1.1.2
-      '@milaboratories/ts-helpers': 1.2.0
-      '@protobuf-ts/grpc-transport': 2.9.6(@grpc/grpc-js@1.13.3)
-      '@protobuf-ts/runtime': 2.9.6
-      '@protobuf-ts/runtime-rpc': 2.9.6
+      '@grpc/grpc-js': 1.13.4
+      '@milaboratories/pl-http': 1.1.3
+      '@milaboratories/ts-helpers': 1.4.0
+      '@protobuf-ts/grpc-transport': 2.11.0(@grpc/grpc-js@1.13.4)
+      '@protobuf-ts/runtime': 2.11.0
+      '@protobuf-ts/runtime-rpc': 2.11.0
       canonicalize: 2.1.0
       denque: 2.1.0
       https-proxy-agent: 7.0.6
-      long: 5.3.1
+      long: 5.3.2
       lru-cache: 11.1.0
-      undici: 7.5.0
+      undici: 7.10.0
       utility-types: 3.11.0
       yaml: 2.7.0
     transitivePeerDependencies:
       - supports-color
 
-  '@milaboratories/pl-config@1.4.9':
+  '@milaboratories/pl-config@1.4.14':
     dependencies:
-      '@milaboratories/ts-helpers': 1.2.0
-      undici: 7.5.0
+      '@milaboratories/ts-helpers': 1.4.0
+      undici: 7.10.0
       upath: 2.0.1
       yaml: 2.7.0
       zod: 3.23.8
 
   '@milaboratories/pl-deployments@2.2.0':
     dependencies:
-      '@milaboratories/pl-config': 1.4.9
-      '@milaboratories/ts-helpers': 1.2.0
+      '@milaboratories/pl-config': 1.4.14
+      '@milaboratories/ts-helpers': 1.4.0
       decompress: 4.2.1
       ssh2: 1.16.0
       tar: 7.4.3
-      undici: 7.5.0
+      undici: 7.10.0
       upath: 2.0.1
       yaml: 2.7.0
       zod: 3.23.8
@@ -6863,8 +6891,9 @@ snapshots:
       '@protobuf-ts/runtime-rpc': 2.9.6
       decompress: 4.2.1
       denque: 2.1.0
-      tar-fs: 3.0.8
-      undici: 7.5.0
+      tar-fs: 3.0.10
+      undici: 7.10.0
+      upath: 2.0.1
       zod: 3.23.8
     transitivePeerDependencies:
       - bare-buffer
@@ -6884,16 +6913,16 @@ snapshots:
 
   '@milaboratories/pl-errors@1.1.0':
     dependencies:
-      '@milaboratories/pl-client': 2.9.0
-      '@milaboratories/ts-helpers': 1.2.0
+      '@milaboratories/pl-client': 2.11.0
+      '@milaboratories/ts-helpers': 1.4.0
       zod: 3.23.8
     transitivePeerDependencies:
       - supports-color
 
-  '@milaboratories/pl-http@1.1.2':
+  '@milaboratories/pl-http@1.1.3':
     dependencies:
       https-proxy-agent: 7.0.6
-      undici: 7.5.0
+      undici: 7.10.0
     transitivePeerDependencies:
       - supports-color
 
@@ -6940,7 +6969,7 @@ snapshots:
 
   '@milaboratories/pl-model-backend@1.1.0':
     dependencies:
-      '@milaboratories/pl-client': 2.9.0
+      '@milaboratories/pl-client': 2.11.0
       canonicalize: 2.1.0
       zod: 3.23.8
     transitivePeerDependencies:
@@ -6982,8 +7011,8 @@ snapshots:
 
   '@milaboratories/pl-tree@1.6.1':
     dependencies:
-      '@milaboratories/computable': 2.4.7
-      '@milaboratories/pl-client': 2.9.0
+      '@milaboratories/computable': 2.5.0
+      '@milaboratories/pl-client': 2.11.0
       '@milaboratories/pl-error-like': 1.12.1
       '@milaboratories/pl-errors': 1.1.0
       '@milaboratories/ts-helpers': 1.2.0
@@ -6999,9 +7028,9 @@ snapshots:
 
   '@milaboratories/tengo-tester@1.6.2': {}
 
-  '@milaboratories/ts-helpers-oclif@1.1.17':
+  '@milaboratories/ts-helpers-oclif@1.1.22':
     dependencies:
-      '@milaboratories/ts-helpers': 1.2.0
+      '@milaboratories/ts-helpers': 1.4.0
       '@oclif/core': 4.2.6
 
   '@milaboratories/ts-helpers-oclif@1.1.23':
@@ -7011,6 +7040,7 @@ snapshots:
 
   '@milaboratories/ts-helpers@1.2.0':
     dependencies:
+      canonicalize: 2.1.0
       denque: 2.1.0
 
   '@milaboratories/ts-helpers@1.4.1':
@@ -7132,15 +7162,15 @@ snapshots:
       '@milaboratories/pl-http': 1.1.2
       '@milaboratories/pl-model-middle-layer': 1.7.32
       '@milaboratories/resolve-helper': 1.1.0
-      '@milaboratories/ts-helpers': 1.2.0
-      '@milaboratories/ts-helpers-oclif': 1.1.17
+      '@milaboratories/ts-helpers': 1.4.0
+      '@milaboratories/ts-helpers-oclif': 1.1.22
       '@oclif/core': 4.2.6
       canonicalize: 2.1.0
       lru-cache: 11.1.0
       mime-types: 2.1.35
       remeda: 2.22.3
       tar: 7.4.3
-      undici: 7.5.0
+      undici: 7.10.0
       yaml: 2.7.0
       zod: 3.23.8
     transitivePeerDependencies:
@@ -7308,13 +7338,15 @@ snapshots:
       '@protobuf-ts/runtime': 2.10.0
       typescript: 3.9.10
 
-  '@protobuf-ts/plugin@2.9.6':
+  '@protobuf-ts/plugin@2.11.0':
     dependencies:
       '@protobuf-ts/plugin-framework': 2.10.0
       '@protobuf-ts/protoc': 2.10.0
       '@protobuf-ts/runtime': 2.9.6
       '@protobuf-ts/runtime-rpc': 2.9.6
       typescript: 3.9.10
+    transitivePeerDependencies:
+      - supports-color
 
   '@protobuf-ts/protoc@2.10.0': {}
 
@@ -7322,9 +7354,9 @@ snapshots:
     dependencies:
       '@protobuf-ts/runtime': 2.11.0
 
-  '@protobuf-ts/runtime-rpc@2.9.6':
+  '@protobuf-ts/runtime-rpc@2.11.0':
     dependencies:
-      '@protobuf-ts/runtime': 2.9.6
+      '@protobuf-ts/runtime': 2.11.0
 
   '@protobuf-ts/runtime@2.10.0': {}
 
@@ -9608,7 +9640,7 @@ snapshots:
       '@stdlib/utils-library-manifest': 0.2.2
     transitivePeerDependencies:
       - supports-color
-
+      
   '@stdlib/number-float64-base-from-words@0.2.2':
     dependencies:
       '@stdlib/array-float64': 0.2.2
@@ -10155,21 +10187,38 @@ snapshots:
 
   '@types/d3-polygon@3.0.2': {}
 
-  '@types/estree@1.0.6': {}
-
-  '@types/estree@1.0.7': {}
+  '@stdlib/array-base-accessor-getter@0.2.2': {}
 
   '@types/lodash@4.17.20': {}
 
   '@types/node@12.20.55': {}
 
-  '@types/node@20.16.15':
+  '@stdlib/array-base-arraylike2object@0.2.1':
     dependencies:
-      undici-types: 6.19.8
+      '@stdlib/array-base-accessor-getter': 0.2.2
+      '@stdlib/array-base-accessor-setter': 0.2.2
+      '@stdlib/array-base-assert-is-accessor-array': 0.2.2
+      '@stdlib/array-base-getter': 0.2.2
+      '@stdlib/array-base-setter': 0.2.2
+      '@stdlib/array-dtype': 0.2.1
+    transitivePeerDependencies:
+      - supports-color
 
-  '@types/node@22.13.1':
+  '@stdlib/array-base-assert-is-accessor-array@0.2.2': {}
+
+  '@stdlib/array-base-assert-is-complex128array@0.2.2': {}
+
+  '@stdlib/array-base-assert-is-complex64array@0.2.2': {}
+
+  '@stdlib/array-base-filled@0.2.2': {}
+
+  '@stdlib/array-base-getter@0.2.2': {}
+
+  '@stdlib/array-base-incrspace@0.2.2':
     dependencies:
-      undici-types: 6.20.0
+      '@stdlib/math-base-special-ceil': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
 
   '@types/semver@7.7.0': {}
 
@@ -10182,6 +10231,1988 @@ snapshots:
   '@vitejs/plugin-vue@5.2.4(vite@6.3.5(@types/node@22.13.1)(yaml@2.7.0))(vue@3.5.13(typescript@5.5.4))':
     dependencies:
       vite: 6.3.5(@types/node@22.13.1)(yaml@2.7.0)
+      vue: 3.5.13(typescript@5.5.4)
+  '@stdlib/array-float64@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-float64array-support': 0.2.2
+
+  '@stdlib/array-int16@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-int16array-support': 0.2.2
+
+  '@stdlib/array-int32@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-int32array-support': 0.2.2
+
+  '@stdlib/array-int8@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-int8array-support': 0.2.2
+
+  '@stdlib/array-uint16@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-uint16array-support': 0.2.2
+
+  '@stdlib/array-uint32@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-uint32array-support': 0.2.2
+
+  '@stdlib/array-uint8@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-uint8array-support': 0.2.2
+
+  '@stdlib/array-uint8c@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-uint8clampedarray-support': 0.2.2
+
+  '@stdlib/assert-contains@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-collection': 0.2.2
+      '@stdlib/assert-is-integer': 0.2.2
+      '@stdlib/assert-is-nan': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-has-float32array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-float32array': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+
+  '@stdlib/assert-has-float64array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-float64array': 0.2.2
+
+  '@stdlib/assert-has-generator-support@0.2.2':
+    dependencies:
+      '@stdlib/utils-eval': 0.2.2
+
+  '@stdlib/assert-has-int16array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-int16array': 0.2.2
+      '@stdlib/constants-int16-max': 0.2.2
+      '@stdlib/constants-int16-min': 0.2.2
+
+  '@stdlib/assert-has-int32array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-int32array': 0.2.2
+      '@stdlib/constants-int32-max': 0.3.0
+      '@stdlib/constants-int32-min': 0.2.2
+
+  '@stdlib/assert-has-int8array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-int8array': 0.2.2
+      '@stdlib/constants-int8-max': 0.2.2
+      '@stdlib/constants-int8-min': 0.2.2
+
+  '@stdlib/assert-has-iterator-symbol-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/symbol-ctor': 0.2.2
+
+  '@stdlib/assert-has-own-property@0.2.2': {}
+
+  '@stdlib/assert-has-symbol-support@0.2.2': {}
+
+  '@stdlib/assert-has-tostringtag-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-symbol-support': 0.2.2
+
+  '@stdlib/assert-has-uint16array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-uint16array': 0.2.2
+      '@stdlib/constants-uint16-max': 0.2.2
+
+  '@stdlib/assert-has-uint32array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-uint32array': 0.2.2
+      '@stdlib/constants-uint32-max': 0.2.2
+
+  '@stdlib/assert-has-uint8array-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-uint8array': 0.2.2
+      '@stdlib/constants-uint8-max': 0.2.2
+
+  '@stdlib/assert-has-uint8clampedarray-support@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-uint8clampedarray': 0.2.2
+
+  '@stdlib/assert-is-arguments@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-array': 0.2.2
+      '@stdlib/assert-is-enumerable-property': 0.2.2
+      '@stdlib/constants-uint32-max': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/utils-native-class': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-array-like-object@0.2.2':
+    dependencies:
+      '@stdlib/constants-array-max-array-length': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-array-like@0.2.2':
+    dependencies:
+      '@stdlib/constants-array-max-array-length': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-arraybuffer@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-big-endian@0.2.2':
+    dependencies:
+      '@stdlib/array-uint16': 0.2.2
+      '@stdlib/array-uint8': 0.2.2
+
+  '@stdlib/assert-is-boolean@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-tostringtag-support': 0.2.2
+      '@stdlib/boolean-ctor': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-buffer@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-object-like': 0.2.2
+
+  '@stdlib/assert-is-collection@0.2.2':
+    dependencies:
+      '@stdlib/constants-array-max-typed-array-length': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-complex-like@0.2.2':
+    dependencies:
+      '@stdlib/complex-float32-ctor': 0.0.2
+      '@stdlib/complex-float64-ctor': 0.0.2
+
+  '@stdlib/assert-is-enumerable-property@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-integer': 0.2.2
+      '@stdlib/assert-is-nan': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-float32array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-float64array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-function@0.2.2':
+    dependencies:
+      '@stdlib/utils-type-of': 0.2.2
+
+  '@stdlib/assert-is-int16array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-int32array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-int8array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-integer@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-little-endian@0.2.2':
+    dependencies:
+      '@stdlib/array-uint16': 0.2.2
+      '@stdlib/array-uint8': 0.2.2
+
+  '@stdlib/assert-is-nan@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-nonnegative-integer@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-integer': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-number-array@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/assert-tools-array-like-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-number@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-tostringtag-support': 0.2.2
+      '@stdlib/number-ctor': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-object-like@0.2.2':
+    dependencies:
+      '@stdlib/assert-tools-array-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+
+  '@stdlib/assert-is-object@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-array': 0.2.2
+
+  '@stdlib/assert-is-plain-object@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-function': 0.2.2
+      '@stdlib/assert-is-object': 0.2.2
+      '@stdlib/utils-get-prototype-of': 0.2.2
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-positive-integer@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-integer': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-regexp@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-tostringtag-support': 0.2.2
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-string@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-tostringtag-support': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-typed-array-like@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-nonnegative-integer': 0.2.2
+      '@stdlib/constants-array-max-typed-array-length': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/assert-is-uint16array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-uint32array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-uint8array@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-is-uint8clampedarray@0.2.2':
+    dependencies:
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/assert-tools-array-function@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-array': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+
+  '@stdlib/assert-tools-array-like-function@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-array-like': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/blas-base-gcopy@0.2.1':
+    dependencies:
+      '@stdlib/array-base-arraylike2object': 0.2.1
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/blas-ext-base-gapxsumpw@0.2.2':
+    dependencies:
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/blas-ext-base-gsumpw@0.2.2':
+    dependencies:
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/boolean-ctor@0.2.2': {}
+
+  '@stdlib/complex-float32-ctor@0.0.1':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/number-float64-base-to-float32': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/complex-float32-ctor@0.0.2':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/number-float64-base-to-float32': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/complex-float32-reim@0.1.2':
+    dependencies:
+      '@stdlib/array-float32': 0.2.2
+      '@stdlib/complex-float32-ctor': 0.0.2
+
+  '@stdlib/complex-float32@0.2.1':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/number-float64-base-to-float32': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/complex-float64-ctor@0.0.2':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/complex-float32-ctor': 0.0.1
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/complex-float64-ctor@0.0.3':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/complex-float32-ctor': 0.0.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/complex-float64-reim@0.1.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/complex-float64-ctor': 0.0.3
+
+  '@stdlib/complex-float64@0.2.1':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/complex-float32': 0.2.1
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/complex-imag@0.2.1':
+    dependencies:
+      '@stdlib/complex-float64': 0.2.1
+
+  '@stdlib/complex-imagf@0.2.1':
+    dependencies:
+      '@stdlib/complex-float32': 0.2.1
+
+  '@stdlib/complex-real@0.2.1':
+    dependencies:
+      '@stdlib/complex-float64': 0.2.1
+
+  '@stdlib/complex-realf@0.2.1':
+    dependencies:
+      '@stdlib/complex-float32': 0.2.1
+
+  '@stdlib/complex-reim@0.2.1':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/complex-float64': 0.2.1
+
+  '@stdlib/complex-reimf@0.2.1':
+    dependencies:
+      '@stdlib/array-float32': 0.2.2
+      '@stdlib/complex-float32': 0.2.1
+
+  '@stdlib/constants-array-max-array-length@0.2.2': {}
+
+  '@stdlib/constants-array-max-typed-array-length@0.2.2': {}
+
+  '@stdlib/constants-float32-max@0.2.2': {}
+
+  '@stdlib/constants-float32-smallest-normal@0.2.2': {}
+
+  '@stdlib/constants-float64-e@0.2.2': {}
+
+  '@stdlib/constants-float64-eps@0.2.2': {}
+
+  '@stdlib/constants-float64-eulergamma@0.2.2': {}
+
+  '@stdlib/constants-float64-exponent-bias@0.2.2': {}
+
+  '@stdlib/constants-float64-fourth-pi@0.2.2': {}
+
+  '@stdlib/constants-float64-gamma-lanczos-g@0.2.2': {}
+
+  '@stdlib/constants-float64-half-ln-two@0.2.2': {}
+
+  '@stdlib/constants-float64-half-pi@0.2.2': {}
+
+  '@stdlib/constants-float64-high-word-abs-mask@0.2.2': {}
+
+  '@stdlib/constants-float64-high-word-exponent-mask@0.2.2': {}
+
+  '@stdlib/constants-float64-high-word-sign-mask@0.2.1': {}
+
+  '@stdlib/constants-float64-high-word-significand-mask@0.2.2': {}
+
+  '@stdlib/constants-float64-ln-sqrt-two-pi@0.2.2': {}
+
+  '@stdlib/constants-float64-ln-two@0.2.2': {}
+
+  '@stdlib/constants-float64-max-base10-exponent@0.2.2': {}
+
+  '@stdlib/constants-float64-max-base2-exponent-subnormal@0.2.1': {}
+
+  '@stdlib/constants-float64-max-base2-exponent@0.2.2': {}
+
+  '@stdlib/constants-float64-max-ln@0.2.2': {}
+
+  '@stdlib/constants-float64-max-safe-integer@0.2.2': {}
+
+  '@stdlib/constants-float64-max-safe-nth-factorial@0.1.0': {}
+
+  '@stdlib/constants-float64-max@0.2.2': {}
+
+  '@stdlib/constants-float64-min-base10-exponent-subnormal@0.2.1': {}
+
+  '@stdlib/constants-float64-min-base10-exponent@0.2.2': {}
+
+  '@stdlib/constants-float64-min-base2-exponent-subnormal@0.2.1': {}
+
+  '@stdlib/constants-float64-min-base2-exponent@0.2.2': {}
+
+  '@stdlib/constants-float64-min-ln@0.2.2': {}
+
+  '@stdlib/constants-float64-ninf@0.2.2':
+    dependencies:
+      '@stdlib/number-ctor': 0.2.2
+
+  '@stdlib/constants-float64-pi@0.2.2': {}
+
+  '@stdlib/constants-float64-pinf@0.2.2': {}
+
+  '@stdlib/constants-float64-smallest-normal@0.2.2': {}
+
+  '@stdlib/constants-float64-smallest-subnormal@0.2.2': {}
+
+  '@stdlib/constants-float64-sqrt-eps@0.2.2': {}
+
+  '@stdlib/constants-float64-sqrt-two-pi@0.2.2': {}
+
+  '@stdlib/constants-float64-sqrt-two@0.2.2': {}
+
+  '@stdlib/constants-float64-two-pi@0.2.2': {}
+
+  '@stdlib/constants-int16-max@0.2.2': {}
+
+  '@stdlib/constants-int16-min@0.2.2': {}
+
+  '@stdlib/constants-int32-max@0.2.1': {}
+
+  '@stdlib/constants-int32-max@0.3.0': {}
+
+  '@stdlib/constants-int32-min@0.2.2': {}
+
+  '@stdlib/constants-int8-max@0.2.2': {}
+
+  '@stdlib/constants-int8-min@0.2.2': {}
+
+  '@stdlib/constants-uint16-max@0.2.2': {}
+
+  '@stdlib/constants-uint32-max@0.2.2': {}
+
+  '@stdlib/constants-uint8-max@0.2.2': {}
+
+  '@stdlib/error-tools-fmtprodmsg@0.2.2': {}
+
+  '@stdlib/fs-exists@0.2.2':
+    dependencies:
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+
+  '@stdlib/fs-resolve-parent-path@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-function': 0.2.2
+      '@stdlib/assert-is-plain-object': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/fs-exists': 0.2.2
+      '@stdlib/process-cwd': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+
+  '@stdlib/function-ctor@0.2.2': {}
+
+  '@stdlib/math-base-assert-is-even@0.2.3':
+    dependencies:
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-finite@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-infinite@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-integer@0.2.5':
+    dependencies:
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-nan@0.2.2':
+    dependencies:
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-negative-zero@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-odd@0.2.1':
+    dependencies:
+      '@stdlib/math-base-assert-is-even': 0.2.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-odd@0.3.0':
+    dependencies:
+      '@stdlib/math-base-assert-is-even': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-positive-integer@0.3.0':
+    dependencies:
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-assert-is-positive-zero@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-napi-binary@0.2.1':
+    dependencies:
+      '@stdlib/complex-float32': 0.2.1
+      '@stdlib/complex-float64': 0.2.1
+      '@stdlib/complex-reim': 0.2.1
+      '@stdlib/complex-reimf': 0.2.1
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-napi-binary@0.3.0':
+    dependencies:
+      '@stdlib/complex-float32-ctor': 0.0.2
+      '@stdlib/complex-float32-reim': 0.1.2
+      '@stdlib/complex-float64-ctor': 0.0.3
+      '@stdlib/complex-float64-reim': 0.1.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-napi-unary@0.2.3':
+    dependencies:
+      '@stdlib/complex-float32-ctor': 0.0.2
+      '@stdlib/complex-float32-reim': 0.1.2
+      '@stdlib/complex-float64-ctor': 0.0.3
+      '@stdlib/complex-float64-reim': 0.1.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-abs@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-acos@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-fourth-pi': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-asin': 0.2.3
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-asin@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-fourth-pi': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-beta@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-e': 0.2.2
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-log1p': 0.2.3
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-betainc@0.2.2':
+    dependencies:
+      '@stdlib/math-base-special-kernel-betainc': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-binomcoef@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-max-safe-integer': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-odd': 0.3.0
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-gcd': 0.2.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-ceil@0.2.2':
+    dependencies:
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-copysign@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-sign-mask': 0.2.1
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/number-float64-base-from-words': 0.2.2
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-cos@0.2.1':
+    dependencies:
+      '@stdlib/math-base-special-kernel-cos': 0.2.3
+      '@stdlib/math-base-special-kernel-sin': 0.2.3
+      '@stdlib/math-base-special-rempio2': 0.2.1
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-cos@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-exponent-mask': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-kernel-cos': 0.2.3
+      '@stdlib/math-base-special-kernel-sin': 0.2.3
+      '@stdlib/math-base-special-rempio2': 0.2.1
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-erfc@0.2.4':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/number-float64-base-set-low-word': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-erfcinv@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-exp@0.2.4':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-ldexp': 0.2.3
+      '@stdlib/math-base-special-trunc': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-expm1@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-half-ln-two': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/number-float64-base-from-words': 0.2.2
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/number-float64-base-set-high-word': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-factorial@0.2.1':
+    dependencies:
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-gamma': 0.2.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-factorial@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-max-safe-nth-factorial': 0.1.0
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-gamma': 0.2.1
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-floor@0.2.3':
+    dependencies:
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-fmod@0.1.0':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-exponent-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-sign-mask': 0.2.1
+      '@stdlib/constants-float64-high-word-significand-mask': 0.2.2
+      '@stdlib/constants-float64-min-base2-exponent': 0.2.2
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/number-float64-base-from-words': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gamma-delta-ratio@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-e': 0.2.2
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/constants-float64-gamma-lanczos-g': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-factorial': 0.2.1
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-gamma': 0.2.1
+      '@stdlib/math-base-special-gamma-lanczos-sum': 0.3.0
+      '@stdlib/math-base-special-log1p': 0.2.3
+      '@stdlib/math-base-special-pow': 0.3.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gamma-lanczos-sum-expg-scaled@0.3.0':
+    dependencies:
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gamma-lanczos-sum@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gamma1pm1@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-expm1': 0.2.3
+      '@stdlib/math-base-special-gamma': 0.2.1
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-log1p': 0.2.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gamma@0.2.1':
+    dependencies:
+      '@stdlib/constants-float64-eulergamma': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pi': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/constants-float64-sqrt-two-pi': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-negative-zero': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-pow': 0.2.1
+      '@stdlib/math-base-special-sin': 0.2.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gamma@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-eulergamma': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pi': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/constants-float64-sqrt-two-pi': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-negative-zero': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-sin': 0.2.1
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gammainc@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-e': 0.2.2
+      '@stdlib/constants-float64-gamma-lanczos-g': 0.2.2
+      '@stdlib/constants-float64-max': 0.2.2
+      '@stdlib/constants-float64-max-ln': 0.2.2
+      '@stdlib/constants-float64-min-ln': 0.2.2
+      '@stdlib/constants-float64-pi': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/constants-float64-sqrt-eps': 0.2.2
+      '@stdlib/constants-float64-sqrt-two-pi': 0.2.2
+      '@stdlib/constants-float64-two-pi': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-erfc': 0.2.4
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-gamma': 0.3.0
+      '@stdlib/math-base-special-gamma-lanczos-sum-expg-scaled': 0.3.0
+      '@stdlib/math-base-special-gamma1pm1': 0.2.2
+      '@stdlib/math-base-special-gammaln': 0.2.2
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-log1p': 0.2.3
+      '@stdlib/math-base-special-log1pmx': 0.2.3
+      '@stdlib/math-base-special-max': 0.3.0
+      '@stdlib/math-base-special-min': 0.2.3
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-powm1': 0.3.1
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/math-base-tools-continued-fraction': 0.2.2
+      '@stdlib/math-base-tools-evalpoly': 0.2.2
+      '@stdlib/math-base-tools-sum-series': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gammaincinv@0.2.2':
+    dependencies:
+      '@stdlib/constants-float32-max': 0.2.2
+      '@stdlib/constants-float32-smallest-normal': 0.2.2
+      '@stdlib/constants-float64-ln-sqrt-two-pi': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/constants-float64-sqrt-two-pi': 0.2.2
+      '@stdlib/constants-float64-two-pi': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-erfcinv': 0.2.3
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-gamma': 0.3.0
+      '@stdlib/math-base-special-gammainc': 0.2.2
+      '@stdlib/math-base-special-gammaln': 0.2.2
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-min': 0.2.3
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/math-base-tools-evalpoly': 0.2.2
+      debug: 2.6.9
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gammaln@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-pi': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-sinpi': 0.2.1
+      '@stdlib/math-base-special-trunc': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-gcd@0.2.1':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/constants-int32-max': 0.2.1
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-kernel-betainc@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-e': 0.2.2
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/constants-float64-gamma-lanczos-g': 0.2.2
+      '@stdlib/constants-float64-half-pi': 0.2.2
+      '@stdlib/constants-float64-max': 0.2.2
+      '@stdlib/constants-float64-max-ln': 0.2.2
+      '@stdlib/constants-float64-min-ln': 0.2.2
+      '@stdlib/constants-float64-pi': 0.2.2
+      '@stdlib/constants-float64-smallest-normal': 0.2.2
+      '@stdlib/constants-int32-max': 0.3.0
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-asin': 0.2.3
+      '@stdlib/math-base-special-beta': 0.3.0
+      '@stdlib/math-base-special-binomcoef': 0.2.3
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-expm1': 0.2.3
+      '@stdlib/math-base-special-factorial': 0.3.0
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-gamma': 0.3.0
+      '@stdlib/math-base-special-gamma-delta-ratio': 0.2.2
+      '@stdlib/math-base-special-gamma-lanczos-sum-expg-scaled': 0.3.0
+      '@stdlib/math-base-special-gammainc': 0.2.2
+      '@stdlib/math-base-special-gammaln': 0.2.2
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-log1p': 0.2.3
+      '@stdlib/math-base-special-max': 0.3.0
+      '@stdlib/math-base-special-maxabs': 0.3.0
+      '@stdlib/math-base-special-min': 0.2.3
+      '@stdlib/math-base-special-minabs': 0.2.3
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/math-base-tools-continued-fraction': 0.2.2
+      '@stdlib/math-base-tools-sum-series': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-kernel-betaincinv@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/constants-float64-half-pi': 0.2.2
+      '@stdlib/constants-float64-max': 0.2.2
+      '@stdlib/constants-float64-pi': 0.2.2
+      '@stdlib/constants-float64-smallest-normal': 0.2.2
+      '@stdlib/constants-float64-smallest-subnormal': 0.2.2
+      '@stdlib/constants-float64-sqrt-two': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-acos': 0.2.3
+      '@stdlib/math-base-special-asin': 0.2.3
+      '@stdlib/math-base-special-beta': 0.3.0
+      '@stdlib/math-base-special-betainc': 0.2.2
+      '@stdlib/math-base-special-cos': 0.3.0
+      '@stdlib/math-base-special-erfcinv': 0.2.3
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-expm1': 0.2.3
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-gamma-delta-ratio': 0.2.2
+      '@stdlib/math-base-special-gammaincinv': 0.2.2
+      '@stdlib/math-base-special-kernel-betainc': 0.2.2
+      '@stdlib/math-base-special-ldexp': 0.2.3
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-log1p': 0.2.3
+      '@stdlib/math-base-special-max': 0.3.0
+      '@stdlib/math-base-special-min': 0.2.3
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-round': 0.3.0
+      '@stdlib/math-base-special-signum': 0.2.2
+      '@stdlib/math-base-special-sin': 0.3.0
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/math-base-tools-evalpoly': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-kernel-cos@0.2.3':
+    dependencies:
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-kernel-sin@0.2.3':
+    dependencies:
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-ldexp@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-max-base2-exponent': 0.2.2
+      '@stdlib/constants-float64-max-base2-exponent-subnormal': 0.2.1
+      '@stdlib/constants-float64-min-base2-exponent-subnormal': 0.2.1
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-copysign': 0.2.2
+      '@stdlib/number-float32-base-to-word': 0.2.2
+      '@stdlib/number-float64-base-exponent': 0.2.2
+      '@stdlib/number-float64-base-from-words': 0.2.2
+      '@stdlib/number-float64-base-normalize': 0.2.3
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-ln@0.2.4':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/number-float64-base-set-high-word': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-log1p@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/number-float64-base-set-high-word': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-log1pmx@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-log1p': 0.2.3
+      '@stdlib/math-base-tools-sum-series': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-max@0.2.1':
+    dependencies:
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-positive-zero': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-max@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-positive-zero': 0.2.2
+      '@stdlib/math-base-napi-binary': 0.2.1
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-maxabs@0.3.0':
+    dependencies:
+      '@stdlib/math-base-napi-binary': 0.2.1
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-max': 0.2.1
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-min@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-negative-zero': 0.2.2
+      '@stdlib/math-base-napi-binary': 0.2.1
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-minabs@0.2.3':
+    dependencies:
+      '@stdlib/math-base-napi-binary': 0.2.1
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-min': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-pow@0.2.1':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-significand-mask': 0.2.2
+      '@stdlib/constants-float64-ln-two': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-odd': 0.2.1
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-copysign': 0.2.2
+      '@stdlib/math-base-special-ldexp': 0.2.3
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/number-float64-base-set-high-word': 0.2.2
+      '@stdlib/number-float64-base-set-low-word': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/number-uint32-base-to-int32': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-pow@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-significand-mask': 0.2.2
+      '@stdlib/constants-float64-ln-two': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-integer': 0.2.5
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-odd': 0.3.0
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-copysign': 0.2.2
+      '@stdlib/math-base-special-ldexp': 0.2.3
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/number-float64-base-set-high-word': 0.2.2
+      '@stdlib/number-float64-base-set-low-word': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/number-uint32-base-to-int32': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-powm1@0.3.1':
+    dependencies:
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-expm1': 0.2.3
+      '@stdlib/math-base-special-fmod': 0.1.0
+      '@stdlib/math-base-special-ln': 0.2.4
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-trunc': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-rempio2@0.2.1':
+    dependencies:
+      '@stdlib/array-base-zeros': 0.2.2
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-exponent-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-significand-mask': 0.2.2
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/math-base-special-ldexp': 0.2.3
+      '@stdlib/math-base-special-round': 0.2.1
+      '@stdlib/number-float64-base-from-words': 0.2.2
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/number-float64-base-get-low-word': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-round@0.2.1': {}
+
+  '@stdlib/math-base-special-round@0.3.0':
+    dependencies:
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-negative-zero': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-roundn@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-max-base10-exponent': 0.2.2
+      '@stdlib/constants-float64-max-safe-integer': 0.2.2
+      '@stdlib/constants-float64-min-base10-exponent': 0.2.2
+      '@stdlib/constants-float64-min-base10-exponent-subnormal': 0.2.1
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-binary': 0.3.0
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-round': 0.3.0
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-signum@0.2.2':
+    dependencies:
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-sin@0.2.1':
+    dependencies:
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-exponent-mask': 0.2.2
+      '@stdlib/math-base-special-kernel-cos': 0.2.3
+      '@stdlib/math-base-special-kernel-sin': 0.2.3
+      '@stdlib/math-base-special-rempio2': 0.2.1
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-sin@0.3.0':
+    dependencies:
+      '@stdlib/constants-float64-high-word-abs-mask': 0.2.2
+      '@stdlib/constants-float64-high-word-exponent-mask': 0.2.2
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-kernel-cos': 0.2.3
+      '@stdlib/math-base-special-kernel-sin': 0.2.3
+      '@stdlib/math-base-special-rempio2': 0.2.1
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-sinpi@0.2.1':
+    dependencies:
+      '@stdlib/constants-float64-pi': 0.2.2
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-copysign': 0.2.2
+      '@stdlib/math-base-special-cos': 0.2.1
+      '@stdlib/math-base-special-sin': 0.2.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-sqrt@0.2.2':
+    dependencies:
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-special-trunc@0.2.2':
+    dependencies:
+      '@stdlib/math-base-napi-unary': 0.2.3
+      '@stdlib/math-base-special-ceil': 0.2.2
+      '@stdlib/math-base-special-floor': 0.2.3
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-tools-continued-fraction@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-generator-support': 0.2.2
+      '@stdlib/constants-float32-smallest-normal': 0.2.2
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/math-base-tools-evalpoly@0.2.2':
+    dependencies:
+      '@stdlib/function-ctor': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+
+  '@stdlib/math-base-tools-sum-series@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-generator-support': 0.2.2
+      '@stdlib/constants-float64-eps': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-ctor@0.2.2': {}
+
+  '@stdlib/number-float32-base-to-word@0.2.2':
+    dependencies:
+      '@stdlib/array-float32': 0.2.2
+      '@stdlib/array-uint32': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-exponent@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-exponent-bias': 0.2.2
+      '@stdlib/constants-float64-high-word-exponent-mask': 0.2.2
+      '@stdlib/number-float64-base-get-high-word': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-from-words@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/array-uint32': 0.2.2
+      '@stdlib/assert-is-little-endian': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-get-high-word@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/array-uint32': 0.2.2
+      '@stdlib/assert-is-little-endian': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-get-low-word@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/array-uint32': 0.2.2
+      '@stdlib/assert-is-little-endian': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-normalize@0.2.3':
+    dependencies:
+      '@stdlib/constants-float64-smallest-normal': 0.2.2
+      '@stdlib/math-base-assert-is-infinite': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-set-high-word@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/array-uint32': 0.2.2
+      '@stdlib/assert-is-little-endian': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-set-low-word@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/array-uint32': 0.2.2
+      '@stdlib/assert-is-little-endian': 0.2.2
+      '@stdlib/number-float64-base-to-words': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-float64-base-to-float32@0.2.2':
+    dependencies:
+      '@stdlib/array-float32': 0.2.2
+
+  '@stdlib/number-float64-base-to-words@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/array-uint32': 0.2.2
+      '@stdlib/assert-is-little-endian': 0.2.2
+      '@stdlib/os-byte-order': 0.2.2
+      '@stdlib/os-float-word-order': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-library-manifest': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/number-uint32-base-to-int32@0.2.2': {}
+
+  '@stdlib/object-ctor@0.2.1': {}
+
+  '@stdlib/os-byte-order@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-big-endian': 0.2.2
+      '@stdlib/assert-is-little-endian': 0.2.2
+
+  '@stdlib/os-float-word-order@0.2.2':
+    dependencies:
+      '@stdlib/os-byte-order': 0.2.2
+
+  '@stdlib/process-cwd@0.2.2': {}
+
+  '@stdlib/regexp-extended-length-path@0.2.2':
+    dependencies:
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+
+  '@stdlib/regexp-function-name@0.2.2':
+    dependencies:
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+
+  '@stdlib/stats-anova1@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-array': 0.2.2
+      '@stdlib/assert-is-boolean': 0.2.2
+      '@stdlib/assert-is-nan': 0.2.2
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/assert-is-number-array': 0.2.2
+      '@stdlib/assert-is-plain-object': 0.2.2
+      '@stdlib/assert-is-positive-integer': 0.2.2
+      '@stdlib/assert-is-typed-array-like': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/math-base-special-max': 0.3.0
+      '@stdlib/math-base-special-roundn': 0.2.2
+      '@stdlib/stats-base-dists-f-cdf': 0.2.2
+      '@stdlib/stats-incr-stdev': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/string-repeat': 0.2.2
+      '@stdlib/utils-define-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-chisquare-cdf@0.2.2':
+    dependencies:
+      '@stdlib/stats-base-dists-gamma-cdf': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-degenerate-cdf@0.2.2':
+    dependencies:
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/utils-constant-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-f-cdf@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-betainc': 0.2.2
+      '@stdlib/utils-constant-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-gamma-cdf@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-gammainc': 0.2.2
+      '@stdlib/stats-base-dists-degenerate-cdf': 0.2.2
+      '@stdlib/utils-constant-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-normal-cdf@0.2.2':
+    dependencies:
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-erfc': 0.2.4
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/stats-base-dists-degenerate-cdf': 0.2.2
+      '@stdlib/utils-constant-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-signrank-cdf@0.2.2':
+    dependencies:
+      '@stdlib/constants-float64-ln-two': 0.2.2
+      '@stdlib/math-base-assert-is-finite': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-assert-is-positive-integer': 0.3.0
+      '@stdlib/math-base-special-exp': 0.2.4
+      '@stdlib/math-base-special-round': 0.3.0
+      '@stdlib/utils-constant-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-memoize': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-t-cdf@0.2.2':
+    dependencies:
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-betainc': 0.2.2
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/utils-constant-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-dists-t-quantile@0.2.2':
+    dependencies:
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-kernel-betaincinv': 0.2.2
+      '@stdlib/math-base-special-signum': 0.2.2
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/utils-constant-function': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-mean@0.2.2':
+    dependencies:
+      '@stdlib/stats-base-meanpn': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-meanpn@0.2.2':
+    dependencies:
+      '@stdlib/blas-ext-base-gapxsumpw': 0.2.2
+      '@stdlib/blas-ext-base-gsumpw': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-variance@0.2.2':
+    dependencies:
+      '@stdlib/stats-base-variancepn': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-base-variancepn@0.2.2':
+    dependencies:
+      '@stdlib/blas-ext-base-gsumpw': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-incr-stdev@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/string-format': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-kruskal-test@0.2.2':
+    dependencies:
+      '@stdlib/array-base-incrspace': 0.2.2
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-array': 0.2.2
+      '@stdlib/assert-is-boolean': 0.2.2
+      '@stdlib/assert-is-collection': 0.2.2
+      '@stdlib/assert-is-nan': 0.2.2
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/assert-is-plain-object': 0.2.2
+      '@stdlib/assert-is-positive-integer': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-roundn': 0.2.2
+      '@stdlib/stats-base-dists-chisquare-cdf': 0.2.2
+      '@stdlib/stats-ranks': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-count-by': 0.2.2
+      '@stdlib/utils-define-read-only-property': 0.2.2
+      '@stdlib/utils-identity-function': 0.2.2
+      '@stdlib/utils-keys': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-ranks@0.2.2':
+    dependencies:
+      '@stdlib/assert-contains': 0.2.2
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-array': 0.2.2
+      '@stdlib/assert-is-collection': 0.2.2
+      '@stdlib/assert-is-object': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-ttest2@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-boolean': 0.2.2
+      '@stdlib/assert-is-nan': 0.2.2
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/assert-is-number-array': 0.2.2
+      '@stdlib/assert-is-plain-object': 0.2.2
+      '@stdlib/assert-is-positive-integer': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/assert-is-typed-array-like': 0.2.2
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-pow': 0.3.0
+      '@stdlib/math-base-special-roundn': 0.2.2
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/stats-base-dists-t-cdf': 0.2.2
+      '@stdlib/stats-base-dists-t-quantile': 0.2.2
+      '@stdlib/stats-base-mean': 0.2.2
+      '@stdlib/stats-base-variance': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-ttest@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/assert-contains': 0.2.2
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-boolean': 0.2.2
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/assert-is-number-array': 0.2.2
+      '@stdlib/assert-is-plain-object': 0.2.2
+      '@stdlib/assert-is-positive-integer': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/assert-is-typed-array-like': 0.2.2
+      '@stdlib/blas-base-gcopy': 0.2.1
+      '@stdlib/constants-float64-ninf': 0.2.2
+      '@stdlib/constants-float64-pinf': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/math-base-assert-is-nan': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-roundn': 0.2.2
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/stats-base-dists-t-cdf': 0.2.2
+      '@stdlib/stats-base-dists-t-quantile': 0.2.2
+      '@stdlib/stats-base-mean': 0.2.2
+      '@stdlib/stats-base-variance': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-read-only-property': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/stats-wilcoxon@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+      '@stdlib/assert-contains': 0.2.2
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-boolean': 0.2.2
+      '@stdlib/assert-is-nan': 0.2.2
+      '@stdlib/assert-is-number': 0.2.2
+      '@stdlib/assert-is-number-array': 0.2.2
+      '@stdlib/assert-is-plain-object': 0.2.2
+      '@stdlib/assert-is-positive-integer': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/assert-is-typed-array-like': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/math-base-special-abs': 0.2.2
+      '@stdlib/math-base-special-roundn': 0.2.2
+      '@stdlib/math-base-special-signum': 0.2.2
+      '@stdlib/math-base-special-sqrt': 0.2.2
+      '@stdlib/stats-base-dists-normal-cdf': 0.2.2
+      '@stdlib/stats-base-dists-signrank-cdf': 0.2.2
+      '@stdlib/stats-ranks': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-read-only-property': 0.2.2
+      '@stdlib/utils-tabulate': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/strided-base-reinterpret-complex128@0.2.2':
+    dependencies:
+      '@stdlib/array-float64': 0.2.2
+
+  '@stdlib/strided-base-reinterpret-complex64@0.2.1':
+    dependencies:
+      '@stdlib/array-float32': 0.2.2
+
+  '@stdlib/string-base-format-interpolate@0.2.2': {}
+
+  '@stdlib/string-base-format-tokenize@0.2.2': {}
+
+  '@stdlib/string-base-lowercase@0.4.0': {}
+
+  '@stdlib/string-base-repeat@0.2.2': {}
+
+  '@stdlib/string-base-replace@0.2.2': {}
+
+  '@stdlib/string-format@0.2.2':
+    dependencies:
+      '@stdlib/string-base-format-interpolate': 0.2.2
+      '@stdlib/string-base-format-tokenize': 0.2.2
+
+  '@stdlib/string-repeat@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-nonnegative-integer': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-base-repeat': 0.2.2
+      '@stdlib/string-format': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/string-replace@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-function': 0.2.2
+      '@stdlib/assert-is-regexp': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-base-replace': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-escape-regexp-string': 0.2.2
+
+  '@stdlib/symbol-ctor@0.2.2': {}
+
+  '@stdlib/symbol-iterator@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-iterator-symbol-support': 0.2.2
+
+  '@stdlib/utils-constant-function@0.2.2': {}
+
+  '@stdlib/utils-constructor-name@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-buffer': 0.2.2
+      '@stdlib/regexp-function-name': 0.2.2
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/utils-convert-path@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/regexp-extended-length-path': 0.2.2
+      '@stdlib/string-base-lowercase': 0.4.0
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/string-replace': 0.2.2
+
+  '@stdlib/utils-count-by@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-collection': 0.2.2
+      '@stdlib/assert-is-function': 0.2.2
+      '@stdlib/assert-is-plain-object': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/utils-define-nonenumerable-read-only-accessor@0.2.3':
+    dependencies:
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/utils-define-nonenumerable-read-only-property@0.2.2':
+    dependencies:
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/utils-define-property@0.2.4':
+    dependencies:
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+
+  '@stdlib/utils-define-read-only-property@0.2.2':
+    dependencies:
+      '@stdlib/utils-define-property': 0.2.4
+
+  '@stdlib/utils-escape-regexp-string@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+
+  '@stdlib/utils-eval@0.2.2': {}
+
+  '@stdlib/utils-get-prototype-of@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-function': 0.2.2
+      '@stdlib/object-ctor': 0.2.1
+      '@stdlib/utils-native-class': 0.2.2
+
+  '@stdlib/utils-global@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-boolean': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+
+  '@stdlib/utils-identity-function@0.2.2': {}
+
+  '@stdlib/utils-index-of@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-collection': 0.2.2
+      '@stdlib/assert-is-integer': 0.2.2
+      '@stdlib/assert-is-nan': 0.2.2
+      '@stdlib/assert-is-string': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/utils-keys@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-arguments': 0.2.2
+      '@stdlib/assert-is-enumerable-property': 0.2.2
+      '@stdlib/assert-is-object-like': 0.2.2
+      '@stdlib/utils-index-of': 0.2.2
+      '@stdlib/utils-noop': 0.2.2
+      '@stdlib/utils-type-of': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/utils-library-manifest@0.2.2':
+    dependencies:
+      '@stdlib/fs-resolve-parent-path': 0.2.2
+      '@stdlib/utils-convert-path': 0.2.2
+      debug: 2.6.9
+      resolve: 1.22.10
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/utils-memoize@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-is-function': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-define-nonenumerable-read-only-property': 0.2.2
+      '@stdlib/utils-identity-function': 0.2.2
+
+  '@stdlib/utils-native-class@0.2.2':
+    dependencies:
+      '@stdlib/assert-has-own-property': 0.2.2
+      '@stdlib/assert-has-tostringtag-support': 0.2.2
+      '@stdlib/symbol-ctor': 0.2.2
+
+  '@stdlib/utils-noop@0.2.2': {}
+
+  '@stdlib/utils-tabulate@0.2.2':
+    dependencies:
+      '@stdlib/assert-is-collection': 0.2.2
+      '@stdlib/error-tools-fmtprodmsg': 0.2.2
+      '@stdlib/string-format': 0.2.2
+      '@stdlib/utils-index-of': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+
+  '@stdlib/utils-type-of@0.2.2':
+    dependencies:
+      '@stdlib/utils-constructor-name': 0.2.2
+      '@stdlib/utils-global': 0.2.2
+
+  '@types/d3-polygon@3.0.2': {}
+
+  '@types/estree@1.0.6': {}
+
+  '@types/estree@1.0.7': {}
+
+  '@types/humanize-duration@3.27.4': {}
+
+  '@types/node@12.20.55': {}
+
+  '@types/node@20.16.15':
+    dependencies:
+      undici-types: 6.19.8
+
+  '@types/node@22.13.1':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@types/triple-beam@1.3.5': {}
+
+  '@typescript/vfs@1.6.1(typescript@5.4.5)':
+    dependencies:
+      debug: 4.4.0(supports-color@8.1.1)
+      typescript: 5.4.5
+    transitivePeerDependencies:
+      - supports-color
+
+  '@vitejs/plugin-vue@5.2.3(vite@6.3.3(@types/node@22.13.1)(yaml@2.7.0))(vue@3.5.13(typescript@5.5.4))':
+    dependencies:
+      vite: 6.3.3(@types/node@22.13.1)(yaml@2.7.0)
       vue: 3.5.13(typescript@5.5.4)
 
   '@vitest/expect@2.1.9':
@@ -11091,6 +13122,8 @@ snapshots:
 
   human-id@4.1.1: {}
 
+  humanize-duration@3.33.0: {}
+
   iconv-lite@0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -11216,7 +13249,11 @@ snapshots:
       safe-stable-stringify: 2.5.0
       triple-beam: 1.4.1
 
-  long@5.3.1: {}
+  long@5.3.2: {}
+
+  loose-envify@1.4.0:
+    dependencies:
+      js-tokens: 4.0.0
 
   long@5.3.2: {}
 
@@ -11420,7 +13457,7 @@ snapshots:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/node': 22.13.1
-      long: 5.3.1
+      long: 5.3.2
 
   pump@3.0.2:
     dependencies:
@@ -11859,9 +13896,11 @@ snapshots:
 
   typescript@3.9.10: {}
 
+  typescript@5.4.5: {}
+
   typescript@5.5.4: {}
 
-  ulid@3.0.0: {}
+  ulid@3.0.1: {}
 
   unbzip2-stream@1.4.3:
     dependencies:
