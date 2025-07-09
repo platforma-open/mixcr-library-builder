@@ -16,7 +16,7 @@ text := import("text")
 mixcrSw := assets.importSoftware("@platforma-open/milaboratories.software-mixcr:main")
 jsonMergingTpl := assets.importTemplate(":json-merging")
 fastaGenerationTpl := assets.importTemplate(":fasta-generation")
-fatsaToTableTpl := assets.importTemplate(":fatsa-to-table")
+fatsaToTableTpl := assets.importTemplate(":fasta-to-table")
 toCamelCase := import(":formatText")
 
 chainInfos := {

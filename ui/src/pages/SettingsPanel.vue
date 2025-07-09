@@ -165,10 +165,15 @@ const genesSourceOptions = [
 // The v-model on PlBtnGroup already updates config[chain][seg].sourceType
 const handleSourceTypeUpdate = (chain: string, seg: typeof segments[number], newSourceType: SourceType) => {
   if (config[chain]?.[seg]) {
+    const validationKey = `${chain}-${seg}`;
+    
     if (newSourceType === 'fasta') {
       config[chain][seg].builtInSpecies = undefined; // Clear species if switching to FASTA
     } else if (newSourceType === 'built-in') {
       config[chain][seg].fastaFile = undefined; // Clear FASTA file if switching to built-in
+      // Clear validation state when switching away from FASTA
+      delete validationState.value[validationKey];
+      delete validationLoading.value[validationKey];
     }
   }
 };
@@ -267,28 +272,6 @@ const getFileError = (chain: string, seg: string): string | undefined => {
   if (isValidationLoading(chain, seg)) return undefined;
   return result?.isValid === false ? result.error : undefined;
 };
-
-
-
-// Watch for file upload completion and trigger validation
-watch(progresses, (newProgresses, oldProgresses) => {
-  for (const [fileHandle, progress] of Object.entries(newProgresses)) {
-    const oldProgress = oldProgresses?.[fileHandle];
-    
-    // Check if file just finished uploading
-    if (progress.done && (!oldProgress || !oldProgress.done)) {
-      // Find which chain/segment this file belongs to and re-validate
-      for (const [chain, chainConfig] of Object.entries(config)) {
-        for (const [seg, segConfig] of Object.entries(chainConfig)) {
-          if (segConfig.fastaFile === fileHandle) {
-            handleFastaFileUpdate(chain, seg as any, segConfig.fastaFile);
-            break;
-          }
-        }
-      }
-    }
-  }
-}, { deep: true });
 
 </script>
 
