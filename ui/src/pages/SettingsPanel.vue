@@ -17,6 +17,7 @@ const app = useApp();
 
 // Validation state management
 const validationState = ref<Record<string, FastaValidationResult>>({});
+const validationLoading = ref<Record<string, boolean>>({});
 
 const progresses = computed(() => {
   const fileImports = app.model.outputs.fileImports ?? {};
@@ -176,12 +177,11 @@ const handleSourceTypeUpdate = (chain: string, seg: typeof segments[number], new
 // The v-model on PlFileInput already updates config[chain][seg].fastaFile
 const handleFastaFileUpdate = async (chain: string, seg: typeof segments[number], newFile: ImportFileHandle | undefined) => {
   if (config[chain]?.[seg]) {
+    const validationKey = `${chain}-${seg}`;
+    
     if (newFile !== undefined) { // If a file is selected
       config[chain][seg].sourceType = 'fasta'; // Ensure sourceType is 'fasta'
       config[chain][seg].builtInSpecies = undefined; // Clear species
-      
-      // Validate the FASTA file using Platforma SDK
-      const validationKey = `${chain}-${seg}`;
       
       // Immediate basic validation (file extension, etc.) using Platforma SDK
       const fileName = getFileNameFromHandle(newFile);
@@ -192,29 +192,31 @@ const handleFastaFileUpdate = async (chain: string, seg: typeof segments[number]
           isValid: false,
           error: `File must have .fasta, .fa, or .fas extension. Found: ${fileName}`
         };
+        validationLoading.value[validationKey] = false;
         return;
       }
       
-      // Set initial pending state
-      validationState.value[validationKey] = {
-        isValid: false,
-        error: 'Validating file content...'
-      };
+      // Set loading state
+      validationLoading.value[validationKey] = true;
+      // Clear previous validation state
+      delete validationState.value[validationKey];
       
       try {
         // Cast to LocalImportFileHandle like in immune-assay-data
         const result = await validateFastaFile(newFile as any);
         validationState.value[validationKey] = result;
+        validationLoading.value[validationKey] = false;
       } catch (error) {
         validationState.value[validationKey] = {
           isValid: false,
           error: `Validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`
         };
+        validationLoading.value[validationKey] = false;
       }
     } else {
       // File was cleared, remove validation state
-      const validationKey = `${chain}-${seg}`;
       delete validationState.value[validationKey];
+      delete validationLoading.value[validationKey];
     }
     // If newFile is undefined (file cleared), sourceType remains 'fasta'.
     // The user must explicitly switch sourceType using the PlBtnGroup if they want to use built-in.
@@ -253,20 +255,20 @@ const getValidationResult = (chain: string, seg: string): FastaValidationResult 
   return validationState.value[`${chain}-${seg}`];
 };
 
+// Helper function to check if validation is loading
+const isValidationLoading = (chain: string, seg: string): boolean => {
+  return validationLoading.value[`${chain}-${seg}`] || false;
+};
+
 // Helper function to get error message for PlFileInput
 const getFileError = (chain: string, seg: string): string | undefined => {
   const result = getValidationResult(chain, seg);
+  // Don't show loading messages as errors
+  if (isValidationLoading(chain, seg)) return undefined;
   return result?.isValid === false ? result.error : undefined;
 };
 
-// Helper function to get warnings message
-const getWarningsMessage = (chain: string, seg: string): string | undefined => {
-  const result = getValidationResult(chain, seg);
-  if (result?.isValid && result.warnings?.length) {
-    return `Warnings: ${result.warnings.join('; ')}`;
-  }
-  return undefined;
-};
+
 
 // Watch for file upload completion and trigger validation
 watch(progresses, (newProgresses, oldProgresses) => {
@@ -334,6 +336,7 @@ watch(progresses, (newProgresses, oldProgresses) => {
             clearable
             @update:model-value="(newFile) => handleFastaFileUpdate(chain, seg, newFile)"
           />
+          
           <PlDropdown
             v-if="seg === 'V'"
             v-model="config[chain][seg].vRegionType"
@@ -366,7 +369,7 @@ watch(progresses, (newProgresses, oldProgresses) => {
             @update:model-value="(newSpecies) => handleSpeciesUpdate(chain, seg, newSpecies)"
           />
           <template v-if="config[chain]?.[seg]?.sourceType === 'fasta'">
-            <PlFileInput
+                        <PlFileInput
               v-model="config[chain][seg].fastaFile"
               :progress="progresses[config[chain]?.[seg]?.fastaFile ?? '']"
               file-dialog-title="Select FASTA file"
