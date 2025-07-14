@@ -1,59 +1,59 @@
 {
-    "name": "@platforma-open/milaboratories.mixcr-library-builder.software",
-    "version": "1.0.1",
-    "scripts": {
-      "build": "pl-pkg build",
-      "prepublishOnly": "pl-pkg publish packages",
-      "do-pack": "rm -f *.tgz && pl-pkg build && pnpm pack && mv platforma-open*.tgz package.tgz",
-      "changeset": "changeset",
-      "version-packages": "changeset version"
-    },
-    "files": [
-      "./dist/**/*"
-    ],
-    "dependencies": {},
-    "devDependencies": {
-      "@platforma-sdk/package-builder": "catalog:",
-      "@platforma-open/milaboratories.runenv-python-3": "catalog:"
-    },
-    "block-software": {
-      "entrypoints": {
-        "main": {
-          "binary": {
-            "artifact": {
-              "type": "python",
-              "registry": "platforma-open",
-              "environment": "@platforma-open/milaboratories.runenv-python-3:3.12.6",
-              "dependencies": {
-                "toolset": "pip",
-                "requirements": "requirements.txt"
-              },
-              "root": "./src"
+  "name": "@platforma-open/milaboratories.mixcr-library-builder.software",
+  "version": "2.0.0",
+  "scripts": {
+    "build": "pl-pkg build",
+    "prepublishOnly": "pl-pkg publish packages",
+    "do-pack": "rm -f *.tgz && pl-pkg build && pnpm pack && mv platforma-open*.tgz package.tgz",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
+  },
+  "files": [
+    "./dist/**/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@platforma-sdk/package-builder": "catalog:",
+    "@platforma-open/milaboratories.runenv-python-3": "catalog:"
+  },
+  "block-software": {
+    "entrypoints": {
+      "main": {
+        "binary": {
+          "artifact": {
+            "type": "python",
+            "registry": "platforma-open",
+            "environment": "@platforma-open/milaboratories.runenv-python-3:3.12.6",
+            "dependencies": {
+              "toolset": "pip",
+              "requirements": "requirements.txt"
             },
-            "cmd": [
-              "python",
-              "{pkg}/main.py"
-            ]
-          }
-        },
-        "fasta_to_table": {
-          "binary": {
-            "artifact": {
-              "type": "python",
-              "registry": "platforma-open",
-              "environment": "@platforma-open/milaboratories.runenv-python-3:3.12.6",
-              "dependencies": {
-                "toolset": "pip",
-                "requirements": "requirements.txt"
-              },
-              "root": "./src"
+            "root": "./src"
+          },
+          "cmd": [
+            "python",
+            "{pkg}/main.py"
+          ]
+        }
+      },
+      "fasta_to_table": {
+        "binary": {
+          "artifact": {
+            "type": "python",
+            "registry": "platforma-open",
+            "environment": "@platforma-open/milaboratories.runenv-python-3:3.12.6",
+            "dependencies": {
+              "toolset": "pip",
+              "requirements": "requirements.txt"
             },
-            "cmd": [
-              "python",
-              "{pkg}/fasta_to_table.py"
-            ]
-          }
+            "root": "./src"
+          },
+          "cmd": [
+            "python",
+            "{pkg}/fasta_to_table.py"
+          ]
         }
       }
     }
   }
+}

@@ -1,5 +1,14 @@
 # @platforma-open/milaboratories.mixcr-library-builder
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies [5a071f6]
+  - @platforma-open/milaboratories.mixcr-library-builder.workflow@2.0.0
+  - @platforma-open/milaboratories.mixcr-library-builder.model@2.0.0
+  - @platforma-open/milaboratories.mixcr-library-builder.ui@2.0.0
+
 ## 2.0.0
 
 ### Major Changes

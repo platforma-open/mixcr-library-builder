@@ -1,5 +1,16 @@
 # @platforma-open/milaboratories.mixcr-library-builder.ui
 
+## 2.0.0
+
+### Major Changes
+
+- 5a071f6: Multiple chains reference builder, updated dependecies
+
+### Patch Changes
+
+- Updated dependencies [5a071f6]
+  - @platforma-open/milaboratories.mixcr-library-builder.model@2.0.0
+
 ## 1.3.0
 
 ### Minor Changes
