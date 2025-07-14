@@ -1,0 +1,32 @@
+exec := import("@platforma-sdk/workflow-tengo:exec")
+self := import("@platforma-sdk/workflow-tengo:tpl")
+ll := import("@platforma-sdk/workflow-tengo:ll")
+assets := import("@platforma-sdk/workflow-tengo:assets")
+file := import("@platforma-sdk/workflow-tengo:file")
+
+mergeSw := assets.importSoftware("@platforma-open/milaboratories.mixcr-library-builder.software:main")
+
+self.defineOutputs("library")
+
+self.body(func(args) {
+    libraryMap := args.libraryMap
+	//fastaMap := args.fasta
+	
+	mergeCmdBuilder := exec.builder().
+		software(mergeSw).
+		arg("-o").arg("merged_library.json").
+		saveFile("merged_library.json").
+        arg("-i")
+	
+	for name, library in libraryMap {
+		mergeCmdBuilder.arg(name).
+			addFile(name, library)
+	}
+	
+    mergeCmd := mergeCmdBuilder.run()
+	finalLibrary := mergeCmd.getFile("merged_library.json")
+
+	return {
+		library: finalLibrary
+	}
+})

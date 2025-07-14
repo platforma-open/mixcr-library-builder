@@ -1,0 +1,59 @@
+exec := import("@platforma-sdk/workflow-tengo:exec")
+self := import("@platforma-sdk/workflow-tengo:tpl")
+ll := import("@platforma-sdk/workflow-tengo:ll")
+assets := import("@platforma-sdk/workflow-tengo:assets")
+file := import("@platforma-sdk/workflow-tengo:file")
+text := import("text")
+
+repseqioSw := assets.importSoftware("@platforma-open/milaboratories.software-repseqio:main")
+
+self.defineOutputs("fasta")
+
+self.body(func(inputs) {
+    libraryMap := inputs.libraryMap
+    config := inputs.config
+    coveredRegion := ""
+
+    fastaMap := {}
+
+    for name, library in libraryMap {
+        for chain, segments in config {
+            library_chain_temp := text.split(name, "_")[1]
+            library_chain := text.split(library_chain_temp, ".")[0]
+            if library_chain == chain {
+                for segment, segmentConfig in segments {
+                // Skip C segment as it doesn't need FASTA generation
+                    if segment == "C" {
+                        continue
+                    }
+                    
+                    // Check if this segment has valid configuration
+                    if !is_undefined(segmentConfig.builtInSpecies) || !is_undefined(segmentConfig.fastaFile) {
+                        if segment == "V" {
+                            coveredRegion = segmentConfig.vRegionType
+                        } else if segment == "J" {
+                            coveredRegion = "JRegion"
+                        } else if segment == "D" {
+                            coveredRegion = "DRegion"
+                        }
+                        
+                        // Execute repseqio command only for valid segments
+                        repseqioCmdBuilder := exec.builder().
+                            software(repseqioSw).
+                            arg("fasta").
+                            arg("-g").arg(coveredRegion).
+                            arg(name).addFile(name, library).
+                            arg(segment + "_" + chain + ".fasta").
+                            saveFile(segment + "_" + chain + ".fasta")
+                        repseqioCmd := repseqioCmdBuilder.run()
+                        fasta := repseqioCmd.getFile(segment + "_" + chain + ".fasta")
+                        fastaMap[segment + "_" + chain + ".fasta"] = fasta
+                    }
+                }
+            }
+        }
+    }
+    return {
+        fasta: fastaMap
+    }
+})
