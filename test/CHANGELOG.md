@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.test
 
+## 1.0.3
+
+### Patch Changes
+
+- 4b22540: updating dependencies
+
 ## 1.0.2
 
 ### Patch Changes
