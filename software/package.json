@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.mixcr-library-builder.software",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "build": "pl-pkg build",
     "prepublishOnly": "pl-pkg prepublish",
