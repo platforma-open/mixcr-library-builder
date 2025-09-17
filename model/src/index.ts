@@ -1,5 +1,4 @@
-import { BlockModel, InferOutputsType, parseResourceMap, createPlDataTableV2, PlDataTableStateV2, createPlDataTableStateV2, createPlDataTableSheet, getUniquePartitionKeys } from '@platforma-sdk/model';
-import { ImportFileHandle } from '@platforma-sdk/model';
+import { BlockModel, createPlDataTableSheet, createPlDataTableStateV2, createPlDataTableV2, getUniquePartitionKeys, ImportFileHandle, InferOutputsType, parseResourceMap, PlDataTableStateV2 } from '@platforma-sdk/model';
 
 type VRegionType = 'VTranscript' | 'VRegion';
 
@@ -43,52 +42,52 @@ export const model = BlockModel.create()
     tableState: createPlDataTableStateV2(),
   })
 
-   .argsValid(
-     (ctx) => {
-       // Check that species is provided
-       if (!ctx.args.species || ctx.args.species.trim() === '') {
-         return false;
-       }
-       
-       // Check that at least one chain is selected
-       if (!ctx.args.chains || ctx.args.chains.length === 0) {
-         return false;
-       }
-       
-       // Check that each selected chain has valid V and J segment configurations
-       for (const chain of ctx.args.chains) {
-         const chainConfig = ctx.args.chainConfigs[chain];
-         if (!chainConfig) {
-           return false;
-         }
-         
-         // V segment is required - must have either built-in species or fasta file
-         const vConfig = chainConfig.V;
-         if (!vConfig || 
-             (vConfig.sourceType === 'built-in' && (!vConfig.builtInSpecies || vConfig.builtInSpecies.trim() === '')) ||
-             (vConfig.sourceType === 'fasta' && !vConfig.fastaFile)) {
-           return false;
-         }
-         
-         // J segment is required - must have either built-in species or fasta file
-         const jConfig = chainConfig.J;
-         if (!jConfig || 
-             (jConfig.sourceType === 'built-in' && (!jConfig.builtInSpecies || jConfig.builtInSpecies.trim() === '')) ||
-             (jConfig.sourceType === 'fasta' && !jConfig.fastaFile)) {
-           return false;
-         }
-       }
-       
-       return true;
-     }
-   )
+  .argsValid(
+    (ctx) => {
+      // Check that species is provided
+      if (!ctx.args.species || ctx.args.species.trim() === '') {
+        return false;
+      }
+
+      // Check that at least one chain is selected
+      if (!ctx.args.chains || ctx.args.chains.length === 0) {
+        return false;
+      }
+
+      // Check that each selected chain has valid V and J segment configurations
+      for (const chain of ctx.args.chains) {
+        const chainConfig = ctx.args.chainConfigs[chain];
+        if (!chainConfig) {
+          return false;
+        }
+
+        // V segment is required - must have either built-in species or fasta file
+        const vConfig = chainConfig.V;
+        if (!vConfig ||
+          (vConfig.sourceType === 'built-in' && (!vConfig.builtInSpecies || vConfig.builtInSpecies.trim() === '')) ||
+          (vConfig.sourceType === 'fasta' && !vConfig.fastaFile)) {
+          return false;
+        }
+
+        // J segment is required - must have either built-in species or fasta file
+        const jConfig = chainConfig.J;
+        if (!jConfig ||
+          (jConfig.sourceType === 'built-in' && (!jConfig.builtInSpecies || jConfig.builtInSpecies.trim() === '')) ||
+          (jConfig.sourceType === 'fasta' && !jConfig.fastaFile)) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  )
 
   .output(
     'fileImports',
     (ctx) =>
       Object.fromEntries(
         ctx.outputs
-          ?.resolve({ field: 'fileImports', assertFieldType: 'Input' , allowPermanentAbsence: true})
+          ?.resolve({ field: 'fileImports', assertFieldType: 'Input', allowPermanentAbsence: true })
           ?.mapFields((handle, acc) => [handle as ImportFileHandle, acc.getImportProgress()], {
             skipUnresolved: true,
           }) ?? []
@@ -123,7 +122,7 @@ export const model = BlockModel.create()
     // Get unique chain values from the data
     const firstColumn = pCols[0];
     const chainValues = getUniquePartitionKeys(firstColumn.data)?.[0];
-    
+
     if (!chainValues) {
       return [];
     }
@@ -163,7 +162,7 @@ export const model = BlockModel.create()
 
   .output('isRunning', (ctx) => ctx.outputs?.getIsReadyOrError() === false)
 
-  
+
   .title((ctx) => {
     const libraryName = ctx.args.species;
     return libraryName ? `MiXCR Library Builder - ${libraryName} library` : 'MiXCR Library Builder';
@@ -173,6 +172,6 @@ export const model = BlockModel.create()
     { type: 'link', href: '/', label: 'Library Builder' }
   ])
 
-  .done();
+  .done(2);
 
 export type BlockOutputs = InferOutputsType<typeof model>;
