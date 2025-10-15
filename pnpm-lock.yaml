@@ -16,8 +16,8 @@ catalogs:
       specifier: 4.7.0-235-develop
       version: 4.7.0-235-develop
     '@platforma-open/milaboratories.software-repseqio':
-      specifier: ^2.5.0-13-master
-      version: 2.5.0-13-master
+      specifier: ^2.5.0-25-master
+      version: 2.5.0-25-master
     '@platforma-sdk/block-tools':
       specifier: ^2.6.14
       version: 2.6.14
@@ -179,7 +179,7 @@ importers:
         version: 4.7.0-235-develop
       '@platforma-open/milaboratories.software-repseqio':
         specifier: 'catalog:'
-        version: 2.5.0-13-master
+        version: 2.5.0-25-master
       '@platforma-sdk/workflow-tengo':
         specifier: 'catalog:'
         version: 5.3.3
@@ -1129,8 +1129,8 @@ packages:
   '@platforma-open/milaboratories.software-ptexter@1.1.1':
     resolution: {integrity: sha512-nTKuFoDm+IhlD3uCktYrpjJ1pJ8TUrGOGAACbLoPwu65iRPOjohmrBZxFux+7eill+aJmqEsy+xF41Dw4mfnkg==}
 
-  '@platforma-open/milaboratories.software-repseqio@2.5.0-13-master':
-    resolution: {integrity: sha512-ovq9P/owIRm5Mdp9o94bVf78Gu7vbgmsnq+t4isIv26z/t8ZwCy4cfSgBde+uXDzpA0om8ONbdGw7RVw1S6SRQ==}
+  '@platforma-open/milaboratories.software-repseqio@2.5.0-25-master':
+    resolution: {integrity: sha512-Z/nq0nT3bI0GKweJcQaVZzYe5xBGzxi3ToByrMyN+WhfknqSetULociQEvQuNJPKv/B0hi640Sm21pSAaxSVJA==}
 
   '@platforma-open/milaboratories.software-small-binaries.guided-command@1.1.1':
     resolution: {integrity: sha512-UPhSOP43GAL+gQVPlE/2ymjuOiYVojhmDad1moS4SI+t6IDF9QgnAj5I7V8eP2P2x0oSY5apgjg4EeUiGBrIkw==}
@@ -6429,7 +6429,7 @@ snapshots:
 
   '@platforma-open/milaboratories.software-ptexter@1.1.1': {}
 
-  '@platforma-open/milaboratories.software-repseqio@2.5.0-13-master': {}
+  '@platforma-open/milaboratories.software-repseqio@2.5.0-25-master': {}
 
   '@platforma-open/milaboratories.software-small-binaries.guided-command@1.1.1': {}
 
