@@ -1,5 +1,15 @@
 # @platforma-open/milaboratories.mixcr-library-builder.model
 
+## 2.0.3
+
+### Patch Changes
+
+- 03cfc91: technical release
+- 7b58a02: technical release
+- fff533b: technical release
+- f2284a8: technical release
+- 423ce2f: technical release
+
 ## 2.0.2
 
 ### Patch Changes
