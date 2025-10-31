@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder
 
+## 2.0.5
+
+### Patch Changes
+
+- fa7afbd: Update SDK
+
 ## 2.0.4
 
 ### Patch Changes
