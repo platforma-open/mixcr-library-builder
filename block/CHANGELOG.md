@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder
 
+## 2.0.6
+
+### Patch Changes
+
+- 1625bb7: Updated block metadata.
+
 ## 2.0.5
 
 ### Patch Changes
