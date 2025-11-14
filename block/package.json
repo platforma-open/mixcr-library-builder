@@ -26,7 +26,6 @@
       "title": "MiXCR library builder",
       "logo": "file:../logos/block-logo.png",
       "url": "https://github.com/platforma-open/mixcr-library-builder",
-      "docs": "https://github.com/platforma-open/mixcr-library-builder/docs",
       "support": "mailto:support@milaboratories.com",
       "description": "Builds custom MiXCR reference libraries from user-provided V, D, J, and C gene sequences for non-standard species, novel alleles, or specialized research applications.",
       "longDescription": "file:../docs/description.md",
