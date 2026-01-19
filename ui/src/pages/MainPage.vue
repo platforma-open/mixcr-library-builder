@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PlBlockPage, PlEditableTitle, PlBtnGhost, PlMaskIcon24, PlLogView, PlSlideModal, ReactiveFileContent, PlAgDataTableV2, usePlDataTableSettingsV2 } from '@platforma-sdk/ui-vue';
+import { PlBlockPage, PlBtnGhost, PlMaskIcon24, PlSlideModal, PlAgDataTableV2, usePlDataTableSettingsV2 } from '@platforma-sdk/ui-vue';
 import SettingsPanel from './SettingsPanel.vue';
 import LogsPanel from './LogsPanel.vue';
 import { computed, ref, watch } from 'vue';
@@ -29,7 +29,7 @@ const showLogs = () => {
   logsIsShown.value = true;
 };
 
-const chainOptions = computed(() => {
+const _chainOptions = computed(() => {
   return app.model.outputs.chainOptions || [];
 });
 
@@ -41,9 +41,9 @@ watch(settingsIsShown, (newValue) => {
   }
 });
 
-//const debug = computed(() => {
+// const debug = computed(() => {
 //  return ReactiveFileContent.getContentString(app.model.outputs.debugOutput?.handle);
-//});
+// });
 
 </script>
 
@@ -73,21 +73,19 @@ watch(settingsIsShown, (newValue) => {
       not-ready-text="Data is not computed"
     />
   </PlBlockPage>
-  <PlSlideModal 
-    v-model="logsIsShown" 
+  <PlSlideModal
+    v-model="logsIsShown"
     :close-on-outside-click="false"
     width="100%"
   >
     <template #title>Library Builder Logs</template>
     <LogsPanel />
   </PlSlideModal>
-  <PlSlideModal 
-    v-model="settingsIsShown" 
+  <PlSlideModal
+    v-model="settingsIsShown"
     :close-on-outside-click="false"
   >
     <template #title>Settings</template>
     <SettingsPanel />
   </PlSlideModal>
 </template>
-
-

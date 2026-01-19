@@ -8,29 +8,29 @@ packages:
   - block
 
 catalog:
-  "@platforma-sdk/model": ^1.45.0
-  "@platforma-sdk/ui-vue": ^1.45.5
-  "@platforma-sdk/workflow-tengo": ^5.5.9
-  "@platforma-sdk/block-tools": ^2.6.21
-  "@platforma-sdk/test": ^1.45.11
-  "@platforma-sdk/tengo-builder": ^2.3.3
-  "@platforma-sdk/package-builder": ^3.10.7
-  "@milaboratories/graph-maker": ^1.1.174
-  "@platforma-sdk/blocks-deps-updater": ^2.0.0
+  # SDK packages - EXACT VERSIONS (no ^ or ~)
+  '@milaboratories/ts-builder': 1.2.2
+  '@milaboratories/ts-configs': 1.2.0
+  '@platforma-sdk/workflow-tengo': 5.8.0
+  '@platforma-sdk/model': 1.51.6
+  '@platforma-sdk/ui-vue': 1.51.7
+  '@platforma-sdk/tengo-builder': 2.4.8
+  '@platforma-sdk/package-builder': 3.11.0
+  '@platforma-sdk/block-tools': 2.6.29
+  '@platforma-sdk/eslint-config': 1.2.0
+  '@platforma-sdk/test': 1.51.6
+  '@milaboratories/helpers': 1.13.0
+  '@milaboratories/graph-maker': 1.1.210
 
+  # Block-specific dependencies
   "@platforma-open/milaboratories.runenv-python-3": ^1.1.17
   "@platforma-open/milaboratories.software-mixcr": 4.7.0-235-develop
   "@platforma-open/milaboratories.software-repseqio": ^2.5.0-25-master
 
-  "vue": ^3.5.13
-  "vue-tsc": ^2.2.10
-
-  "typescript": ~5.5.4
-  "tsup": ~8.3.6
-  "turbo": ^2.5.2
-
-  "vite": ^6.3.3
-  'vitest': ~2.1.8
-  "@vitejs/plugin-vue": ^5.2.3
-
-  "@changesets/cli": ^2.29.2
+  # Common dependencies - can use ^ or ~
+  'vue': ^3.5.24
+  'typescript': ~5.6.3
+  'turbo': ^2.6.3
+  'vitest': ^4.0.7
+  'eslint': ^9.25.1
+  '@changesets/cli': ^2.29.8
