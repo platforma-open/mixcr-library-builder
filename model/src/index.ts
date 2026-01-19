@@ -16,6 +16,8 @@ type VSegmentConfig = BaseSegmentConfig & {
 type _SegmentConfig = BaseSegmentConfig | VSegmentConfig;
 
 export type BlockArgs = {
+  defaultBlockLabel: string;
+  customBlockLabel: string;
   species: string;
   chains: string[];
   fivePrimePrimer?: undefined;
@@ -34,6 +36,8 @@ export type UiState = {
 export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
+    defaultBlockLabel: '',
+    customBlockLabel: '',
     species: '',
     chains: ['IGH'],
     chainConfigs: {},
@@ -150,7 +154,7 @@ export const model = BlockModel.create()
     return [createPlDataTableSheet(ctx, firstColumn.spec.axesSpec[0], chainValues)];
   })
 
-  .output('fastaTable', (ctx) => {
+  .outputWithStatus('fastaTable', (ctx) => {
     const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
     if (pCols === undefined) {
       return undefined;
@@ -161,10 +165,9 @@ export const model = BlockModel.create()
 
   .output('isRunning', (ctx) => ctx.outputs?.getIsReadyOrError() === false)
 
-  .title((ctx) => {
-    const libraryName = ctx.args.species;
-    return libraryName ? `MiXCR Library Builder - ${libraryName} library` : 'MiXCR Library Builder';
-  })
+  .title(() => 'MiXCR Library Builder')
+
+  .subtitle((ctx) => ctx.args.customBlockLabel || ctx.args.defaultBlockLabel || '')
 
   .sections([
     { type: 'link', href: '/', label: 'Library Builder' },
