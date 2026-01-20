@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.mixcr-library-builder",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "scripts": {
     "build": "rm -rf block-pack && block-tools pack",
     "do-pack": "rm -f *.tgz && pnpm pack && mv *.tgz package.tgz",

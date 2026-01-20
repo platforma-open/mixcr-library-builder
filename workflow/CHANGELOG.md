@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.workflow
 
+## 2.1.0
+
+### Minor Changes
+
+- ece19be: Support custom block title and running status
+
 ## 2.0.3
 
 ### Patch Changes

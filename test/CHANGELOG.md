@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.test
 
+## 1.1.0
+
+### Minor Changes
+
+- ece19be: Support custom block title and running status
+
 ## 1.0.4
 
 ### Patch Changes
