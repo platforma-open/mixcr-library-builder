@@ -18,9 +18,9 @@ watchEffect(() => {
   }
   // Add chains if available
   if (app.model.args.chains && app.model.args.chains.length > 0) {
-    parts.push(app.model.args.chains.join(''));
+    parts.push(app.model.args.chains.join(', '));
   }
-  app.model.args.defaultBlockLabel = parts.filter(Boolean).join(' ');
+  app.model.args.defaultBlockLabel = parts.filter(Boolean).join(' - ');
 });
 
 const tableSettings = usePlDataTableSettingsV2({
@@ -70,7 +70,7 @@ watch(settingsIsShown, (newValue) => {
       <PlBtnGhost @click.stop="showLogs">
         Logs
         <template #append>
-          <PlMaskIcon24 name="error" />
+          <PlMaskIcon24 name="file-logs" />
         </template>
       </PlBtnGhost>
       <PlBtnGhost @click.stop="showQuery">

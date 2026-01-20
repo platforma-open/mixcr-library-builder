@@ -8,6 +8,7 @@ import {
   PlTextField,
   PlAccordionSection,
   PlDropdownMulti,
+  PlSectionSeparator,
 } from '@platforma-sdk/ui-vue'; // Assuming this is the correct import path
 import { reactive, watch, computed, ref } from 'vue';
 import { useApp } from '../app'; // Assuming this path is correct
@@ -289,7 +290,7 @@ const getFileError = (chain: string, seg: string): string | undefined => {
     v-for="chain in chainsModel"
     :key="chain"
   >
-    <h3>{{ chain }} chain</h3>
+    <PlSectionSeparator>{{ chain }} chain</PlSectionSeparator>
 
     <!-- Always show V and J segments -->
     <template v-for="seg in mainSegments" :key="seg">
