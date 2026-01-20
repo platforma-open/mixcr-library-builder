@@ -45,6 +45,7 @@ wf.body(func(args) {
 
 	for chain, chainConfig in chainConfigs {
 		libraryBuilderCmdBuilder := exec.builder().
+			saveStdoutStream().
 			software(mixcrSw).
 			secret("MI_LICENSE", "MI_LICENSE").
 			arg("buildLibrary").

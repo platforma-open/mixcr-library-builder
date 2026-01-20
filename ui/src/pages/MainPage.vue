@@ -1,13 +1,27 @@
 <script setup lang="ts">
-import { PlBlockPage, PlEditableTitle, PlBtnGhost, PlMaskIcon24, PlLogView, PlSlideModal, ReactiveFileContent, PlAgDataTableV2, usePlDataTableSettingsV2 } from '@platforma-sdk/ui-vue';
+import { PlBlockPage, PlBtnGhost, PlMaskIcon24, PlSlideModal, PlAgDataTableV2, usePlDataTableSettingsV2 } from '@platforma-sdk/ui-vue';
 import SettingsPanel from './SettingsPanel.vue';
 import LogsPanel from './LogsPanel.vue';
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, watchEffect } from 'vue';
 import { useApp } from '../app';
 
 const app = useApp();
 const settingsIsShown = ref(app.model.outputs.debugOutput === undefined);
 const logsIsShown = ref(false);
+
+// updating defaultBlockLabel
+watchEffect(() => {
+  const parts: string[] = [];
+  // Add species if available
+  if (app.model.args.species) {
+    parts.push(app.model.args.species);
+  }
+  // Add chains if available
+  if (app.model.args.chains && app.model.args.chains.length > 0) {
+    parts.push(app.model.args.chains.join(', '));
+  }
+  app.model.args.defaultBlockLabel = parts.filter(Boolean).join(' - ');
+});
 
 const tableSettings = usePlDataTableSettingsV2({
   model: () => app.model.outputs.fastaTable,
@@ -29,7 +43,7 @@ const showLogs = () => {
   logsIsShown.value = true;
 };
 
-const chainOptions = computed(() => {
+const _chainOptions = computed(() => {
   return app.model.outputs.chainOptions || [];
 });
 
@@ -41,20 +55,22 @@ watch(settingsIsShown, (newValue) => {
   }
 });
 
-//const debug = computed(() => {
+// const debug = computed(() => {
 //  return ReactiveFileContent.getContentString(app.model.outputs.debugOutput?.handle);
-//});
+// });
 
 </script>
 
 <template>
-  <PlBlockPage @click="settingsIsShown=false; logsIsShown=false">
-    <template #title> MiXCR reference library builder </template>
+  <PlBlockPage
+    title="MiXCR Library Builder"
+    @click="settingsIsShown=false; logsIsShown=false"
+  >
     <template #append>
       <PlBtnGhost @click.stop="showLogs">
         Logs
         <template #append>
-          <PlMaskIcon24 name="error" />
+          <PlMaskIcon24 name="file-logs" />
         </template>
       </PlBtnGhost>
       <PlBtnGhost @click.stop="showQuery">
@@ -73,21 +89,19 @@ watch(settingsIsShown, (newValue) => {
       not-ready-text="Data is not computed"
     />
   </PlBlockPage>
-  <PlSlideModal 
-    v-model="logsIsShown" 
+  <PlSlideModal
+    v-model="logsIsShown"
     :close-on-outside-click="false"
     width="100%"
   >
     <template #title>Library Builder Logs</template>
     <LogsPanel />
   </PlSlideModal>
-  <PlSlideModal 
-    v-model="settingsIsShown" 
+  <PlSlideModal
+    v-model="settingsIsShown"
     :close-on-outside-click="false"
   >
     <template #title>Settings</template>
     <SettingsPanel />
   </PlSlideModal>
 </template>
-
-

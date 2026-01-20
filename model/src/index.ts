@@ -1,20 +1,23 @@
-import { BlockModel, createPlDataTableSheet, createPlDataTableStateV2, createPlDataTableV2, getUniquePartitionKeys, ImportFileHandle, InferOutputsType, parseResourceMap, PlDataTableStateV2 } from '@platforma-sdk/model';
+import type { ImportFileHandle, InferOutputsType, PlDataTableStateV2 } from '@platforma-sdk/model';
+import { BlockModel, createPlDataTableSheet, createPlDataTableStateV2, createPlDataTableV2, getUniquePartitionKeys, parseResourceMap } from '@platforma-sdk/model';
 
 type VRegionType = 'VTranscript' | 'VRegion';
 
 type BaseSegmentConfig = {
-  sourceType: 'built-in' | 'fasta'
-  builtInSpecies: string | undefined      // only if sourceType==='built-in'
-  fastaFile: ImportFileHandle | undefined     // only if sourceType==='fasta'
-}
+  sourceType: 'built-in' | 'fasta';
+  builtInSpecies: string | undefined; // only if sourceType==='built-in'
+  fastaFile: ImportFileHandle | undefined; // only if sourceType==='fasta'
+};
 
 type VSegmentConfig = BaseSegmentConfig & {
-  vRegionType: VRegionType     // only used when sourceType==='fasta'
-}
+  vRegionType: VRegionType; // only used when sourceType==='fasta'
+};
 
-type SegmentConfig = BaseSegmentConfig | VSegmentConfig;
+type _SegmentConfig = BaseSegmentConfig | VSegmentConfig;
 
 export type BlockArgs = {
+  defaultBlockLabel: string;
+  customBlockLabel: string;
   species: string;
   chains: string[];
   fivePrimePrimer?: undefined;
@@ -33,8 +36,10 @@ export type UiState = {
 export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
-    species: "",
-    chains: ["IGH"],
+    defaultBlockLabel: '',
+    customBlockLabel: '',
+    species: '',
+    chains: ['IGH'],
     chainConfigs: {},
   })
 
@@ -63,23 +68,23 @@ export const model = BlockModel.create()
 
         // V segment is required - must have either built-in species or fasta file
         const vConfig = chainConfig.V;
-        if (!vConfig ||
-          (vConfig.sourceType === 'built-in' && (!vConfig.builtInSpecies || vConfig.builtInSpecies.trim() === '')) ||
-          (vConfig.sourceType === 'fasta' && !vConfig.fastaFile)) {
+        if (!vConfig
+          || (vConfig.sourceType === 'built-in' && (!vConfig.builtInSpecies || vConfig.builtInSpecies.trim() === ''))
+          || (vConfig.sourceType === 'fasta' && !vConfig.fastaFile)) {
           return false;
         }
 
         // J segment is required - must have either built-in species or fasta file
         const jConfig = chainConfig.J;
-        if (!jConfig ||
-          (jConfig.sourceType === 'built-in' && (!jConfig.builtInSpecies || jConfig.builtInSpecies.trim() === '')) ||
-          (jConfig.sourceType === 'fasta' && !jConfig.fastaFile)) {
+        if (!jConfig
+          || (jConfig.sourceType === 'built-in' && (!jConfig.builtInSpecies || jConfig.builtInSpecies.trim() === ''))
+          || (jConfig.sourceType === 'fasta' && !jConfig.fastaFile)) {
           return false;
         }
       }
 
       return true;
-    }
+    },
   )
 
   .output(
@@ -90,9 +95,9 @@ export const model = BlockModel.create()
           ?.resolve({ field: 'fileImports', assertFieldType: 'Input', allowPermanentAbsence: true })
           ?.mapFields((handle, acc) => [handle as ImportFileHandle, acc.getImportProgress()], {
             skipUnresolved: true,
-          }) ?? []
+          }) ?? [],
       ),
-    { isActive: true }
+    { isActive: true },
   )
 
   .output('debugOutput', (ctx) => {
@@ -127,9 +132,9 @@ export const model = BlockModel.create()
       return [];
     }
 
-    return chainValues.map(chain => ({
+    return chainValues.map((chain) => ({
       value: chain,
-      label: chain
+      label: chain,
     }));
   })
 
@@ -149,7 +154,7 @@ export const model = BlockModel.create()
     return [createPlDataTableSheet(ctx, firstColumn.spec.axesSpec[0], chainValues)];
   })
 
-  .output('fastaTable', (ctx) => {
+  .outputWithStatus('fastaTable', (ctx) => {
     const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
     if (pCols === undefined) {
       return undefined;
@@ -158,18 +163,14 @@ export const model = BlockModel.create()
     return createPlDataTableV2(ctx, pCols, ctx.uiState?.tableState || createPlDataTableStateV2());
   })
 
-
-
   .output('isRunning', (ctx) => ctx.outputs?.getIsReadyOrError() === false)
 
+  .title(() => 'MiXCR Library Builder')
 
-  .title((ctx) => {
-    const libraryName = ctx.args.species;
-    return libraryName ? `MiXCR Library Builder - ${libraryName} library` : 'MiXCR Library Builder';
-  })
+  .subtitle((ctx) => ctx.args.customBlockLabel || ctx.args.defaultBlockLabel || '')
 
   .sections([
-    { type: 'link', href: '/', label: 'Library Builder' }
+    { type: 'link', href: '/', label: 'Library Builder' },
   ])
 
   .done(2);

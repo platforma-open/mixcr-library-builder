@@ -12,12 +12,13 @@ const debugOutput = computed(() => app.model.outputs.debugOutput);
 const availableChains = computed(() => {
   if (!debugOutput.value || !debugOutput.value.data) return [];
   // Extract chain names from the data array where each entry has key: [chainName]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return debugOutput.value.data.map((entry: any) => entry.key[0]);
 });
 
 // Create tab options for each chain
 const tabOptions = computed(() => {
-  return availableChains.value.map(chain => ({
+  return availableChains.value.map((chain) => ({
     label: chain,
     value: chain,
   }));
@@ -36,6 +37,7 @@ watch(availableChains, (newChains) => {
 const activeLogHandle = computed(() => {
   if (!activeTab.value || !debugOutput.value || !debugOutput.value.data) return undefined;
   // Find the data entry that matches the active tab chain name
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const chainEntry = debugOutput.value.data.find((entry: any) => entry.key[0] === activeTab.value);
   return chainEntry?.value;
 });
@@ -43,14 +45,14 @@ const activeLogHandle = computed(() => {
 
 <template>
   <div v-if="availableChains.length > 0">
-    <PlTabs 
-      v-model="activeTab" 
+    <PlTabs
+      v-model="activeTab"
       :options="tabOptions"
       style="margin-bottom: 16px;"
     />
-    <PlLogView 
-      v-if="activeLogHandle" 
-      :log-handle="activeLogHandle" 
+    <PlLogView
+      v-if="activeLogHandle"
+      :log-handle="activeLogHandle"
       :label="`${activeTab} Chain Logs`"
     />
   </div>
