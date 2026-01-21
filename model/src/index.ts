@@ -36,7 +36,7 @@ export type UiState = {
 export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
-    defaultBlockLabel: '',
+    defaultBlockLabel: 'Select Species',
     customBlockLabel: '',
     species: '',
     chains: ['IGH'],
