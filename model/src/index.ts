@@ -154,7 +154,7 @@ export const model = BlockModel.create()
     return [createPlDataTableSheet(ctx, firstColumn.spec.axesSpec[0], chainValues)];
   })
 
-  .outputWithStatus('fastaTable', (ctx) => {
+  .retentiveOutputWithStatus('fastaTable', (ctx) => {
     const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
     if (pCols === undefined) {
       return undefined;
