@@ -8,7 +8,7 @@
     "build": "ts-builder build --target block-ui",
     "preview": "ts-builder build --target block-ui --dev-server --preview",
     "lint": "eslint .",
-    "type-check": "ts-builder types --target block-ui"
+    "type-check": "ts-builder type-check --target block-ui"
   },
   "dependencies": {
     "@platforma-open/milaboratories.mixcr-library-builder.model": "workspace:*",

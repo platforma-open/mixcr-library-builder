@@ -48,6 +48,7 @@ wf.body(func(args) {
 			saveStdoutStream().
 			software(mixcrSw).
 			secret("MI_LICENSE", "MI_LICENSE").
+			env("MI_LICENSE_DEBUG", "MI_LICENSE_DEBUG").
 			arg("buildLibrary").
 			arg("--species").arg(cmdSpecies).
 			arg("--chain").arg(chain).
