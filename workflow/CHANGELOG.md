@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.workflow
 
+## 2.1.1
+
+### Patch Changes
+
+- 799b05f: Upgrade MiXCR to 4.7.0-300-develop, add MI_LICENSE_DEBUG env to all MiXCR processes
+
 ## 2.1.0
 
 ### Minor Changes
