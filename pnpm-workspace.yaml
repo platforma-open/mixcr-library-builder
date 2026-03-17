@@ -16,7 +16,7 @@ catalog:
   '@platforma-sdk/ui-vue': 1.54.1
   '@platforma-sdk/tengo-builder': 2.4.17
   '@platforma-sdk/package-builder': 3.11.4
-  '@platforma-sdk/block-tools': 2.6.48
+  '@platforma-sdk/block-tools': 2.6.70
   '@platforma-sdk/eslint-config': 1.2.0
   '@platforma-sdk/test': 1.54.3
   '@milaboratories/helpers': 1.13.3
@@ -24,7 +24,7 @@ catalog:
 
   # Block-specific dependencies
   "@platforma-open/milaboratories.runenv-python-3": ^1.1.17
-  "@platforma-open/milaboratories.software-mixcr": 4.7.0-300-develop
+  "@platforma-open/milaboratories.software-mixcr": 4.7.0-317-develop
   "@platforma-open/milaboratories.software-repseqio": ^2.5.0-25-master
 
   # Common dependencies - can use ^ or ~
