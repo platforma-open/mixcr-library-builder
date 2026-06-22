@@ -1,4 +1,4 @@
-import { getRawPlatformaInstance, type LocalImportFileHandle } from '@platforma-sdk/model';
+import { getRawPlatformaInstance, type LocalImportFileHandle } from "@platforma-sdk/model";
 
 export interface FastaValidationResult {
   isValid: boolean;
@@ -19,13 +19,13 @@ export function validateFastaContent(content: string): FastaValidationResult {
   if (!content.trim()) {
     return {
       isValid: false,
-      error: 'File is empty',
+      error: "File is empty",
     };
   }
 
   const lines = content.split(/\r?\n/);
   let sequenceCount = 0;
-  let currentSequence = '';
+  let currentSequence = "";
   let hasHeader = false;
   let lineNumber = 0;
 
@@ -36,7 +36,7 @@ export function validateFastaContent(content: string): FastaValidationResult {
     // Skip empty lines
     if (!trimmedLine) continue;
 
-    if (trimmedLine.startsWith('>')) {
+    if (trimmedLine.startsWith(">")) {
       // Header line
       if (currentSequence && !hasHeader) {
         return {
@@ -47,7 +47,7 @@ export function validateFastaContent(content: string): FastaValidationResult {
 
       if (currentSequence) {
         sequenceCount++;
-        currentSequence = '';
+        currentSequence = "";
       }
 
       hasHeader = true;
@@ -77,7 +77,7 @@ export function validateFastaContent(content: string): FastaValidationResult {
         const invalidChars = trimmedLine.match(/[^ACGTUWSMKRYBDHVNacgtuwsmkrybdhvn-]/g);
         return {
           isValid: false,
-          error: `Line ${lineNumber}: Invalid characters in sequence: ${invalidChars?.join(', ')}`,
+          error: `Line ${lineNumber}: Invalid characters in sequence: ${invalidChars?.join(", ")}`,
         };
       }
 
@@ -101,7 +101,7 @@ export function validateFastaContent(content: string): FastaValidationResult {
   if (sequenceCount === 0) {
     return {
       isValid: false,
-      error: 'No sequences found after headers',
+      error: "No sequences found after headers",
     };
   }
 
@@ -109,7 +109,7 @@ export function validateFastaContent(content: string): FastaValidationResult {
   if (sequenceCount < 1) {
     return {
       isValid: false,
-      error: 'At least one sequence is required',
+      error: "At least one sequence is required",
     };
   }
 
@@ -125,19 +125,21 @@ export function validateFastaContent(content: string): FastaValidationResult {
  * @param file - The LocalImportFileHandle to validate
  * @returns Promise<FastaValidationResult>
  */
-export async function validateFastaFile(file: LocalImportFileHandle): Promise<FastaValidationResult> {
+export async function validateFastaFile(
+  file: LocalImportFileHandle,
+): Promise<FastaValidationResult> {
   try {
     // Read file content using Platforma SDK (following immune-assay-data pattern)
     const data = await getRawPlatformaInstance().lsDriver.getLocalFileContent(file);
 
     // Convert ArrayBuffer to string
-    const content = new TextDecoder('utf-8').decode(data);
+    const content = new TextDecoder("utf-8").decode(data);
 
     return validateFastaContent(content);
   } catch (error) {
     return {
       isValid: false,
-      error: `Failed to read file: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      error: `Failed to read file: ${error instanceof Error ? error.message : "Unknown error"}`,
     };
   }
 }
@@ -152,8 +154,8 @@ export function looksLikeFasta(content: string): boolean {
   if (!trimmed) return false;
 
   // Check if it starts with '>' and has sequence data
-  const firstLine = trimmed.split('\n')[0];
-  return firstLine.startsWith('>') && /[ACGTUacgtu]/.test(trimmed);
+  const firstLine = trimmed.split("\n")[0];
+  return firstLine.startsWith(">") && /[ACGTUacgtu]/.test(trimmed);
 }
 
 /**
@@ -161,13 +163,15 @@ export function looksLikeFasta(content: string): boolean {
  * @param content - FASTA file content
  * @returns Array of parsed header objects
  */
-export function extractFastaHeaders(content: string): Array<{ line: number; header: string; fields: string[] }> {
+export function extractFastaHeaders(
+  content: string,
+): Array<{ line: number; header: string; fields: string[] }> {
   const lines = content.split(/\r?\n/);
   const headers: Array<{ line: number; header: string; fields: string[] }> = [];
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
-    if (line.startsWith('>')) {
+    if (line.startsWith(">")) {
       const headerContent = line.substring(1);
       headers.push({
         line: i + 1,

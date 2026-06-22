@@ -1,10 +1,17 @@
-import type { ImportFileHandle, InferOutputsType, PlDataTableStateV2 } from '@platforma-sdk/model';
-import { BlockModel, createPlDataTableSheet, createPlDataTableStateV2, createPlDataTableV2, getUniquePartitionKeys, parseResourceMap } from '@platforma-sdk/model';
+import type { ImportFileHandle, InferOutputsType, PlDataTableStateV2 } from "@platforma-sdk/model";
+import {
+  BlockModel,
+  createPlDataTableSheet,
+  createPlDataTableStateV2,
+  createPlDataTableV2,
+  getUniquePartitionKeys,
+  parseResourceMap,
+} from "@platforma-sdk/model";
 
-type VRegionType = 'VTranscript' | 'VRegion';
+type VRegionType = "VTranscript" | "VRegion";
 
 type BaseSegmentConfig = {
-  sourceType: 'built-in' | 'fasta';
+  sourceType: "built-in" | "fasta";
   builtInSpecies: string | undefined; // only if sourceType==='built-in'
   fastaFile: ImportFileHandle | undefined; // only if sourceType==='fasta'
 };
@@ -21,12 +28,15 @@ export type BlockArgs = {
   species: string;
   chains: string[];
   fivePrimePrimer?: undefined;
-  chainConfigs: Record<string, {
-    V: VSegmentConfig;
-    D?: BaseSegmentConfig;
-    J: BaseSegmentConfig;
-    C?: BaseSegmentConfig;
-  }>;
+  chainConfigs: Record<
+    string,
+    {
+      V: VSegmentConfig;
+      D?: BaseSegmentConfig;
+      J: BaseSegmentConfig;
+      C?: BaseSegmentConfig;
+    }
+  >;
 };
 
 export type UiState = {
@@ -36,10 +46,10 @@ export type UiState = {
 export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
-    defaultBlockLabel: '',
-    customBlockLabel: '',
-    species: '',
-    chains: ['IGH'],
+    defaultBlockLabel: "",
+    customBlockLabel: "",
+    species: "",
+    chains: ["IGH"],
     chainConfigs: {},
   })
 
@@ -47,52 +57,56 @@ export const model = BlockModel.create()
     tableState: createPlDataTableStateV2(),
   })
 
-  .argsValid(
-    (ctx) => {
-      // Check that species is provided
-      if (!ctx.args.species || ctx.args.species.trim() === '') {
+  .argsValid((ctx) => {
+    // Check that species is provided
+    if (!ctx.args.species || ctx.args.species.trim() === "") {
+      return false;
+    }
+
+    // Check that at least one chain is selected
+    if (!ctx.args.chains || ctx.args.chains.length === 0) {
+      return false;
+    }
+
+    // Check that each selected chain has valid V and J segment configurations
+    for (const chain of ctx.args.chains) {
+      const chainConfig = ctx.args.chainConfigs[chain];
+      if (!chainConfig) {
         return false;
       }
 
-      // Check that at least one chain is selected
-      if (!ctx.args.chains || ctx.args.chains.length === 0) {
+      // V segment is required - must have either built-in species or fasta file
+      const vConfig = chainConfig.V;
+      if (
+        !vConfig ||
+        (vConfig.sourceType === "built-in" &&
+          (!vConfig.builtInSpecies || vConfig.builtInSpecies.trim() === "")) ||
+        (vConfig.sourceType === "fasta" && !vConfig.fastaFile)
+      ) {
         return false;
       }
 
-      // Check that each selected chain has valid V and J segment configurations
-      for (const chain of ctx.args.chains) {
-        const chainConfig = ctx.args.chainConfigs[chain];
-        if (!chainConfig) {
-          return false;
-        }
-
-        // V segment is required - must have either built-in species or fasta file
-        const vConfig = chainConfig.V;
-        if (!vConfig
-          || (vConfig.sourceType === 'built-in' && (!vConfig.builtInSpecies || vConfig.builtInSpecies.trim() === ''))
-          || (vConfig.sourceType === 'fasta' && !vConfig.fastaFile)) {
-          return false;
-        }
-
-        // J segment is required - must have either built-in species or fasta file
-        const jConfig = chainConfig.J;
-        if (!jConfig
-          || (jConfig.sourceType === 'built-in' && (!jConfig.builtInSpecies || jConfig.builtInSpecies.trim() === ''))
-          || (jConfig.sourceType === 'fasta' && !jConfig.fastaFile)) {
-          return false;
-        }
+      // J segment is required - must have either built-in species or fasta file
+      const jConfig = chainConfig.J;
+      if (
+        !jConfig ||
+        (jConfig.sourceType === "built-in" &&
+          (!jConfig.builtInSpecies || jConfig.builtInSpecies.trim() === "")) ||
+        (jConfig.sourceType === "fasta" && !jConfig.fastaFile)
+      ) {
+        return false;
       }
+    }
 
-      return true;
-    },
-  )
+    return true;
+  })
 
   .output(
-    'fileImports',
+    "fileImports",
     (ctx) =>
       Object.fromEntries(
         ctx.outputs
-          ?.resolve({ field: 'fileImports', assertFieldType: 'Input', allowPermanentAbsence: true })
+          ?.resolve({ field: "fileImports", assertFieldType: "Input", allowPermanentAbsence: true })
           ?.mapFields((handle, acc) => [handle as ImportFileHandle, acc.getImportProgress()], {
             skipUnresolved: true,
           }) ?? [],
@@ -100,14 +114,14 @@ export const model = BlockModel.create()
     { isActive: true },
   )
 
-  .output('debugOutput', (ctx) => {
+  .output("debugOutput", (ctx) => {
     return ctx.outputs !== undefined
-      ? parseResourceMap(ctx.outputs?.resolve('debugOutput'), (acc) => acc.getLogHandle(), false)
+      ? parseResourceMap(ctx.outputs?.resolve("debugOutput"), (acc) => acc.getLogHandle(), false)
       : undefined;
   })
 
-  .output('availableChains', (ctx) => {
-    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+  .output("availableChains", (ctx) => {
+    const pCols = ctx.outputs?.resolve("fastaTable")?.getPColumns();
     if (pCols === undefined || pCols.length === 0) {
       return [];
     }
@@ -118,8 +132,8 @@ export const model = BlockModel.create()
     return chainValues || [];
   })
 
-  .output('chainOptions', (ctx) => {
-    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+  .output("chainOptions", (ctx) => {
+    const pCols = ctx.outputs?.resolve("fastaTable")?.getPColumns();
     if (pCols === undefined || pCols.length === 0) {
       return [];
     }
@@ -138,8 +152,8 @@ export const model = BlockModel.create()
     }));
   })
 
-  .output('chainTableSheets', (ctx) => {
-    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+  .output("chainTableSheets", (ctx) => {
+    const pCols = ctx.outputs?.resolve("fastaTable")?.getPColumns();
     if (pCols === undefined || pCols.length === 0) {
       return undefined;
     }
@@ -154,8 +168,8 @@ export const model = BlockModel.create()
     return [createPlDataTableSheet(ctx, firstColumn.spec.axesSpec[0], chainValues)];
   })
 
-  .outputWithStatus('fastaTable', (ctx) => {
-    const pCols = ctx.outputs?.resolve('fastaTable')?.getPColumns();
+  .outputWithStatus("fastaTable", (ctx) => {
+    const pCols = ctx.outputs?.resolve("fastaTable")?.getPColumns();
     if (pCols === undefined) {
       return undefined;
     }
@@ -163,15 +177,13 @@ export const model = BlockModel.create()
     return createPlDataTableV2(ctx, pCols, ctx.uiState?.tableState || createPlDataTableStateV2());
   })
 
-  .output('isRunning', (ctx) => ctx.outputs?.getIsReadyOrError() === false)
+  .output("isRunning", (ctx) => ctx.outputs?.getIsReadyOrError() === false)
 
-  .title(() => 'MiXCR Library Builder')
+  .title(() => "MiXCR Library Builder")
 
-  .subtitle((ctx) => ctx.args.customBlockLabel || ctx.args.defaultBlockLabel || '')
+  .subtitle((ctx) => ctx.args.customBlockLabel || ctx.args.defaultBlockLabel || "")
 
-  .sections([
-    { type: 'link', href: '/', label: 'Library Builder' },
-  ])
+  .sections([{ type: "link", href: "/", label: "Library Builder" }])
 
   .done(2);
 

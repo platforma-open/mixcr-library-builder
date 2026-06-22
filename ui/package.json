@@ -3,25 +3,26 @@
   "version": "2.1.0",
   "type": "module",
   "scripts": {
-    "dev": "ts-builder build --target block-ui --dev-server",
+    "dev": "ts-builder serve --target block-ui",
     "watch": "ts-builder build --target block-ui --watch",
     "build": "ts-builder build --target block-ui",
-    "preview": "ts-builder build --target block-ui --dev-server --preview",
-    "lint": "eslint .",
-    "type-check": "ts-builder type-check --target block-ui"
+    "type-check": "ts-builder type-check --target block-ui",
+    "fmt": "ts-builder format",
+    "check": "ts-builder check --target block-ui"
   },
   "dependencies": {
     "@platforma-open/milaboratories.mixcr-library-builder.model": "workspace:*",
-    "@platforma-sdk/ui-vue": "catalog:",
     "@platforma-sdk/model": "catalog:",
+    "@platforma-sdk/ui-vue": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
     "@milaboratories/ts-builder": "catalog:",
     "@milaboratories/ts-configs": "catalog:",
-    "@platforma-sdk/eslint-config": "catalog:",
-    "eslint": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "catalog:"
+    "eslint": "catalog:"
+  },
+  "peerDependencies": {
+    "@types/node": "*",
+    "typescript": "*"
   }
 }

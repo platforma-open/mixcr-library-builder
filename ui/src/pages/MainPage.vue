@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { PlBlockPage, PlBtnGhost, PlMaskIcon24, PlSlideModal, PlAgDataTableV2, usePlDataTableSettingsV2 } from '@platforma-sdk/ui-vue';
-import SettingsPanel from './SettingsPanel.vue';
-import LogsPanel from './LogsPanel.vue';
-import { computed, ref, watch, watchEffect } from 'vue';
-import { useApp } from '../app';
+import {
+  PlBlockPage,
+  PlBtnGhost,
+  PlMaskIcon24,
+  PlSlideModal,
+  PlAgDataTableV2,
+  usePlDataTableSettingsV2,
+} from "@platforma-sdk/ui-vue";
+import SettingsPanel from "./SettingsPanel.vue";
+import LogsPanel from "./LogsPanel.vue";
+import { computed, ref, watch, watchEffect } from "vue";
+import { useApp } from "../app";
 
 const app = useApp();
 const settingsIsShown = ref(app.model.outputs.debugOutput === undefined);
@@ -18,9 +25,9 @@ watchEffect(() => {
   }
   // Add chains if available
   if (app.model.args.chains && app.model.args.chains.length > 0) {
-    parts.push(app.model.args.chains.join(', '));
+    parts.push(app.model.args.chains.join(", "));
   }
-  app.model.args.defaultBlockLabel = parts.filter(Boolean).join(' - ');
+  app.model.args.defaultBlockLabel = parts.filter(Boolean).join(" - ");
 });
 
 const tableSettings = usePlDataTableSettingsV2({
@@ -30,9 +37,9 @@ const tableSettings = usePlDataTableSettingsV2({
 
 const tableLoadingText = computed(() => {
   if (app.model.outputs.isRunning) {
-    return 'Running';
+    return "Running";
   }
-  return 'Loading';
+  return "Loading";
 });
 
 const showQuery = () => {
@@ -49,7 +56,8 @@ const _chainOptions = computed(() => {
 
 // Watch for settings modal close
 watch(settingsIsShown, (newValue) => {
-  if (!newValue) { // When modal is closed
+  if (!newValue) {
+    // When modal is closed
     // Settings are automatically saved through reactive bindings
     // No need for explicit save as we're using v-model with app.model.args
   }
@@ -58,13 +66,15 @@ watch(settingsIsShown, (newValue) => {
 // const debug = computed(() => {
 //  return ReactiveFileContent.getContentString(app.model.outputs.debugOutput?.handle);
 // });
-
 </script>
 
 <template>
   <PlBlockPage
     title="MiXCR Library Builder"
-    @click="settingsIsShown=false; logsIsShown=false"
+    @click="
+      settingsIsShown = false;
+      logsIsShown = false;
+    "
   >
     <template #append>
       <PlBtnGhost @click.stop="showLogs">
@@ -89,18 +99,11 @@ watch(settingsIsShown, (newValue) => {
       not-ready-text="Data is not computed"
     />
   </PlBlockPage>
-  <PlSlideModal
-    v-model="logsIsShown"
-    :close-on-outside-click="false"
-    width="100%"
-  >
+  <PlSlideModal v-model="logsIsShown" :close-on-outside-click="false" width="100%">
     <template #title>Library Builder Logs</template>
     <LogsPanel />
   </PlSlideModal>
-  <PlSlideModal
-    v-model="settingsIsShown"
-    :close-on-outside-click="false"
-  >
+  <PlSlideModal v-model="settingsIsShown" :close-on-outside-click="false">
     <template #title>Settings</template>
     <SettingsPanel />
   </PlSlideModal>

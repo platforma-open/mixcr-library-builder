@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { PlTabs, PlLogView } from '@platforma-sdk/ui-vue';
-import { computed, ref, watch } from 'vue';
-import { useApp } from '../app';
+import { PlTabs, PlLogView } from "@platforma-sdk/ui-vue";
+import { computed, ref, watch } from "vue";
+import { useApp } from "../app";
 
 const app = useApp();
 
@@ -27,11 +27,15 @@ const tabOptions = computed(() => {
 const activeTab = ref<string>();
 
 // Set the first chain as active by default when tabs become available
-watch(availableChains, (newChains) => {
-  if (!activeTab.value && newChains.length > 0) {
-    activeTab.value = newChains[0];
-  }
-}, { immediate: true });
+watch(
+  availableChains,
+  (newChains) => {
+    if (!activeTab.value && newChains.length > 0) {
+      activeTab.value = newChains[0];
+    }
+  },
+  { immediate: true },
+);
 
 // Get the log handle for the active chain
 const activeLogHandle = computed(() => {
@@ -45,11 +49,7 @@ const activeLogHandle = computed(() => {
 
 <template>
   <div v-if="availableChains.length > 0">
-    <PlTabs
-      v-model="activeTab"
-      :options="tabOptions"
-      style="margin-bottom: 16px;"
-    />
+    <PlTabs v-model="activeTab" :options="tabOptions" style="margin-bottom: 16px" />
     <PlLogView
       v-if="activeLogHandle"
       :log-handle="activeLogHandle"

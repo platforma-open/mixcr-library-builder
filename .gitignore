@@ -9,3 +9,6 @@ work/
 vite.config.*.timestamp-*
 log/
 *.idea
+.DS_Store
+.vscode/sftp.json
+test-dry-run.json
