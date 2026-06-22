@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type {
-  ListOption } from '@platforma-sdk/ui-vue';
+import type { ListOption } from "@platforma-sdk/ui-vue";
 import {
   PlBtnGroup,
   PlDropdown,
@@ -9,12 +8,12 @@ import {
   PlAccordionSection,
   PlDropdownMulti,
   PlSectionSeparator,
-} from '@platforma-sdk/ui-vue'; // Assuming this is the correct import path
-import { reactive, watch, computed, ref } from 'vue';
-import { useApp } from '../app'; // Assuming this path is correct
-import type { ImportFileHandle } from '@platforma-sdk/model';
-import { getFileNameFromHandle } from '@platforma-sdk/model'; // Assuming this path is correct
-import { validateFastaFile, type FastaValidationResult } from '../utils/fastaValidator';
+} from "@platforma-sdk/ui-vue"; // Assuming this is the correct import path
+import { reactive, watch, computed, ref } from "vue";
+import { useApp } from "../app"; // Assuming this path is correct
+import type { ImportFileHandle } from "@platforma-sdk/model";
+import { getFileNameFromHandle } from "@platforma-sdk/model"; // Assuming this path is correct
+import { validateFastaFile, type FastaValidationResult } from "../utils/fastaValidator";
 
 const app = useApp();
 
@@ -37,124 +36,135 @@ const progresses = computed(() => {
 });
 
 const speciesOptions = [
-  { label: 'Homo sapiens', value: 'hsa' },
-  { label: 'Mus musculus', value: 'mmu' },
-  { label: 'Lama glama', value: 'lama' },
-  { label: 'Alpaca', value: 'alpaca' },
-  { label: 'Macaca fascicularis', value: 'mfas' },
-  { label: 'Chicken', value: 'gallus' },
-  { label: 'Macaca mulatta', value: 'mmul' },
-  { label: 'Rabbit', value: 'rabbit' },
-  { label: 'Rat', value: 'rat' },
-  { label: 'Sheep', value: 'sheep' },
-  { label: 'Spalax', value: 'spalax' },
+  { label: "Homo sapiens", value: "hsa" },
+  { label: "Mus musculus", value: "mmu" },
+  { label: "Lama glama", value: "lama" },
+  { label: "Alpaca", value: "alpaca" },
+  { label: "Macaca fascicularis", value: "mfas" },
+  { label: "Chicken", value: "gallus" },
+  { label: "Macaca mulatta", value: "mmul" },
+  { label: "Rabbit", value: "rabbit" },
+  { label: "Rat", value: "rat" },
+  { label: "Sheep", value: "sheep" },
+  { label: "Spalax", value: "spalax" },
 ] as const satisfies ListOption[];
 
 const chainOptions = computed(() => {
   const chains = [
-    { label: 'TRA', value: 'TRA' },
-    { label: 'TRB', value: 'TRB' },
-    { label: 'TRG', value: 'TRG' },
-    { label: 'TRD', value: 'TRD' },
-    { label: 'IGH', value: 'IGH' },
-    { label: 'IGK', value: 'IGK' },
-    { label: 'IGL', value: 'IGL' },
+    { label: "TRA", value: "TRA" },
+    { label: "TRB", value: "TRB" },
+    { label: "TRG", value: "TRG" },
+    { label: "TRD", value: "TRD" },
+    { label: "IGH", value: "IGH" },
+    { label: "IGK", value: "IGK" },
+    { label: "IGL", value: "IGL" },
   ] as const satisfies ListOption[];
   return [...chains];
 });
 
 const chainsModel = computed({
-  get: () => (app.model.args.chains ?? []),
+  get: () => app.model.args.chains ?? [],
   set: (value) => {
     app.model.args.chains = value ?? [];
   },
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const segments = ['V', 'D', 'J', 'C'] as const;
-const mainSegments = ['V', 'J'] as const;
-const optionalSegments = ['D', 'C'] as const;
+const segments = ["V", "D", "J", "C"] as const;
+const mainSegments = ["V", "J"] as const;
+const optionalSegments = ["D", "C"] as const;
 
 const vRegionOptions = [
-  { label: 'V transcript', value: 'VTranscript' },
-  { label: 'V region', value: 'VRegion' },
+  { label: "V transcript", value: "VTranscript" },
+  { label: "V region", value: "VRegion" },
 ] as const satisfies ListOption[];
 
-const chainSegments: Record<string, readonly (typeof segments[number])[]> = {
-  TRA: ['V', 'J', 'C'],
-  TRB: ['V', 'D', 'J', 'C'],
-  TRG: ['V', 'J', 'C'],
-  TRD: ['V', 'D', 'J', 'C'],
-  IGH: ['V', 'D', 'J', 'C'],
-  IGK: ['V', 'J', 'C'],
-  IGL: ['V', 'J', 'C'],
+const chainSegments: Record<string, readonly (typeof segments)[number][]> = {
+  TRA: ["V", "J", "C"],
+  TRB: ["V", "D", "J", "C"],
+  TRG: ["V", "J", "C"],
+  TRD: ["V", "D", "J", "C"],
+  IGH: ["V", "D", "J", "C"],
+  IGK: ["V", "J", "C"],
+  IGL: ["V", "J", "C"],
 } as const;
 
 // Map of species to their available chains
 const speciesInBuiltInHasChains: Record<string, string[]> = {
-  hsa: ['IGH', 'IGL', 'IGK', 'TRA', 'TRB', 'TRD', 'TRG'], // Human
-  mmu: ['IGH', 'IGL', 'IGK', 'TRA', 'TRB', 'TRD', 'TRG'], // Mouse
-  lama: ['IGH', 'IGK', 'IGL'], // Lama glama
-  alpaca: ['IGH'], // Alpaca
-  mfas: ['TRA', 'TRB', 'TRD'], // Macaca fascicularis
-  gallus: ['IGH'], // Chicken
-  mmul: ['IGH', 'TRA', 'TRB', 'TRD'], // Macaca mulatta
-  rabbit: ['IGH', 'IGK', 'IGL'], // Rabbit
-  rat: ['TRA', 'TRB', 'TRD'], // Rat
-  sheep: ['IGH', 'IGK', 'IGL'], // Sheep
-  spalax: ['IGH', 'TRA', 'TRB', 'TRD'], // Spalax
+  hsa: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Human
+  mmu: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Mouse
+  lama: ["IGH", "IGK", "IGL"], // Lama glama
+  alpaca: ["IGH"], // Alpaca
+  mfas: ["TRA", "TRB", "TRD"], // Macaca fascicularis
+  gallus: ["IGH"], // Chicken
+  mmul: ["IGH", "TRA", "TRB", "TRD"], // Macaca mulatta
+  rabbit: ["IGH", "IGK", "IGL"], // Rabbit
+  rat: ["TRA", "TRB", "TRD"], // Rat
+  sheep: ["IGH", "IGK", "IGL"], // Sheep
+  spalax: ["IGH", "TRA", "TRB", "TRD"], // Spalax
 } as const;
 
-type SourceType = 'built-in' | 'fasta';
+type SourceType = "built-in" | "fasta";
 interface SegmentConfig {
   sourceType: SourceType;
   builtInSpecies: string | undefined; // only if sourceType==='built-in'
   fastaFile: ImportFileHandle | undefined; // only if sourceType==='fasta'
-  vRegionType?: 'VTranscript' | 'VRegion'; // only for V segment when sourceType==='fasta'
+  vRegionType?: "VTranscript" | "VRegion"; // only for V segment when sourceType==='fasta'
 }
 
 // Local reactive state for configurations
-const config = reactive<Record<string, Record<typeof segments[number], SegmentConfig>>>(
+const config = reactive<Record<string, Record<(typeof segments)[number], SegmentConfig>>>(
   // Initialize from existing chainConfigs if they exist
   JSON.parse(JSON.stringify(app.model.args.chainConfigs || {})),
 );
 
 // Initialize or update config based on selected chains
-watch(chainsModel, (newChains, oldChains) => {
-  // Remove configurations for unselected chains
-  const oldChainsSet = new Set(oldChains ?? []);
-  const newChainsSet = new Set(newChains);
+watch(
+  chainsModel,
+  (newChains, oldChains) => {
+    // Remove configurations for unselected chains
+    const oldChainsSet = new Set(oldChains ?? []);
+    const newChainsSet = new Set(newChains);
 
-  for (const chain of oldChainsSet) {
-    if (!newChainsSet.has(chain)) {
-      delete config[chain];
+    for (const chain of oldChainsSet) {
+      if (!newChainsSet.has(chain)) {
+        delete config[chain];
+      }
     }
-  }
 
-  // Add default configurations for newly selected chains
-  newChains.forEach((chain) => {
-    if (!config[chain]) {
-      config[chain] = chainSegments[chain].reduce((acc, seg) => {
-        acc[seg] = {
-          sourceType: 'built-in', // Default to built-in
-          builtInSpecies: undefined,
-          fastaFile: undefined,
-          ...(seg === 'V' ? { vRegionType: 'VRegion' } : {}), // Default V region type
-        };
-        return acc;
-      }, {} as Record<typeof segments[number], SegmentConfig>);
-    }
-  });
-}, { immediate: true });
+    // Add default configurations for newly selected chains
+    newChains.forEach((chain) => {
+      if (!config[chain]) {
+        config[chain] = chainSegments[chain].reduce(
+          (acc, seg) => {
+            acc[seg] = {
+              sourceType: "built-in", // Default to built-in
+              builtInSpecies: undefined,
+              fastaFile: undefined,
+              ...(seg === "V" ? { vRegionType: "VRegion" } : {}), // Default V region type
+            };
+            return acc;
+          },
+          {} as Record<(typeof segments)[number], SegmentConfig>,
+        );
+      }
+    });
+  },
+  { immediate: true },
+);
 
 // Watch local 'config' to update the global app model
-watch(config, (newConfig) => {
-  app.model.args.chainConfigs = JSON.parse(JSON.stringify(newConfig));
-}, { deep: true });
+watch(
+  config,
+  (newConfig) => {
+    app.model.args.chainConfigs = JSON.parse(JSON.stringify(newConfig));
+  },
+  { deep: true },
+);
 
 const genesSourceOptions = [
-  { label: 'From built-in species', value: 'built-in' },
-  { label: 'From fasta file', value: 'fasta' },
+  { label: "From built-in species", value: "built-in" },
+  { label: "From fasta file", value: "fasta" },
 ] as const satisfies ListOption[];
 
 // const vGeneFeatureOptions = [ // Not used in the provided template snippet
@@ -164,13 +174,17 @@ const genesSourceOptions = [
 
 // Handler for when the source type (PlBtnGroup) changes
 // The v-model on PlBtnGroup already updates config[chain][seg].sourceType
-const handleSourceTypeUpdate = (chain: string, seg: typeof segments[number], newSourceType: SourceType) => {
+const handleSourceTypeUpdate = (
+  chain: string,
+  seg: (typeof segments)[number],
+  newSourceType: SourceType,
+) => {
   if (config[chain]?.[seg]) {
     const validationKey = `${chain}-${seg}`;
 
-    if (newSourceType === 'fasta') {
+    if (newSourceType === "fasta") {
       config[chain][seg].builtInSpecies = undefined; // Clear species if switching to FASTA
-    } else if (newSourceType === 'built-in') {
+    } else if (newSourceType === "built-in") {
       config[chain][seg].fastaFile = undefined; // Clear FASTA file if switching to built-in
       // Clear validation state when switching away from FASTA
       delete validationState.value[validationKey];
@@ -181,12 +195,17 @@ const handleSourceTypeUpdate = (chain: string, seg: typeof segments[number], new
 
 // Handler for when the FASTA file input (PlFileInput) changes
 // The v-model on PlFileInput already updates config[chain][seg].fastaFile
-const handleFastaFileUpdate = async (chain: string, seg: typeof segments[number], newFile: ImportFileHandle | undefined) => {
+const handleFastaFileUpdate = async (
+  chain: string,
+  seg: (typeof segments)[number],
+  newFile: ImportFileHandle | undefined,
+) => {
   if (config[chain]?.[seg]) {
     const validationKey = `${chain}-${seg}`;
 
-    if (newFile !== undefined) { // If a file is selected
-      config[chain][seg].sourceType = 'fasta'; // Ensure sourceType is 'fasta'
+    if (newFile !== undefined) {
+      // If a file is selected
+      config[chain][seg].sourceType = "fasta"; // Ensure sourceType is 'fasta'
       config[chain][seg].builtInSpecies = undefined; // Clear species
 
       // Immediate basic validation (file extension, etc.) using Platforma SDK
@@ -216,7 +235,7 @@ const handleFastaFileUpdate = async (chain: string, seg: typeof segments[number]
       } catch (error) {
         validationState.value[validationKey] = {
           isValid: false,
-          error: `Validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+          error: `Validation failed: ${error instanceof Error ? error.message : "Unknown error"}`,
         };
         validationLoading.value[validationKey] = false;
       }
@@ -232,10 +251,15 @@ const handleFastaFileUpdate = async (chain: string, seg: typeof segments[number]
 
 // Handler for when the species dropdown (PlDropdown) changes
 // The v-model on PlDropdown already updates config[chain][seg].builtInSpecies
-const handleSpeciesUpdate = (chain: string, seg: typeof segments[number], newSpecies: string | undefined) => {
+const handleSpeciesUpdate = (
+  chain: string,
+  seg: (typeof segments)[number],
+  newSpecies: string | undefined,
+) => {
   if (config[chain]?.[seg]) {
-    if (newSpecies !== undefined) { // If a species is selected
-      config[chain][seg].sourceType = 'built-in'; // Ensure sourceType is 'built-in'
+    if (newSpecies !== undefined) {
+      // If a species is selected
+      config[chain][seg].sourceType = "built-in"; // Ensure sourceType is 'built-in'
       config[chain][seg].fastaFile = undefined; // Clear FASTA file
     }
     // If newSpecies is undefined (species cleared), sourceType remains 'built-in'.
@@ -243,7 +267,7 @@ const handleSpeciesUpdate = (chain: string, seg: typeof segments[number], newSpe
 };
 
 // Computed property to get species options for the dropdown
-const getSpeciesOptions = (chain: string, seg: typeof segments[number]) => {
+const getSpeciesOptions = (chain: string, seg: (typeof segments)[number]) => {
   // This dropdown is only visible if config[chain][seg].sourceType === 'built-in'.
   // In that state, config[chain][seg].fastaFile should be undefined due to our handlers.
   // This check is an additional safeguard.
@@ -274,7 +298,6 @@ const getFileError = (chain: string, seg: string): string | undefined => {
   if (isValidationLoading(chain, seg)) return undefined;
   return result?.isValid === false ? result.error : undefined;
 };
-
 </script>
 
 <template>
@@ -286,10 +309,7 @@ const getFileError = (chain: string, seg: string): string | undefined => {
   />
   <PlDropdownMulti v-model="chainsModel" label="Chains" :options="chainOptions" />
 
-  <template
-    v-for="chain in chainsModel"
-    :key="chain"
-  >
+  <template v-for="chain in chainsModel" :key="chain">
     <PlSectionSeparator>{{ chain }} chain</PlSectionSeparator>
 
     <!-- Always show V and J segments -->
@@ -314,7 +334,7 @@ const getFileError = (chain: string, seg: string): string | undefined => {
           v-model="config[chain][seg].fastaFile"
           :progress="progresses[config[chain]?.[seg]?.fastaFile ?? '']"
           file-dialog-title="Select FASTA file"
-          :extensions="['fasta','fa','fas']"
+          :extensions="['fasta', 'fa', 'fas']"
           label="FASTA file for segment"
           :error="getFileError(chain, seg)"
           clearable
@@ -332,8 +352,8 @@ const getFileError = (chain: string, seg: string): string | undefined => {
 
     <!-- Show D and C segments in accordion if they exist for this chain -->
     <PlAccordionSection
-      v-if="chainSegments[chain].some(s => optionalSegments.includes(s as any))"
-      :label="`${chainSegments[chain].filter(s => s === 'D' || s === 'C').join(' and ')} segments source (optional)`"
+      v-if="chainSegments[chain].some((s) => optionalSegments.includes(s as any))"
+      :label="`${chainSegments[chain].filter((s) => s === 'D' || s === 'C').join(' and ')} segments source (optional)`"
     >
       <template v-for="seg in chainSegments[chain]" :key="seg">
         <template v-if="optionalSegments.includes(seg as any)">
@@ -341,7 +361,9 @@ const getFileError = (chain: string, seg: string): string | undefined => {
             v-model="config[chain][seg].sourceType"
             :options="genesSourceOptions"
             :label="`${seg} segment source`"
-            @update:model-value="(newSourceType) => handleSourceTypeUpdate(chain, seg, newSourceType)"
+            @update:model-value="
+              (newSourceType) => handleSourceTypeUpdate(chain, seg, newSourceType)
+            "
           />
           <PlDropdown
             v-if="config[chain]?.[seg]?.sourceType === 'built-in'"
@@ -357,7 +379,7 @@ const getFileError = (chain: string, seg: string): string | undefined => {
               v-model="config[chain][seg].fastaFile"
               :progress="progresses[config[chain]?.[seg]?.fastaFile ?? '']"
               file-dialog-title="Select FASTA file"
-              :extensions="['fasta','fa','fas']"
+              :extensions="['fasta', 'fa', 'fas']"
               label="FASTA file for segment"
               :error="getFileError(chain, seg)"
               clearable
