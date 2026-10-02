@@ -36,15 +36,18 @@ const progresses = computed(() => {
 });
 
 const speciesOptions = [
-  { label: "Homo sapiens", value: "hsa" },
-  { label: "Mus musculus", value: "mmu" },
-  { label: "Lama glama", value: "lama" },
   { label: "Alpaca", value: "alpaca" },
-  { label: "Macaca fascicularis", value: "mfas" },
   { label: "Chicken", value: "gallus" },
+  { label: "Dog", value: "dog" },
+  { label: "Homo sapiens", value: "hsa" },
+  { label: "Lama glama", value: "lama" },
+  { label: "Macaca fascicularis", value: "mfas" },
   { label: "Macaca mulatta", value: "mmul" },
+  { label: "Mus musculus", value: "mmu" },
+  { label: "Pig", value: "pig" },
   { label: "Rabbit", value: "rabbit" },
   { label: "Rat", value: "rat" },
+  { label: "Salmon", value: "salmon" },
   { label: "Sheep", value: "sheep" },
   { label: "Spalax", value: "spalax" },
 ] as const satisfies ListOption[];
@@ -95,13 +98,16 @@ const speciesInBuiltInHasChains: Record<string, string[]> = {
   mmu: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Mouse
   lama: ["IGH", "IGK", "IGL"], // Lama glama
   alpaca: ["IGH"], // Alpaca
-  mfas: ["TRA", "TRB", "TRD"], // Macaca fascicularis
-  gallus: ["IGH"], // Chicken
-  mmul: ["IGH", "TRA", "TRB", "TRD"], // Macaca mulatta
+  mfas: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD"], // Macaca fascicularis
+  gallus: ["IGH", "IGL"], // Chicken
+  mmul: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD"], // Macaca mulatta
   rabbit: ["IGH", "IGK", "IGL"], // Rabbit
-  rat: ["TRA", "TRB", "TRD"], // Rat
+  rat: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD"], // Rat
   sheep: ["IGH", "IGK", "IGL"], // Sheep
   spalax: ["IGH", "TRA", "TRB", "TRD"], // Spalax
+  dog: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Dog
+  pig: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Pig
+  salmon: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Salmon
 } as const;
 
 type SourceType = "built-in" | "fasta";
