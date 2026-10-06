@@ -36,17 +36,20 @@ const progresses = computed(() => {
 });
 
 const speciesOptions = [
-  { label: "Homo sapiens", value: "hsa" },
-  { label: "Mus musculus", value: "mmu" },
-  { label: "Lama glama", value: "lama" },
-  { label: "Alpaca", value: "alpaca" },
-  { label: "Macaca fascicularis", value: "mfas" },
-  { label: "Chicken", value: "gallus" },
-  { label: "Macaca mulatta", value: "mmul" },
-  { label: "Rabbit", value: "rabbit" },
-  { label: "Rat", value: "rat" },
-  { label: "Sheep", value: "sheep" },
-  { label: "Spalax", value: "spalax" },
+  { label: "Alpaca (Vicugna pacos)", value: "alpaca" },
+  { label: "Atlantic salmon (Salmo salar)", value: "salmon" },
+  { label: "Blind mole rat (Spalax galili)", value: "spalax" },
+  { label: "Chicken (Gallus gallus)", value: "gallus" },
+  { label: "Cynomolgus macaque (Macaca fascicularis)", value: "mfas" },
+  { label: "Dog (Canis lupus familiaris)", value: "dog" },
+  { label: "Human (Homo sapiens)", value: "hsa" },
+  { label: "Llama (Lama glama)", value: "lama" },
+  { label: "Mouse (Mus musculus)", value: "mmu" },
+  { label: "Pig (Sus scrofa)", value: "pig" },
+  { label: "Rabbit (Oryctolagus cuniculus)", value: "rabbit" },
+  { label: "Rat (Rattus norvegicus)", value: "rat" },
+  { label: "Rhesus macaque (Macaca mulatta)", value: "mmul" },
+  { label: "Sheep (Ovis aries)", value: "sheep" },
 ] as const satisfies ListOption[];
 
 const chainOptions = computed(() => {
@@ -95,13 +98,16 @@ const speciesInBuiltInHasChains: Record<string, string[]> = {
   mmu: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Mouse
   lama: ["IGH", "IGK", "IGL"], // Lama glama
   alpaca: ["IGH"], // Alpaca
-  mfas: ["TRA", "TRB", "TRD"], // Macaca fascicularis
-  gallus: ["IGH"], // Chicken
-  mmul: ["IGH", "TRA", "TRB", "TRD"], // Macaca mulatta
+  mfas: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD"], // Macaca fascicularis
+  gallus: ["IGH", "IGL"], // Chicken
+  mmul: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD"], // Macaca mulatta
   rabbit: ["IGH", "IGK", "IGL"], // Rabbit
-  rat: ["TRA", "TRB", "TRD"], // Rat
+  rat: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD"], // Rat
   sheep: ["IGH", "IGK", "IGL"], // Sheep
-  spalax: ["IGH", "TRA", "TRB", "TRD"], // Spalax
+  spalax: ["IGH", "TRA", "TRB", "TRD"], // Spalax galili
+  dog: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Dog
+  pig: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Pig
+  salmon: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Salmon
 } as const;
 
 type SourceType = "built-in" | "fasta";
