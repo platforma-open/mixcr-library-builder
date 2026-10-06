@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.mixcr-library-builder",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "files": [
     "index.d.ts",
     "index.js"

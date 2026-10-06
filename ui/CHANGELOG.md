@@ -1,5 +1,13 @@
 # @platforma-open/milaboratories.mixcr-library-builder.ui
 
+## 2.1.2
+
+### Patch Changes
+
+- 0e800ea: Bump MiXCR to 4.7.0-403-develop, add dog, pig and salmon to the built-in species list, and offer the chains the built-in library now has for chicken, Macaca fascicularis, Macaca mulatta and rat
+
+  Show every species as its common name with the scientific name in parentheses
+
 ## 2.1.1
 
 ### Patch Changes
