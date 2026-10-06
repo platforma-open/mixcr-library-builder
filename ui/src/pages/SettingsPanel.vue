@@ -38,7 +38,7 @@ const progresses = computed(() => {
 const speciesOptions = [
   { label: "Alpaca (Vicugna pacos)", value: "alpaca" },
   { label: "Atlantic salmon (Salmo salar)", value: "salmon" },
-  { label: "Blind mole rat (Spalax)", value: "spalax" },
+  { label: "Blind mole rat (Spalax galili)", value: "spalax" },
   { label: "Chicken (Gallus gallus)", value: "gallus" },
   { label: "Cynomolgus macaque (Macaca fascicularis)", value: "mfas" },
   { label: "Dog (Canis lupus familiaris)", value: "dog" },
@@ -104,7 +104,7 @@ const speciesInBuiltInHasChains: Record<string, string[]> = {
   rabbit: ["IGH", "IGK", "IGL"], // Rabbit
   rat: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD"], // Rat
   sheep: ["IGH", "IGK", "IGL"], // Sheep
-  spalax: ["IGH", "TRA", "TRB", "TRD"], // Spalax
+  spalax: ["IGH", "TRA", "TRB", "TRD"], // Spalax galili
   dog: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Dog
   pig: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Pig
   salmon: ["IGH", "IGL", "IGK", "TRA", "TRB", "TRD", "TRG"], // Salmon
