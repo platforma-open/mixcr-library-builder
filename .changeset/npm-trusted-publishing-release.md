@@ -1,9 +1,10 @@
 ---
-"@platforma-open/milaboratories.mixcr-library-builder": minor
-"@platforma-open/milaboratories.mixcr-library-builder.model": minor
-"@platforma-open/milaboratories.mixcr-library-builder.software": minor
-"@platforma-open/milaboratories.mixcr-library-builder.ui": minor
-"@platforma-open/milaboratories.mixcr-library-builder.workflow": minor
+"@platforma-open/milaboratories.mixcr-library-builder": patch
+"@platforma-open/milaboratories.mixcr-library-builder.model": patch
+"@platforma-open/milaboratories.mixcr-library-builder.software": patch
+"@platforma-open/milaboratories.mixcr-library-builder.test": patch
+"@platforma-open/milaboratories.mixcr-library-builder.ui": patch
+"@platforma-open/milaboratories.mixcr-library-builder.workflow": patch
 ---
 
 Release every package through npm trusted publishing (OIDC) so each package's trusted publisher is used before it expires.
