@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.model
 
+## 2.1.2
+
+### Patch Changes
+
+- 19f61c0: Release every package through npm trusted publishing (OIDC) so each package's trusted publisher is used before it expires.
+
 ## 2.1.1
 
 ### Patch Changes
