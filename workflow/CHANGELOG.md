@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.mixcr-library-builder.workflow
 
+## 2.1.5
+
+### Patch Changes
+
+- 0db9ad3: Update MiXCR, RepSeq.IO to the versions with the rebuilt Docker images. The old images trust the compromised eMudhra intermediate CAs.
+
 ## 2.1.4
 
 ### Patch Changes
