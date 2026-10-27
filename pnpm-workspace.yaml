@@ -22,8 +22,8 @@ catalog:
 
   # Block-specific dependencies
   "@platforma-open/milaboratories.runenv-python-3": ^1.1.17
-  "@platforma-open/milaboratories.software-mixcr": 4.7.0-403-develop
-  "@platforma-open/milaboratories.software-repseqio": ^2.5.0-25-master
+  "@platforma-open/milaboratories.software-mixcr": 4.7.0-415-develop
+  "@platforma-open/milaboratories.software-repseqio": ^2.5.0-37-master
 
   # Common dependencies - can use ^ or ~
   'vue': 3.5.24

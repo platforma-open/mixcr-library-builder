@@ -22,11 +22,11 @@ catalogs:
       specifier: ^1.1.17
       version: 1.1.17
     '@platforma-open/milaboratories.software-mixcr':
-      specifier: 4.7.0-403-develop
-      version: 4.7.0-403-develop
+      specifier: 4.7.0-415-develop
+      version: 4.7.0-415-develop
     '@platforma-open/milaboratories.software-repseqio':
-      specifier: ^2.5.0-25-master
-      version: 2.5.0-25-master
+      specifier: ^2.5.0-37-master
+      version: 2.5.0-37-master
     '@platforma-sdk/block-tools':
       specifier: 2.16.9
       version: 2.16.9
@@ -216,10 +216,10 @@ importers:
         version: link:../software
       '@platforma-open/milaboratories.software-mixcr':
         specifier: 'catalog:'
-        version: 4.7.0-403-develop
+        version: 4.7.0-415-develop
       '@platforma-open/milaboratories.software-repseqio':
         specifier: 'catalog:'
-        version: 2.5.0-25-master
+        version: 2.5.0-37-master
       '@platforma-sdk/workflow-tengo':
         specifier: 'catalog:'
         version: 6.6.3
@@ -1540,8 +1540,8 @@ packages:
   '@platforma-open/milaboratories.runenv-python-3@1.1.17':
     resolution: {integrity: sha512-mgYCJCiIMV3z4KC1Q2UNFU25ucpT62sCeiEzdd1Yujdb9NW5CPJGv/7vWBsJAZvTWSWp9EnukR5UDvMiH/Q1Kw==}
 
-  '@platforma-open/milaboratories.software-mixcr@4.7.0-403-develop':
-    resolution: {integrity: sha512-WJx40s08sUH4g4lXMtdXRzvfmNjb8xJGijy2K6EQp9PKkFvXse1N0tdT2wId4leKj6W+RCJJiocBRYshPA/sfQ==}
+  '@platforma-open/milaboratories.software-mixcr@4.7.0-415-develop':
+    resolution: {integrity: sha512-fJRMGcZeAz6/6dT9JNwrzvJaR8uuEN+kJs+x/GnQTMKZqbLZcUppTP3MvTNPEYlVpxiykhtJOkHbap5ajhakCA==}
 
   '@platforma-open/milaboratories.software-ptabler.schema@1.15.14':
     resolution: {integrity: sha512-BBbmfUi3fS40HmMbYKGuRNgSPo4kAk/vk+dUK3fyabbjGncKZTm9W4vZlqH2JJX0VECIROR4FrvGvF91yRyVwg==}
@@ -1552,8 +1552,8 @@ packages:
   '@platforma-open/milaboratories.software-ptexter@1.2.2':
     resolution: {integrity: sha512-I08YpKQ4+esLrfpVra5UJ+bznI9Zzba6OW0rKK407a1EUmanvYMVrCbM9gqnm6CHbv2vQxNGSaO8p1LoBh+9gA==}
 
-  '@platforma-open/milaboratories.software-repseqio@2.5.0-25-master':
-    resolution: {integrity: sha512-Z/nq0nT3bI0GKweJcQaVZzYe5xBGzxi3ToByrMyN+WhfknqSetULociQEvQuNJPKv/B0hi640Sm21pSAaxSVJA==}
+  '@platforma-open/milaboratories.software-repseqio@2.5.0-37-master':
+    resolution: {integrity: sha512-Hy5U5pHMizShtekaFHjaDveB7Oe+tqXsEWJ3Owg6I3atzPSAf5jY7iuHR/tMd4YhXfVfMceDtMGdUTOG3xZ8AA==}
 
   '@platforma-open/milaboratories.software-small-binaries.hello-world-py@1.0.10':
     resolution: {integrity: sha512-16BGRLIrsVW+YIaXwWLX6Nbm80PS5mQJEclHhjNbRrRTLHPaKI4RygZfBC0lLNzvHBiTXU4Qkh1+WmdovkshDg==}
@@ -6995,7 +6995,7 @@ snapshots:
 
   '@platforma-open/milaboratories.runenv-python-3@1.1.17': {}
 
-  '@platforma-open/milaboratories.software-mixcr@4.7.0-403-develop': {}
+  '@platforma-open/milaboratories.software-mixcr@4.7.0-415-develop': {}
 
   '@platforma-open/milaboratories.software-ptabler.schema@1.15.14':
     dependencies:
@@ -7005,7 +7005,7 @@ snapshots:
 
   '@platforma-open/milaboratories.software-ptexter@1.2.2': {}
 
-  '@platforma-open/milaboratories.software-repseqio@2.5.0-25-master': {}
+  '@platforma-open/milaboratories.software-repseqio@2.5.0-37-master': {}
 
   '@platforma-open/milaboratories.software-small-binaries.hello-world-py@1.0.10': {}
 
