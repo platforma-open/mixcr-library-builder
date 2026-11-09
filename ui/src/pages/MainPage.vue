@@ -9,26 +9,12 @@ import {
 } from "@platforma-sdk/ui-vue";
 import SettingsPanel from "./SettingsPanel.vue";
 import LogsPanel from "./LogsPanel.vue";
-import { computed, ref, watch, watchEffect } from "vue";
+import { computed, ref, watch } from "vue";
 import { useApp } from "../app";
 
 const app = useApp();
 const settingsIsShown = ref(app.model.outputs.debugOutput === undefined);
 const logsIsShown = ref(false);
-
-// updating defaultBlockLabel
-watchEffect(() => {
-  const parts: string[] = [];
-  // Add species if available
-  if (app.model.args.species) {
-    parts.push(app.model.args.species);
-  }
-  // Add chains if available
-  if (app.model.args.chains && app.model.args.chains.length > 0) {
-    parts.push(app.model.args.chains.join(", "));
-  }
-  app.model.args.defaultBlockLabel = parts.filter(Boolean).join(" - ");
-});
 
 const tableSettings = usePlDataTableSettingsV2({
   model: () => app.model.outputs.fastaTable,

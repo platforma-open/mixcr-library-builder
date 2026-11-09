@@ -23,7 +23,6 @@ type VSegmentConfig = BaseSegmentConfig & {
 type _SegmentConfig = BaseSegmentConfig | VSegmentConfig;
 
 export type BlockArgs = {
-  defaultBlockLabel: string;
   customBlockLabel: string;
   species: string;
   chains: string[];
@@ -46,7 +45,6 @@ export type UiState = {
 export const model = BlockModel.create()
 
   .withArgs<BlockArgs>({
-    defaultBlockLabel: "",
     customBlockLabel: "",
     species: "",
     chains: ["IGH"],
@@ -181,10 +179,19 @@ export const model = BlockModel.create()
 
   .title(() => "MiXCR Library Builder")
 
-  .subtitle((ctx) => ctx.args.customBlockLabel || ctx.args.defaultBlockLabel || "")
+  .subtitle((ctx) => ctx.args.customBlockLabel || labelFromParams(ctx.args))
 
   .sections([{ type: "link", href: "/", label: "Library Builder" }])
 
   .done(2);
 
 export type BlockOutputs = InferOutputsType<typeof model>;
+
+// Internals
+
+function labelFromParams(args: BlockArgs): string {
+  const parts: string[] = [];
+  if (args.species) parts.push(args.species);
+  if (args.chains && args.chains.length > 0) parts.push(args.chains.join(", "));
+  return parts.join(" - ");
+}
